@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo form đơn giản</title>
+</head>
+<body style="background: orange;">
+<h1 style="background: lightseagreen; color: darkblue">ĐĂNG KÝ HỌC VIÊN</h1>
+<form>
+    <label for="hovaten">Họ và tên</label>
+    <input type="text" value="" name="hovaten" id="hovaten" style="margin-left: 50px">
+    <br>
+    <label for="ngay sinh">Ngày sinh</label>
+    <input type="date" value="" name="ngay sinh" id="ngay sinh"  style="margin-left: 47px">
+    <br>
+    <label>Giới tính</label>
+    <label><input type="radio" name="gioitinh" value="nam"  style="margin-left: 60px">Nam</label>
+    <label><input type="radio" name="gioitinh" value="nu">Nữ</label>
+    <br>
+    <label>Địa chỉ</label><br>
+    <textarea cols="50" rows="4 "  style="margin-left: 115px"></textarea>
+    <br>
+    <label>Lớp</label>
+    <select  style="margin-left: 85px">
+        <option>-- Chọn lớp --</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+    </select>
+    <br>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email"  style="margin-left: 73px">
+    <br>
+    <label for="dienthoai">Điện thoại</label>
+    <input type="number" name="dienthoai" id="dienthoai"  style="margin-left: 44px">
+    <br>
+    <input type="submit" value="Đăng ký"  style="margin-left: 115px">
+    <input type="reset" value="Nhập lại">
+</form>
+
+</body>
+</html>

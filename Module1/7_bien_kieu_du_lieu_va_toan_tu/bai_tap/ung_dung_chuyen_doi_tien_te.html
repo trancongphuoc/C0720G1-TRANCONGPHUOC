@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng chuyển đổi tiền tệ</title>
+</head>
+<body>
+<form>
+    <table style="width: 50%;">
+        <tr>
+            <th>Amount</th>
+            <th>Form Currentcy</th>
+            <th>To Currentcy</th>
+            <th></th>
+        </tr>
+        <tr align="center">
+            <td><input type="number" id="number"></td>
+            <td>
+                <select id="form_currentcy">
+                    <option value="VND">VND</option>
+                    <option value="USD" selected>USD</option>
+                </select>
+            </td>
+            <td>
+                <select id="to_currentcy">
+                    <option value="USD">USD</option>
+                    <option value="VND" selected>VND</option>
+                </select>
+            </td>
+            <td><input type="button" onclick="doi_tien()" value="convert"></td>
+        </tr>
+    </table>
+</form>
+<p id="hien_thi"></p>
+<script>
+    function doi_tien() {
+        let amount = document.getElementById("number").value;
+        let form_currentcy = document.getElementById("form_currentcy").value;
+        let to_currentcy = document.getElementById("to_currentcy").value;
+        amount = parseInt(amount);
+        let kq = 0;
+        if (form_currentcy == "USD" && to_currentcy == "VND")
+            kq = amount * 23200;
+        else if (form_currentcy == "VND" && to_currentcy == "USD")
+            kq = amount / 23200;
+        else
+            kq = "-- Xin chọn lại giá tiền";
+        document.getElementById("hien_thi").innerHTML = "ket qua " + kq;
+    }
+</script>
+</body>
+</html>

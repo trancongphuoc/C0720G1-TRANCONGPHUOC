@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng máy tính</title>
+</head>
+<body>
+<form>
+    <input type="number" id="number1">
+    <input type="number" id="number2">
+    <label>=</label>
+    <label id="hienthi">...</label>
+    <br>
+    <br>
+    <input type="button" value="Addition(+)" onclick="phepcong()">
+    <input type="button" value="Subtraction(-)" onclick="pheptru()">
+    <input type="button" value="Multiplication(x)" onclick="phepnhan()">
+    <input type="button" value="Division(/)" onclick="phepchia()">
+    <input type="reset">
+</form>
+<script>
+
+    function phepcong() {
+        let number1 = document.getElementById("number1").value;
+        let number2 = document.getElementById("number2").value;
+        number1 = parseInt(number1);
+        number2 = parseInt(number2);
+        let kq = 0;
+        kq = number1 + number2;
+        document.getElementById("hienthi").innerHTML = kq
+    }
+    function pheptru() {
+        let number1 = document.getElementById("number1").value;
+        let number2 = document.getElementById("number2").value;
+        number1 = parseInt(number1);
+        number2 = parseInt(number2);
+        let kq = 0;
+        kq = number1 - number2;
+        document.getElementById("hienthi").innerHTML = kq
+    }
+    function phepnhan() {
+        let number1 = document.getElementById("number1").value;
+        let number2 = document.getElementById("number2").value;
+        number1 = parseInt(number1);
+        number2 = parseInt(number2);
+        let kq = 0;
+        kq = number1 * number2;
+        document.getElementById("hienthi").innerHTML = kq
+    }
+    function phepchia() {
+        let number1 = document.getElementById("number1").value;
+        let number2 = document.getElementById("number2").value;
+        number1 = parseInt(number1);
+        number2 = parseInt(number2);
+        let kq = 0;
+        kq = number1 / number2;
+        document.getElementById("hienthi").innerHTML = kq
+    }
+</script>
+</body>
+</html>
