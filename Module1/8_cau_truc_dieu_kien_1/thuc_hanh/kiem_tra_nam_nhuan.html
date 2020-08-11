@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra năm nhuận</title>
+</head>
+<body>
+<script>
+    let year = prompt("nhập năm");
+    if (year % 100 == 0 && year % 400 == 0 && year != 0) {
+        alert(year + " Là năm nhuận");
+    } else {
+        if (year % 4 == 0 && year % 100 != 0) {
+            alert(year + " Là năm nhuận");
+        }else {
+            alert(year + " Không phải là năm nhuận")
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu lệnh swich case</title>
+</head>
+<body>
+<form>
+    <input type="text" id="text1">
+    <input type="button" onclick="check()" value="Xác nhận">
+    <p id="hienthi"></p>
+    <input type="text" id="text2">
+    <input type="button" onclick="check1()" value="Xác nhận">
+    <p id="hienthi1"></p>
+</form>
+<script>
+    function check() {
+        let a = document.getElementById("text1").value;
+        a = parseInt(a);
+        switch (a) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                document.getElementById("hienthi").innerHTML = "Tháng " + a + " có 31 ngày";
+                break;
+            case 2:
+                document.getElementById("hienthi").innerHTML = "Tháng " + a + " có 28 ngày hoặc 29 ngày";
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                document.getElementById("hienthi").innerHTML = "Tháng " + a + " có 30 ngày";
+                break;
+            default:
+                document.getElementById("hienthi").innerHTML = "Bạn cần nhập lại!!!";
+        }
+    }
+
+    function check1() {
+        let a = document.getElementById("text2").value;
+        a = parseInt(a);
+        switch (a) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                document.getElementById("hienthi1").innerHTML = "Tháng " + a + " có 31 ngày";
+                break;
+            case 2:
+                document.getElementById("hienthi1").innerHTML = "Tháng " + a + " có 28 ngày hoặc 29 ngày";
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                document.getElementById("hienthi1").innerHTML = "Tháng " + a + " có 30 ngày";
+                break;
+            default:
+                document.getElementById("hienthi1").innerHTML = "Bạn cần nhập lại!!!"
+        }
+    }
+</script>
+</body>
+</html>

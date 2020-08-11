@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sự kiện chuột</title>
+</head>
+<body>
+
+<form>
+
+    <img src="../hinh_anh/116e3346b7d34d3aee1bd015bf555cb3.jpg" style="height: 200px; width: 200px" id="ball">
+    <p>Click button below to move the image to right</p>
+    <input type="button" value="Click Me" onclick="move()"/>
+
+</form>
+<script>
+    let img = document.getElementById("ball");
+
+    function init() {
+        img = document.getElementById("ball");
+        img.style.position = "relative";
+        img.style.left = " 100px";
+    }
+
+    function move() {
+        img.style.left = parseInt(img.style.left) + 10 + "px";
+    }
+
+    window.onload = init();
+</script>
+
+</body>
+</html>
