@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện</title>
+</head>
+<body>
+<script>
+    let phut = parseInt(prompt("Nhập số phút"));
+    let cuocDienThoai;
+    if (phut <= 50)
+        cuocDienThoai = 25000 + (phut*600);
+    else if (phut <= 200)
+        cuocDienThoai = 25000 + 10000 + (phut * 400);
+    else
+        cuocDienThoai = 25000 + 90000 + (phut * 200);
+    alert("Cước điện thoại của bạn: " + cuocDienThoai)
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện</title>
+</head>
+<body>
+<script>
+    let diemKiemTra = parseFloat(prompt("Nhập điểm kiểm tra"));
+    let diemGiuaKy  = parseFloat(prompt("Nhập điểm giữa kỳ"));
+    let diemCuoiKy  = parseFloat(prompt("Nhập điểm cuối kỳ"));
+    let diemTrungBinh;
+    diemTrungBinh = (diemKiemTra + diemGiuaKy + diemCuoiKy)/3;
+
+    if (diemTrungBinh >= 8.0)
+        alert(diemTrungBinh + " : Học lực giỏi");
+    else if (diemTrungBinh >= 6.5)
+        alert(diemTrungBinh + " : Học lực khá");
+    else if (diemTrungBinh >= 4.5)
+        alert(diemTrungBinh + " : Học lực trung bình");
+    else
+        alert(diemTrungBinh + " : Học lực yếu");
+</script>
+</body>
+</html>

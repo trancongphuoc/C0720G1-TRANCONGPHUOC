@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện 2</title>
+</head>
+<body>
+<script>
+    let soDien = parseInt(prompt("Nhập số điện"));
+    let tienDien;
+    if (soDien <= 100)
+        tienDien = soDien * 1000;
+    else if (soDien <= 150)
+        tienDien = 100000 + (soDien - 100)* 1200;
+    else if (soDien <= 200)
+        tienDien = 160000 + (soDien - 150)* 2000;
+    else
+        tienDien = 260000 + (soDien - 200)* 2500;
+    alert("Số tiền điện phải trả: " + tienDien);
+</script>
+</body>
+</html>

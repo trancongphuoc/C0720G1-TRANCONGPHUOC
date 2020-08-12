@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện</title>
+</head>
+<body>
+<script>
+    let tongDoanhSo = parseInt(prompt("Nhập tổng doanh số: "));
+    let hoaHong;
+
+    if (tongDoanhSo <= 100000000)
+        hoaHong = tongDoanhSo * 1/20;
+    else if (tongDoanhSo <= 300000000)
+        hoaHong = tongDoanhSo * 1/10;
+    else
+        hoaHong = tongDoanhSo * 1/5;
+    alert("Hoa hông của bạn: "+ hoaHong);
+</script>
+</body>
+</html>

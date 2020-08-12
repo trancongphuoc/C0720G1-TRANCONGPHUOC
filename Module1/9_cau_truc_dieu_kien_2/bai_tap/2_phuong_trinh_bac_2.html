@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện 2</title>
+</head>
+<body>
+<script>
+    let a = parseInt(prompt("Nhập a: "));
+    let b = parseInt(prompt("Nhập b: "));
+    let c = parseInt(prompt("Nhập c: "));
+
+    let delta = Math.pow(b,2) - (4*a*c);
+
+    let xMot = (-b - Math.sqrt(delta)) / (2*a);
+
+    let xHai = (-b + Math.sqrt(delta)) / (2*a);
+
+    if (a != 0)
+        alert("x1 = " + xMot + "\n" + "x2 = " + xHai);
+    else
+        alert("Vô nghiệm.")
+</script>
+</body>
+</html>

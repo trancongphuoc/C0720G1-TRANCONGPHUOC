@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+<!--    <input type="button" value="Click to visible" onclick="visibleImg()"/>-->
+<!--    <button onclick="hideImg()">Click to hide</button>-->
+<button onclick="hideVisibleImg()">Click to hide/visible</button>
+<h3>Pig image</h3>
+<img id="pigImg" src="img/pig.jpg" height="200" width="300"/>
+
+<script>
+    // Ham nay dung de an hinh anh di (chu thich 1 dong)
+    function hideImg() {
+        document.getElementById("pigImg").style.display = "none";
+    }
+
+    /*
+     Ham nay dung de hien thi hinh anh len
+        (chu thich nhieu dong)
+     */
+    function visibleImg() {
+        document.getElementById("pigImg").style.display = "block";
+    }
+
+    let flag = true;
+    function hideVisibleImg() {
+        if (flag) {
+            document.getElementById("pigImg").style.display = "none";
+            flag = false;
+        } else {
+            document.getElementById("pigImg").style.display = "block";
+            flag = true;
+        }
+    }
+
+</script>
+<script src="js/hide_img.js"></script>
+</body>
+</html>
