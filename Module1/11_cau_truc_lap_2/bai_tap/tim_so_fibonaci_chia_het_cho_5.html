@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện</title>
+</head>
+<body>
+<script>
+    let f0 = 1;
+    let f1 = 1;
+    let fn = 0;
+    // let n = parseInt(prompt("Nhập n"));
+    while (true) {
+        fn = f0 + f1;
+        if (fn % 5 == 0) {
+            alert(fn);
+            break;
+        }
+        f0 = f1;
+        f1 = fn;
+        document.write(fn + "<br>");
+    }
+</script>
+</body>
+</html>

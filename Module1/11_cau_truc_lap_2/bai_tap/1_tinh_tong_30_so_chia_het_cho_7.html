@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc lặp</title>
+</head>
+<body>
+<script>
+    let i = 0;
+    let s = 0;
+    let dem = 0;
+    while (true){
+        i++;
+        if (i % 7 ==0){
+            document.write(i + "<br>");
+            s = s + i;
+            dem++;
+            if (dem == 30){
+                document.write("Tổng 30 số đầu tiên chia hết cho 7: " + s);
+                break;
+            }
+        }
+    }
+</script>
+</body>
+</html>

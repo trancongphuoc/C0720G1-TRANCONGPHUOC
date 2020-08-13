@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc lặp</title>
+</head>
+<body>
+<script>
+    let f0 = 1;
+    let f1 = 1;
+    let fn = 0;
+    let s = 0;
+    let n = parseInt(prompt("Nhập n"));
+    for (let i = 1; i < n; i++) {
+        fn = f0 + f1;
+        f0 = f1;
+        f1 = fn;
+        s = s + fn;
+        document.write(fn+ "<br>");
+    }
+    document.write("Tổng 20 số: " + s);
+</script>
+</body>
+</html>
