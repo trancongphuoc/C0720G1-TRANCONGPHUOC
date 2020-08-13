@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+</head>
+<body>
+<div style="width: 210px">
+    <form>
+        <fieldset >
+            <input type="text" id="windown" name="windown"value="" style="width: 170px; height: 35px; font-size: 20px"><br/><br/>
+            <input type="button" value="1" onclick="number1()" style="width: 40px; height: 40px">
+            <input type="button" value="2" onclick="number2()"style="width: 40px; height: 40px">
+            <input type="button" value="3" onclick="number3()"style="width: 40px; height: 40px">
+            <input type="button" value="+" onclick="add()"style="width: 40px; height: 40px"><br/><br/>
+            <input type="button" value="4" onclick="number4()"style="width: 40px; height: 40px">
+            <input type="button" value="5" onclick="number5()"style="width: 40px; height: 40px">
+            <input type="button" value="6" onclick="number6()"style="width: 40px; height: 40px">
+            <input type="button" value="-" onclick="sub()"style="width: 40px; height: 40px"><br/><br/>
+            <input type="button" value="7" onclick="number7()"style="width: 40px; height: 40px">
+            <input type="button" value="8" onclick="number8()"style="width: 40px; height: 40px">
+            <input type="button" value="9" onclick="number9()"style="width: 40px; height: 40px">
+            <input type="button" value="X" onclick="mul()"style="width: 40px; height: 40px"><br/><br/>
+            <input type="button" value="C" onclick="clr()"style="width: 40px; height: 40px">
+            <input type="button" value="0" onclick="number0()"style="width: 40px; height: 40px">
+            <input type="button" value="=" onclick="equ()"style="width: 40px; height: 40px">
+            <input type="button" value="/" onclick="div()"style="width: 40px; height: 40px"><br/><br/>
+        </fieldset>
+    </form>
+</div>
+    <script>
+
+        function number1() {
+            document.getElementById("windown").value +=1;
+        }
+        function number2() {
+            document.getElementById("windown").value =document.getElementById("windown").value+2;
+        }
+
+        function number3() {
+            document.getElementById("windown").value =document.getElementById("windown").value+3;
+        }
+        function number4() {
+            document.getElementById("windown").value =document.getElementById("windown").value+4;
+
+        }
+        function number5() {
+            document.getElementById("windown").value =document.getElementById("windown").value+5;
+
+        }
+        function number6() {
+            document.getElementById("windown").value =document.getElementById("windown").value+6;
+
+        }
+        function number7() {
+            document.getElementById("windown").value =document.getElementById("windown").value+7;
+
+        }
+        function number8() {
+            document.getElementById("windown").value =document.getElementById("windown").value+8;
+
+        }
+        function number9() {
+            document.getElementById("windown").value =document.getElementById("windown").value+9;
+
+        }
+        function number0() {
+            document.getElementById("windown").value =document.getElementById("windown").value+0;
+
+        }
+        function clr() {
+            document.getElementById("windown").value ="";
+        }
+        function add() {
+            document.getElementById("windown").value =document.getElementById("windown").value+"+";
+        }
+        function div() {
+            document.getElementById("windown").value =document.getElementById("windown").value+"/";
+        }
+        function sub() {
+            document.getElementById("windown").value =document.getElementById("windown").value+"-";
+        }
+        function mul() {
+            document.getElementById("windown").value =document.getElementById("windown").value+"*";
+        }
+
+        function equ() {
+            let string = document.getElementById("windown").value;
+            // // kiểm tra phép tính nào được nhập
+            // let indexAdd= string.indexOf("+");
+            // let indexSub= string.indexOf("-");
+            // let indexMul= string.indexOf("x");
+            // let indexDiv= string.indexOf("/");
+            // let height= string.length;                               // Tính độ dài của chuỗi
+            // let result;
+            result=eval(string);
+           document.getElementById("windown").value =result;
+         }
+
+    </script>
+</body>
+</html>

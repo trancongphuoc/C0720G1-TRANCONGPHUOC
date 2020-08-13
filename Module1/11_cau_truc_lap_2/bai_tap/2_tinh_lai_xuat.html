@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện</title>
+</head>
+<body>
+<script>
+    let soTienVay = parseInt(prompt("Nhập số tiền vay: "));
+    let n = parseInt(prompt("Nhập số tháng: "));
+    let soTienTra = 0;
+    for (let i = 0; i < n; i++) {
+        soTienTra = soTienVay + (soTienVay * 1 / 100);
+        soTienVay = soTienTra;
+    }
+    alert("Số tiền phải trả là: " + soTienTra)
+</script>
+</body>
+</html>

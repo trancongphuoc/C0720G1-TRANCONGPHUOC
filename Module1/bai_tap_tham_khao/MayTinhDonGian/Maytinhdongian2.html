@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+</head>
+<body>
+<div style="width: 210px">
+    <form name="form">
+        <fieldset >
+            <input type="text" id="windown" name="windown"value="" style="width: 170px; height: 35px; font-size: 20px"><br>
+            <input type="button" value="1" onclick="document.form.windown.value+=this.value" style="width: 40px; height: 40px">
+            <input type="button" value="2" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="3" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="+" onclick="nhap(this.value)"style="width: 40px; height: 40px"><br>
+            <input type="button" value="4" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="5" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="6" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="-" onclick="nhap(this.value)"style="width: 40px; height: 40px"><br>
+            <input type="button" value="7" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="8" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="9" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="*" onclick="nhap(this.value)"style="width: 40px; height: 40px"><br>
+            <input type="reset" value="C" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="0" onclick="nhap(this.value)"style="width: 40px; height: 40px">
+            <input type="button" value="=" onclick="bang()" style="width: 40px; height: 40px">
+            <input type="button" value="/" onclick="nhap(this.value)"style="width: 40px; height: 40px"><br>
+        </fieldset>
+    </form>
+</div>
+    <script>
+        function nhap(char) {
+            document.getElementById("windown").value +=char;
+        }
+        function bang() {
+            let string = document.getElementById("windown").value;
+            result=eval(string);
+           document.getElementById("windown").value =result;
+         }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tâp cấu trúc lặp</title>
+</head>
+<body>
+<input type="button" value="play" onclick="play()" style="margin-left: 50px; margin-top: 50px; width: 100px; height: 100px">
+
+<script>
+    function play() {
+
+        let a = parseInt(prompt("Nhập số đầu: "));
+        let b = parseInt(prompt("Nhập số cuối: "));
+        let random = Math.floor(Math.random() * (b - a) + a);
+
+        for (let i = a; i <= b; i++) {
+            let doanSo = parseInt(prompt("Đoán xem:"));
+            if (random === doanSo) {
+                alert("Good!!!");
+                break;
+            } else if (random > doanSo) {
+                alert("Lớn hơn")
+            } else {
+                alert("Nhỏ hơn")
+            }
+        }
+        alert(random)
+    }
+</script>
+</body>
+</html>
