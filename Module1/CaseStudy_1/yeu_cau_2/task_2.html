@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2</title>
+</head>
+<body>
+<script>
+
+    let fullName = "1. Họ và tên: Trần Công Phước";
+    let cmnd = "2. Số CMND: 044200002961";
+    let birthDay = "3. Ngày tháng năm sinh: 01/01/2000";
+    let email = "4. Email: teosake.1999@gmail.com";
+    let address = "5. Địa chỉ: Kiến Giang, Lệ Thủy, Quảng Bình";
+    let customer = "6. Customer: Diamond";
+    let sale = "7. Giảm giá: 10%";
+    let soluongdikem = "8. Số lượng đi kèm: 3";
+    let rentDays = "9. Số ngày thuê: 5";
+    let service = "10. Loại dịch vụ: Villa";
+    let rentRoom = "11. Loại phong thuê: VIP";
+
+    let input = parseInt(prompt("1. Show Information Customer." + "\n"
+        + "2. Edit Information Customer." + "\n"
+        + "3. Show the amount to be paid after discount" + "\n"));
+    switch (input) {
+        case 1:
+            alert(fullName + "\n"
+                + cmnd + "\n"
+                + birthDay + "\n"
+                + email + "\n"
+                + address + "\n"
+                + customer + "\n"
+                + sale + "\n"
+                + soluongdikem + "\n"
+                + rentDays + "\n"
+                + service + "\n"
+                + rentRoom);
+            break;
+        case 2:
+            let x = parseInt(prompt(fullName + "\n"
+                + cmnd + "\n"
+                + birthDay + "\n"
+                + email + "\n"
+                + address + "\n"
+                + customer + "\n"
+                + sale + "\n"
+                + soluongdikem + "\n"
+                + rentDays + "\n"
+                + service + "\n"
+                + rentRoom));
+            switch (x) {
+                case 1:
+                    fullName = "Họ và tên: " + prompt("Họ và tên: ");
+                    break;
+                case 2:
+                    cmnd = "Số CMND: " + prompt("Số CMND: ");
+                    break;
+                case 3:
+                    birthDay = "Ngày tháng năm sinh: " + prompt("Ngày tháng năm sinh: ");
+                    break;
+                case 4:
+                    email = "Email: " + prompt("Email: ");
+                    break;
+                case 5:
+                    address = "Địa chỉ: " + prompt("Địa chỉ: ");
+                    break;
+                case 6:
+                    customer = "Customer: " + prompt("Customer: ");
+                    break;
+                case 7:
+                    sale = "Giảm giá: " + prompt("Giảm giá: ");
+                    break;
+                case 8:
+                    soluongdikem = "Số lượng đi kèm: " + prompt("Số lượng đi kèm: ");
+                    break;
+                case 9:
+                    rentDays = "Số ngày thuê: " + prompt("Số ngày thuê: ");
+                    break;
+                case 10:
+                    service = "Loại dịch vụ: " + prompt("Loại dịch vụ: ");
+                    break;
+                case 11:
+                    rentRoom = "Loại phòng thuê: " + prompt("Loại phòng thuê: ");
+                    break;
+                default:
+                    alert("Failed")
+            }
+            confirm(fullName + "\n"
+                + cmnd + "\n"
+                + birthDay + "\n"
+                + email + "\n"
+                + address + "\n"
+                + customer + "\n"
+                + sale + "\n"
+                + soluongdikem + "\n"
+                + rentDays + "\n"
+                + service + "\n"
+                + rentRoom);
+    }
+
+
+</script>
+</body>
+</html>

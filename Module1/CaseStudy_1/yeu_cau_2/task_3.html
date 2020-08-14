@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+</head>
+<body>
+<script>
+
+    let fullName = "Trần Công Phước";
+    let cmnd = "044200002961";
+    let birthDay = "01/01/2000";
+    let email = "teosake.1999@gmail.com";
+    let address = "Đà Nẵng";
+    let customer = "Diamond";
+    let sale = "10";
+    let soluongdikem = "3";
+    let rentDays = "5";
+    let service = "Villa";
+    let rentRoom = "VIP";
+    let x;
+
+    function output() {
+        alert("1. Họ và tên: " + fullName + "\n"
+            + "2. Số CMND: " + cmnd + "\n"
+            + "3. Ngày tháng năm sinh: " + birthDay + "\n"
+            + "4. Email: " + email + "\n"
+            + "5. Địa chỉ: " + address + "\n"
+            + "6. Customer: " + customer + "\n"
+            + "7. Giảm giá: " + sale + "%" + "\n"
+            + "8. Số lượng đi kèm: " + soluongdikem + "\n"
+            + "9. Số ngày thuê: " + rentDays + "\n"
+            + "10. Loại dịch vụ: " + service + "\n"
+            + "11. Loại phong thuê: " + rentRoom);
+    }
+
+    switch1();
+
+    function switch1() {
+        let input = parseInt(prompt("1. Show Information Customer." + "\n"
+            + "2. Edit Information Customer." + "\n"
+            + "3. Show the amount to be paid after discount." + "\n"));
+
+        switch (input) {
+            case 1:
+                output();
+                switch1();
+                break;
+            case 2:
+                switch2();
+
+            function switch2() {
+
+                x = parseInt(prompt("1. Họ và tên: " + fullName + "\n"
+                    + "2. Số CMND: " + cmnd + "\n"
+                    + "3. Ngày tháng năm sinh: " + birthDay + "\n"
+                    + "4. Email: " + email + "\n"
+                    + "5. Địa chỉ: " + address + "\n"
+                    + "6. Customer: " + customer + "\n"
+                    + "7. Giảm giá: " + sale + "%" + "\n"
+                    + "8. Số lượng đi kèm: " + soluongdikem + "\n"
+                    + "9. Số ngày thuê: " + rentDays + "\n"
+                    + "10. Loại dịch vụ: " + service + "\n"
+                    + "11. Loại phong thuê: " + rentRoom));
+
+                switch (x) {
+                    case 1:
+                        fullName = prompt();
+                        switch2();
+                        break;
+                    case 2:
+                        cmnd = prompt();
+                        switch2();
+                        break;
+                    case 3:
+                        birthDay = prompt();
+                        switch2();
+                        break;
+                    case 4:
+                        email = prompt();
+                        switch2();
+                        break;
+                    case 5:
+                        address = prompt();
+                        switch2();
+                        break;
+                    case 6:
+                        customer = prompt();
+                        switch2();
+                        break;
+                    case 7:
+                        sale = prompt();
+                        switch2();
+                        break;
+                    case 8:
+                        soluongdikem = prompt();
+                        switch2();
+                        break;
+                    case 9:
+                        rentDays = prompt();
+                        switch2();
+                        break;
+                    case 10:
+                        service = prompt();
+                        switch2();
+                        break;
+                    case 11:
+                        rentRoom = prompt();
+                        switch2();
+                        break;
+                    default:
+                        alert("Failed");
+                        switch1();
+                }
+            }
+
+                output();
+                break;
+            case 3:
+                let giaTien = 0;
+
+                if (service == "Villa") {
+                    giaTien = 500;
+                } else if (service == "House") {
+                    giaTien = 300;
+                } else if (service == "Room") {
+                    giaTien = 100;
+                }
+
+                if (address == "Đà Nẵng"){
+                    giaTien = giaTien - 20;
+                }else if (address == "Huế"){
+                    giaTien = giaTien -10;
+                }else if (address == "Quảng Nam"){
+                    giaTien = giaTien -5;
+                }
+                if (customer == "Diamond") {
+                    giaTien = giaTien - 15;
+                } else if (customer == "Platinum"){
+                    giaTien = giaTien - 10;
+                }else if (customer == "Gold") {
+                    giaTien = giaTien - 5;
+                }else if (customer == Sliver){
+                    giaTien += -2
+                }
+
+
+                alert("Giá tiền của bạn là: " + giaTien);
+                switch1()
+        }
+    }
+</script>
+</body>
+</html>

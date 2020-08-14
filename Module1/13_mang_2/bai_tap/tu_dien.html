@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+<form>
+    <input type="text" id="text">
+    <input type="button" onclick="timKiem()" value="Search">
+</form>
+<p id="hienthi"></p>
+
+<script>
+    function timKiem() {
+
+        let array1 = ["go", "input", "output", "if", "school", "red", "drink", "eat", "follow"];
+        let array2 = ["đi", "đầu vào", "đầu ra", "nếu", "trường học", "màu đỏ", "uống", "ăn", "theo dõi"];
+        let input = document.getElementById("text").value;
+
+        for (let i = 0; i < array1.length; i++) {
+            if (input === array1[i]) {
+                document.getElementById("hienthi").innerHTML = array2[i];
+            }
+
+        }
+        for (let i = 0; i < array2.length; i++) {
+            if (input === array2[i]) {
+                document.getElementById("hienthi").innerHTML = array1[i];
+            }
+            // else {
+            //     document.getElementById("hienthi1").innerHTML = "Không có từ bạn vừa nhập"
+            // }
+        }
+    }
+</script>
+</body>
+</html>
