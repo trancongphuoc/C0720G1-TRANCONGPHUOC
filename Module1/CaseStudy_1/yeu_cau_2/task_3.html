@@ -13,9 +13,9 @@
     let email = "teosake.1999@gmail.com";
     let address = "Đà Nẵng";
     let customer = "Diamond";
-    let sale = "10";
-    let soluongdikem = "3";
-    let rentDays = "5";
+    let sale = 10;
+    let soluongdikem = 3;
+    let rentDays = 5;
     let service = "Villa";
     let rentRoom = "VIP";
     let x;
@@ -61,7 +61,8 @@
                     + "8. Số lượng đi kèm: " + soluongdikem + "\n"
                     + "9. Số ngày thuê: " + rentDays + "\n"
                     + "10. Loại dịch vụ: " + service + "\n"
-                    + "11. Loại phong thuê: " + rentRoom));
+                    + "11. Loại phong thuê: " + rentRoom + "\n"
+                    + "12. Quay lại."));
 
                 switch (x) {
                     case 1:
@@ -108,6 +109,9 @@
                         rentRoom = prompt();
                         switch2();
                         break;
+                    case 12:
+                        switch1();
+                        break;
                     default:
                         alert("Failed");
                         switch1();
@@ -127,23 +131,34 @@
                     giaTien = 100;
                 }
 
-                if (address == "Đà Nẵng"){
+                if (address == "Đà Nẵng") {
                     giaTien = giaTien - 20;
-                }else if (address == "Huế"){
-                    giaTien = giaTien -10;
-                }else if (address == "Quảng Nam"){
-                    giaTien = giaTien -5;
+                } else if (address == "Huế") {
+                    giaTien = giaTien - 10;
+                } else if (address == "Quảng Nam") {
+                    giaTien = giaTien - 5;
                 }
                 if (customer == "Diamond") {
                     giaTien = giaTien - 15;
-                } else if (customer == "Platinum"){
+                } else if (customer == "Platinum") {
                     giaTien = giaTien - 10;
-                }else if (customer == "Gold") {
+                } else if (customer == "Gold") {
                     giaTien = giaTien - 5;
-                }else if (customer == Sliver){
+                } else if (customer == Sliver) {
                     giaTien += -2
                 }
 
+                let currentYear = new Date().getFullYear();
+                let birthday = new Date(birthDay).getFullYear();
+                let ageCustomer = currentYear - birthday;
+
+                if (ageCustomer > 30) {
+                    giaTien += -2;
+                } else if (ageCustomer > 20) {
+                    giaTien += -1;
+                }
+
+                giaTien = giaTien * rentDays * (1 - (sale / 100));
 
                 alert("Giá tiền của bạn là: " + giaTien);
                 switch1()

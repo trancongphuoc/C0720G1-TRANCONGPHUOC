@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập sô phần tử: "));
+
+    let i;
+    let arr = [];
+    for (i = 0; i < n; i++) {
+        arr[i] = parseInt(prompt("Nhập giá trị phần tử thứ: " + i));
+    }
+
+    arr.sort(function(a, b){return b - a});
+    alert(arr);
+</script>
+</body>
+</html>

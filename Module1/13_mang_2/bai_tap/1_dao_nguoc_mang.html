@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhấp số phần tử: "));
+    let i;
+    let daoNguoc = "";
+    let arr = [];
+    for (i = 0; i < n; i++) {
+        arr[i] = prompt("Nhấp giá trị phần tử thứ: " + i);
+    }
+
+    for (i = n - 1; i >= 0; i--) {
+        daoNguoc += arr[i] + " ";
+    }
+    alert(daoNguoc);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập số lượng phần tử mảng a: "));
+
+    let i;
+    let a = [];
+    let b = [];
+    for (i = 0; i < n; i++) {
+        a[i] = parseInt(prompt("Nhập số lượng phần tử thứ " + i));
+    }
+
+    let m = parseInt(prompt("Nhập số lượng phần tử mảng b: "));
+    for (i = 0; i < m; i++) {
+        b[i] = parseInt(prompt("Nhập số lượng phần tử thứ " + i));
+    }
+
+    let c = a.concat(b);
+
+    alert(c)
+</script>
+</body>
+</html>

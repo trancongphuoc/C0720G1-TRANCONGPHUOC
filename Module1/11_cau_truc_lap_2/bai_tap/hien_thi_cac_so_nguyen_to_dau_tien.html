@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiển thị số nguyên tố</title>
+</head>
+<body>
+<script>
+    let n = prompt("Nhập");
+    let count = 0;
+    let soNguyenTo = 2;
+    let kQua = "";
+    while (count < n) {
+        let flag = true;
+        for (let i = 2; i < soNguyenTo; i++) {
+            if (soNguyenTo % i ==0) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            count++;
+            kQua += soNguyenTo + " ";
+        }
+        soNguyenTo++;
+
+    }
+alert(kQua);
+
+</script>
+</body>
+</html>

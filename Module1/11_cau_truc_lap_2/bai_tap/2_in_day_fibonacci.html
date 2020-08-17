@@ -9,11 +9,14 @@
     let f0 = 1;
     let f1 = 1;
     let fn = 0;
-    while (true){
+    let dem = 0;
+    let n = parseInt(prompt("Nhập n: "));
+    while (dem < n){
+        dem++;
         fn = f0 + f1;
         f0 = f1;
         f1 = fn;
-        document.write(fn);
+        document.write(fn + "<br>");
     }
 </script>
 </body>

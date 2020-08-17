@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập số phần tử: "));
+
+    let i;
+    let arr = [];
+    for (i = 0; i < n; i++) {
+        arr[i] = parseInt(prompt("Nhập giá trị phần tử thứ: " + i));
+    }
+
+    let soNguyen = parseInt(prompt("Nhập số nguyên: "));
+
+    for (i = 0; i < n; i++) {
+
+        if (soNguyen === arr[i]) {
+            arr.splice(i,1);
+            arr.push(0);
+        }
+    }
+    alert(arr);
+
+
+</script>
+</body>
+</html>

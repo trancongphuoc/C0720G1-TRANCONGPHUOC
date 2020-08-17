@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập giá trị phần tử mảng: "));
+    let i;
+    let max = 0;
+    let tong = 0;
+    let arr = [];
+    for (i = 0; i < n; i++) {
+        arr[i] = parseInt(prompt("Nhập giá trị phần tử thứ: "));
+    }
+
+    for (let i = 0; i < n ; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+        tong += arr[i]
+    }
+
+    tong = tong/n;
+
+    alert("Giá trị lớn nhất: " + max + "\n" + "Trung bình của dãy số: " + tong);
+</script>
+</body>
+</html>
