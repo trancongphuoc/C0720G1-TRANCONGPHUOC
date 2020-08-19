@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi met feet</title>
+</head>
+<body>
+<script>
+
+
+    retunr();
+
+
+    //Lựa chọn
+    function retunr() {
+        x = parseInt(prompt("1.Đổi met sang feet." + "\n" + "2.Đổi feet sang met"));
+        switch (x) {
+            case 1:
+                met();
+                break;
+            case 2:
+                feet();
+                break;
+        }
+    }
+
+    //Feet sang met
+    function met() {
+        f = parseInt(prompt("Nhập giá trị: "));
+        m = 0.305 * f;
+        alert(m);
+        retunr()
+    }
+
+
+    //Met sang feet
+    function feet() {
+        m = parseInt(prompt("Nhập giá trị: "));
+        f = 3.279 * m;
+        alert(f);
+        retunr()
+    }
+
+</script>
+</body>
+</html>

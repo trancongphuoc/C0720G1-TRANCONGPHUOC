@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let mang = [5,10,15,20,25,30];
+    let soMuonChen = parseInt(prompt("Nhap so muon chen:"));
+    let viTriMuonChen = parseInt(prompt("Nhap vi tri muon chen:"));
+    if (viTriMuonChen < mang.length) {
+        for (let i=mang.length; i>viTriMuonChen; i--) {
+            mang[i] = mang[i-1];
+        }
+        mang[viTriMuonChen] = soMuonChen;
+        document.write(mang);
+    }
+    else alert("sai vi tri muon chen");
+</script>
+</body>
+</html>

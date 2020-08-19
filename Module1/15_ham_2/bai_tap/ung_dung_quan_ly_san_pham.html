@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm</title>
+</head>
+<body>
+<form>
+    <input type="text" id="text">
+    <input type="button" onclick="add()" value="Add">
+    <br>
+    <label>Số lượng sản phẩm</label>
+    <label id="soluong"></label>
+    <p id="hienthi"></p>
+</form>
+<script>
+
+
+    let dSSP = ["Nokia", "Realme x2 Pro", "Iphone"];
+    hienThi();
+
+
+    // Thêm sản phẩm
+    function add() {
+        let tenSP = document.getElementById("text").value;
+        if (tenSP === "") {
+            alert("Bạn cần nhập tên sản phẩm: ")
+        } else {
+            dSSP.push(tenSP);
+            document.getElementById("text").value = "";
+        }
+        hienThi();
+    }
+
+    //Sửa tên sản phẩm
+    function edit(id) {
+        tenMoiSP = prompt("Nhập tên sản phẩm bạn muốn sửa: ");
+        if (tenMoiSP === null) {
+            alert("Bạn không muốn sửa ?")
+        } else if (tenMoiSP === "") {
+            alert("Bạn không muốn sửa ?")
+        } else {
+            dSSP[id] = tenMoiSP;
+        }
+        hienThi();
+    }
+
+
+    //Xóa sản phẩm
+    function del(id) {
+        let xoaSP = confirm("Bạn có muốn xóa sản phẩm này không ?" + dSSP[id]);
+        if (xoaSP) {
+            dSSP.splice(id, 1);
+            hienThi();
+        } else {
+            alert("Bạn không muốn xóa ?")
+        }
+    }
+
+
+    
+    //Hiển thị sản phầm
+    function hienThi() {
+        let bang = "<table border='1'>\n" +
+            "<tr>\n" +
+            "<th>Số thứ tự</th>\n" +
+            "<th>Tên sản phẩm</th>\n" +
+            "<th>Sửa</th>\n" +
+            "<th>Xóa</th>\n" +
+            "</tr>";
+
+        for (let i = 0; i < dSSP.length; i++) {
+            bang += "<tr>\n" +
+                "<td>" + (i + 1) + "</td>\n" +
+                "<td>" + dSSP[i] + "</td>\n" +
+                "<td><input type='button' value='Sửa' onclick='edit(" + i + ")'></td>\n" +
+                "<td><input type='button' value='Xóa' onclick='del(" + i + ")'></td>\n" +
+                "</tr>";
+        }
+        bang += "</table>";
+        document.getElementById("hienthi").innerHTML = bang;
+        document.getElementById("soluong").innerHTML = dSSP.length;
+    }
+</script>
+</body>
+</html>

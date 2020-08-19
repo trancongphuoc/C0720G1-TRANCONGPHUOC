@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    function ThongTin(name, year){
+        var hoten = "Họ tên: " + name;
+        var namsinh = "Năm sinh: " + year;
+        var thongtin = hoten + "<br>" + namsinh;
+        return thongtin;
+    }
+
+    var SinhVien = "SINH VIÊN<hr>" + ThongTin("Nguyễn Thành Nhân", 1993);
+
+    document.write(SinhVien);
+
+
+
+
+
+
+    function GioiThieuBanThan(x,y){
+        var name = x;
+        var year = y;
+        document.write("Tôi là " + name + " sinh năm " + year);
+    }
+
+    GioiThieuBanThan("Trình Giảo Kim", 1993);
+
+    document.write("<hr>");
+
+    GioiThieuBanThan("La Thành", 1989);
+
+    document.write("<hr>");
+
+    GioiThieuBanThan("Tần Thúc Bảo", 1985);
+
+
+
+
+
+
+
+
+    function sum(a = 0,b = 0,c = 0) {
+
+        return a + b + c;
+    }
+    alert(sum("1","2"))
+</script>
+</body>
+</html>

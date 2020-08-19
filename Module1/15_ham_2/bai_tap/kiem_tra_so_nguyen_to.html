@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên tố</title>
+</head>
+<body>
+<script>
+
+    function checkSnt(x) {
+        for (let i = 2; i < x; i++) {
+            if (x % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    let n = parseInt(prompt());
+    let count = 0;
+    let x = 2;
+    while (true) {
+        if (checkSnt(x)) {
+            document.write(x + "<br>");
+            count++
+        }
+        if (count == n) {
+            break;
+        }
+        x++;
+    }
+
+
+</script>
+</body>
+</html>

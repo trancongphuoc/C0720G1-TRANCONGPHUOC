@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra từ đối xứng</title>
+</head>
+<body>
+<script>
+    function kiemTra(s) {
+        let check = true;
+        for (let i = 0; i < s.length / 2; i++) {
+            if (s[i] !== s[s.length-i-1]) {
+                check = false;
+                break;
+            }
+        }
+        if (check === false) {
+            alert("Chuỗi không đối xứng")
+        } else
+            alert("Chuỗi đối xứng")
+    }
+
+    kiemTra("rotor")
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu 3</title>
+</head>
+<body>
+<script>
+    let check = true;
+    let fullName = prompt("Họ và tên:");
+    while (true) {
+        if (isNaN(fullName) === false) {
+            fullName = prompt("Nhập lại:")
+        } else {
+            break;
+        }
+    }
+
+    let cmnd = prompt("Số CMND:");
+    while (true) {
+        if (cmnd.length === 12 && isNaN(cmnd) === false) {
+            break;
+        } else {
+            cmnd = prompt("Nhập lại: ");
+        }
+    }
+
+    let birthDay = prompt("Ngày tháng năm sinh:");
+    while (true) {
+        if (birthDay.length !== 10) {
+            if (birthDay[2] !== "/" && birthDay[5] !== "/") {
+                birthDay = prompt("Nhập lại!!!");
+                check = false;
+            } else {
+                check = true;
+            }
+        }
+        if (check === false) {
+            birthDay = prompt("Nhập lại")
+        } else {
+            break;
+        }
+    }
+
+
+    let email = prompt("Email:");
+    let at = email.indexOf("@");
+    let dot = email.lastIndexOf(".");
+    let space = email.indexOf(".");
+    while (true) {
+        if (at !== -1 && at !== 0 && dot !== -1 && dot < email.length -1 && dot > at + 1 && space === -1) {
+            break;
+        } else {
+            email = prompt("Nhập lại!!!")
+        }
+    }
+
+
+    let address = prompt("Địa chỉ:");
+
+    let customer = prompt("Diamond, Platinum, Gold, Sliver, Member:");
+    while (true) {
+        if (customer === "Diamond" || customer === "Platinum" || customer === "Gold" || customer === "Sliver" || customer === "Member") {
+            break;
+        } else {
+            customer = prompt("Nhập lại!!!")
+        }
+    }
+
+    let sale = parseInt(prompt("Giảm giá:"));
+    while (true) {
+        if (isNaN(sale) === false && sale >= 0) {
+            break;
+        } else {
+            sale = prompt("Nhập lại!!!")
+        }
+    }
+
+    let soluongdikem = prompt("Số lượng đi kèm:");
+    while (true) {
+        if (isNaN(soluongdikem) === false && soluongdikem >= 0) {
+            break;
+        } else {
+            soluongdikem = prompt("Nhập lại!!!")
+        }
+    }
+
+    let rentDays = parseInt(prompt("Số ngày thuê:"));
+    while (true) {
+        if (isNaN(rentDays) === false && rentDays >= 0) {
+            break;
+        } else {
+            rentDays = prompt("Nhập lại!!!")
+        }
+    }
+
+    let service = prompt("Loại dịch vụ (Villa: 500$/ 1 ngày, House: 300$/ 1 ngày, Room: 100$/ 1 ngày)");
+    while (true) {
+        if (service === "Villa" || service === "House" || service === "Room") {
+            break;
+        } else {
+            service = prompt("Nhập lại!!!")
+        }
+    }
+
+
+    let room = prompt("Loại phòng thuê (Vip, Business, Normal)");
+    while (true) {
+        if (room === "Vip" || room === "Business" || room === "Normal") {
+            break;
+        } else {
+            room = prompt("Nhập lại!!!")
+        }
+    }
+
+
+    alert(alert("Họ và tên: " + fullName + "\n"
+        + "Số CMND: " + cmnd + "\n"
+        + "Ngày tháng năm sinh: " + birthDay + "\n"
+        + "Email: " + email + "\n"
+        + "Địa chỉ: " + address + "\n"
+        + "Customer: " + customer + "\n"
+        + "Giảm giá: " + sale + "\n"
+        + "Số lượng đi kèm: " + soluongdikem + "\n"
+        + "Số ngày thuê: " + rentDays + "\n"
+        + "Loại dịch vụ: " + service + "\n"
+        + "Loại phong thuê: " + room + "\n"
+    ));
+</script>
+</body>
+</html>

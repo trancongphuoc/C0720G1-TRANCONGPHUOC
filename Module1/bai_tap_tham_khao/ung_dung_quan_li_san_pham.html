@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lí sản phẩm</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Sản phảm</title>
+</head>
+<body>
+<input type="text" id="sanPham">
+<input type="button" value="Thêm Sản Phẩm" onclick="themMoiSP()"><br>
+<label style="margin-right: 100px">Số lượng sản phẩm: </label><span id="soLuong"></span>
+<p id="hienThi"></p>
+<script>
+    let danhSachSP = ["sam sung", "nokia", "iphone"];
+    hienThi();
+    function themMoiSP() {
+        let tenSP = document.getElementById("sanPham").value;
+        if (tenSP == "") {
+            alert("bạn chưa nhập tên sản phẩm")
+        } else {
+            danhSachSP.push(tenSP);
+            document.getElementById("sanPham").value = "";
+        }
+        hienThi();
+    }
+
+
+
+
+    function xoa(id) {
+        let kiemTraXoa=confirm("Bạn có muốn xóa sản phẩm "+danhSachSP[id]);
+        if (kiemTraXoa){
+            danhSachSP.splice(id,1);
+            hienThi();
+        }else {
+            alert("Bạn không muốn xóa sản phẩm này")
+        }
+    }
+
+
+
+
+
+    function sua(id) {
+        let tenMoiSP= prompt("Nhập tên bạn muốn sửa");
+        if (tenMoiSP==null){
+            alert("bạn không muốn sửa ")
+        }else if(tenMoiSP==""){
+            alert("Làm ơn nhập tên sản phẩm")
+        }else {
+            danhSachSP[id]=tenMoiSP;
+        }
+        hienThi();
+    }
+
+
+
+
+
+    function hienThi() {
+        let bang = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th> Số thứ tự</th>\n' +
+            '        <th> Tên Sản phẩm</th>\n' +
+            '        <th> Chức năng sửa</th>\n' +
+            '        <th> Chức năng xóa</th>\n' +
+            '    </tr>'
+        for (let i = 0; i < danhSachSP.length; i++) {
+            bang += ' <tr>\n' +
+                '        <td> ' + (i + 1) + '</td>\n' +
+                '        <td>' + danhSachSP[i] + '</td>\n' +
+                '        <td><input type="button" onclick="sua(' + i + ')" value="Sửa"></td>\n' +
+                '         <td><input type="button" onclick="xoa(' + i + ')" value="Xóa"></td>\n' +
+                '    </tr>'
+        }
+        bang += '</table>';
+        document.getElementById("hienThi").innerHTML = bang;
+        document.getElementById("soLuong").innerHTML = danhSachSP.length;
+    }
+</script>
+</table>
+</body>
+</html>
+</body>
+</html>
