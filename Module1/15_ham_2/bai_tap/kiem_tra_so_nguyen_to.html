@@ -9,7 +9,7 @@
 
     function checkSnt(x) {
         for (let i = 2; i < x; i++) {
-            if (x % i == 0) {
+            if (x % i === 0) {
                 return false;
             }
         }
@@ -25,7 +25,7 @@
             document.write(x + "<br>");
             count++
         }
-        if (count == n) {
+        if (count === n) {
             break;
         }
         x++;

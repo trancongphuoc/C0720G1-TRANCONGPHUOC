@@ -6,10 +6,11 @@
 </head>
 <body>
 <script>
-    function kiemTra(s) {
+    function kiemTra() {
+        let s = prompt("Nhập từ: ");
         let check = true;
         for (let i = 0; i < s.length / 2; i++) {
-            if (s[i] !== s[s.length-i-1]) {
+            if (s[i] !== s[s.length - i - 1]) {
                 check = false;
                 break;
             }
@@ -20,7 +21,7 @@
             alert("Chuỗi đối xứng")
     }
 
-    kiemTra("rotor")
+    kiemTra();
 </script>
 </body>
 </html>

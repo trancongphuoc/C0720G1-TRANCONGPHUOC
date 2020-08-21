@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+</head>
+<body>
+<script>
+
+
+    let array = ["Tèo","Thái","Hoàng","Tiến","Long","Thiên","Aquafina","Cocacola"];
+    menu();
+
+    function menu() {
+        let x = parseInt(prompt("1. Thêm" + "\n" + "2. Xóa" + " \n" + "3. Thoát"));
+        switch (x) {
+            case 1:
+                add();
+                break;
+            case 2:
+                del();
+                break;
+            case 3:
+                break;
+            default:
+                alert("Nhập lại");
+                menu()
+        }
+    }
+
+
+    function add() {
+        let n = parseInt(prompt("Nhập số lượng muốn thêm: "));
+        for (let i = 0; i < n; i++) {
+            array[i+array.length] = prompt("Nhập thông tin:");
+        }
+        alert(array);
+        menu();
+    }
+
+
+    function del() {
+        let name = prompt("Nhập tên cần xóa:");
+        for (let i = 0; i < array.length; i++) {
+            if (name === array[i]) {
+                array.splice(i,1);
+                break;
+            }
+        }
+        alert(array);
+        menu();
+    }
+</script>
+</body>
+</html>
