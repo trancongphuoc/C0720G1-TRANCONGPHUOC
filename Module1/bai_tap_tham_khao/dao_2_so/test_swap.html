@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let a = 3;
+        let b = 100;
+        // let tmp = a; // 3
+        // a = b; // 100
+        // b = tmp; // 3;
+
+        function swap(a, b) {
+            let tmp = a;
+            a = b;
+            b = tmp;
+
+            return a;
+        }
+
+        a = swap(a, b);
+        console.log("a =  " + a);
+
+        // function swapByRefer(array) {
+        //     let tmp = array[0];
+        //     array[0] = array[1];
+        //     array[1] = tmp;
+        // }
+        //
+        // let c = [a, b];
+        // swapByRefer(c);
+        // console.log(c[0] + " " + c[1]);
+
+        function myFunction() {
+            let myNum = 10;
+            function showNum() {
+                alert(myNum);
+            }
+            return showNum();
+        }
+        let callFunc = myFunction();
+        myFunction();
+    </script>
+</body>
+</html>

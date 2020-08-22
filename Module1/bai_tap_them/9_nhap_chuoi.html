@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuỗi</title>
+</head>
+<body>
+<script>
+    let string = prompt("Nhập chuỗi: ");
+
+
+    //a. Đảo ngược chuỗi
+    let daoNguoc = "";
+    for (let i = string.length - 1; i >= 0; i--) {
+        daoNguoc += string[i];
+    }
+    alert("Đảo ngược chuỗi: " + daoNguoc);
+
+
+    //b. Đổi chuỗi sang chữ hoa
+
+    let upper = string.toUpperCase();
+    alert("In hoa chuỗi: " + upper);
+
+    //c. Đổi chuỗi sang chữ thường
+
+    let lower = string.toLowerCase();
+    alert("In thường chuỗi: " + lower);
+
+    //d. Đổi hoa sang thường và ngược lại
+
+    let chu = "";
+
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === " ") {
+            chu += " "
+        } else if (string[i] >= "A" && string[i] <= "Z") {
+            chu += string[i].toLowerCase();
+        } else if (string[i] >= "a" && string[i] <= "z") {
+            chu += string[i].toUpperCase();
+        }
+    }
+    alert("Đổi chữ hoa sang chữ thường và ngược lại: " + chu)
+
+
+    // let stringArr = string.split("");
+    // for (let i = 0; i < stringArr.length; i++) {
+    //     if (stringArr[i] >= "A" && stringArr[i] <= "Z" ) {
+    //         stringArr[i] = stringArr[i].toLowerCase();
+    //     } else if (stringArr[i] >= "a" && stringArr[i] <= "z") {
+    //         stringArr[i] = stringArr[i].toUpperCase();
+    //     }
+    // }
+    // alert(stringArr.toString());
+
+</script>
+</body>
+</html>

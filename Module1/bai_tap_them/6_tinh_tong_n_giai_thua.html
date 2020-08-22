@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính tổng n giai thừa</title>
+</head>
+<body>
+<script>
+
+    let n = parseInt(prompt("Nhập n: "));
+    let sum = 1;
+
+    for (let i = 1; i <= n; i++) {
+        if (n % 2 === 0) {
+            if (i % 2 === 0) {
+                sum = sum * i;
+            }
+        } else if (n % 2 !== 0) {
+            if (i % 2 !== 0) {
+                sum = sum * i;
+            }
+        }
+    }
+
+
+    alert(sum)
+</script>
+</body>
+</html>

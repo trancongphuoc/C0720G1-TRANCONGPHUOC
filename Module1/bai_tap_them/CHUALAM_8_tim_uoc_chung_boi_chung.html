@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm ước chung bội chung của 2 số</title>
+</head>
+<body>
+<script>
+    let a = parseInt(prompt("Nhập số a: "));
+    let b = parseInt(prompt("Nhập số b: "));
+
+    let i = 2;
+    let stringa = "";
+    let stringb = "";
+
+    while (a !== 1) {
+        if (a % i === 0) {
+            console.log(i);
+            a = a / i;
+            stringa += " " + i;
+        } else {
+            i++
+        }
+    }
+
+    while (b !== 1) {
+        if (b % i === 0) {
+            console.log(i);
+            b = b / i;
+            stringb += " " + i;
+        } else {
+            i++
+        }
+    }
+    let check = true;
+    let bienTam = 0;
+    for (let j = stringa.length - 1; j >= 0; j--) {
+        for (let k = stringb.length; k >= 0; k--) {
+            if (stringa[j] === stringb[k]) {
+                check = true;
+                bienTam = stringa[j];
+                break;
+            }
+        }
+    }
+
+    while (true) {
+        if (check) {
+            alert(bienTam);
+            break;
+        } else
+            alert("Không có ước chung");
+        break;
+    }
+
+
+    // function uocChung(x) {
+    //     let i = 2;
+    //     let string = "";
+    //     while (x !== 1) {
+    //         if (x % i === 0) {
+    //             console.log(i);
+    //             x = x/i;
+    //             string += " " +i;
+    //         } else {
+    //             i++
+    //         }
+    //     }
+    // }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính tổng 1/n giai thừa</title>
+</head>
+<body>
+<script>
+    function tinhGiaiThua(x) {
+        let c = 1;
+        for (let i = 1; i <= x; i++) {
+            c = c * i;
+        }
+        return c
+    }
+
+
+
+    let n = parseInt(prompt("Nhập n: "));
+    let sum = 0;
+
+    for (let i = 1; i <= n; i++) {
+            sum += 1/tinhGiaiThua((2*i-1))
+    }
+    alert(sum)
+</script>
+</body>
+</html>

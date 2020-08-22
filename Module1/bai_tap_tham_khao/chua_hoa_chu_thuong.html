@@ -10,23 +10,23 @@
     let str = "Hello world!";
     let strArray = str.split("");
     console.log(strArray);
-    // for (let i = 0; i < strArray.length; i++) {
-    //     if (strArray[i] >= "A" && strArray[i] <= "Z") {
-    //         strArray[i] = strArray[i].toLowerCase();
-    //     } else if (strArray[i] >= "a" && strArray[i] <= "z") {
-    //         strArray[i] = strArray[i].toUpperCase();
-    //     }
-    // }
-    // console.log(strArray.toString());
-    let result = "";
-    for (let i = 0; i < str.length; i++) {
-        if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
-            result += str[i].toLowerCase();
-        } else if (str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122) {
-            result += str[i].toUpperCase();
+    for (let i = 0; i < strArray.length; i++) {
+        if (strArray[i] >= "A" && strArray[i] <= "Z") {
+            strArray[i] = strArray[i].toLowerCase();
+        } else if (strArray[i] >= "a" && strArray[i] <= "z") {
+            strArray[i] = strArray[i].toUpperCase();
         }
     }
-    console.log(result);
+    console.log(strArray.toString());
+    // let result = "";
+    // for (let i = 0; i < str.length; i++) {
+    //     if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
+    //         result += str[i].toLowerCase();
+    //     } else if (str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122) {
+    //         result += str[i].toUpperCase();
+    //     }
+    // }
+    // console.log(result);
 </script>
 </body>
 </html>

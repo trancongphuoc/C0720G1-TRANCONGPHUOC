@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuỗi</title>
+</head>
+<body>
+<script>
+    let string = prompt("Nhập chuỗi: ");
+    //a. In mỗi từ trên mỗi dòng
+    for (let i = 0; i < string.length; i++) {
+        document.write(string[i] + "<br>")
+    }
+    //b.Đếm số từ có trong chuổi đã cho.
+    let count = 0;
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] >= "A" && string[i] <= "Z") {
+            count++;
+        } else if (string[i] >= "a" && string[i] <= "z") {
+            count++;
+        }
+    }
+    document.write("Số từ trong chuỗi: " + count + "<br>");
+
+
+    //c.Đưa ra bảng tần số xuất hiện của các từ.
+    for (let i = 0; i < string.length; i++) {
+
+        document.write(string[i] + " Xuất hiện "+ demTu(string[i]) + " lần" + "<br>")
+    }
+
+    function demTu(char) {
+        let dem = 0;
+        let i = 0;
+        for (i; i < string.length; i++) {
+            if (char === string[i]){
+                dem++;
+            }
+        }
+        return dem
+    }
+</script>
+</body>
+</html>

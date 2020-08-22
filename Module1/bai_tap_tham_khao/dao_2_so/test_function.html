@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let day = prompt("Input day (mon/tue/wed): ");
+    let numberDay = 2;
+
+
+    // JS rieng
+    function outputEvenOdd(numDay) { //parameter
+        if (numDay % 2 === 0) {
+            return "Even day";
+        } else {
+            return "Odd day";
+        }
+        //...
+    }
+
+    function outputEvenOddNoReturn(numDay) {
+        if (numDay % 2 === 0) {
+            console.log("Even day");
+        } else {
+            console.log("Odd day");
+        }
+    }
+
+    if (day === "mon") {
+        console.log("Thu 2");
+        numberDay = 2;
+
+        // console.log(outputEvenOdd(numberDay));
+        outputEvenOddNoReturn(numberDay); // argument
+
+    } else if (day === "tue") {
+        console.log("Thu 3");
+        numberDay = 3;
+
+        // console.log(outputEvenOdd(numberDay));
+        outputEvenOddNoReturn(numberDay);
+    } else {
+        console.log("Thu 4");
+        numberDay = 4;
+
+        // console.log(outputEvenOdd(numberDay));
+        outputEvenOddNoReturn(numberDay);
+    }
+</script>
+</body>
+</html>
