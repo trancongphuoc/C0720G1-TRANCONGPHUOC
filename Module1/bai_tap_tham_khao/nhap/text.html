@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Luyện tập sử dụng hàm 2</title>
+    <title>Title</title>
 </head>
 <body>
 <script>
     function check(x) {
-        if (Number.isInteger(x) && x > 0 && !isNaN(x)) {
+        if (!isNaN(x)&& Number.isInteger(x) && x > 0) {
             return true;
         } else {
             return false;
         }
     }
-    alert(check(6.9));
+    let n = parseInt(prompt());
+    alert(check(n))
 </script>
 </body>
 </html>

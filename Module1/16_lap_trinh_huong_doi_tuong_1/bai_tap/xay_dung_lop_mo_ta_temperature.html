@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả Teamperature</title>
+</head>
+<body>
+<script>
+    function temperature(c) {
+        this.c = c;
+        this.f = function () {
+            return this.c * 1.8 + 32;
+        };
+        this.k = function () {
+            return this.c + 273.15;
+        };
+    }
+
+
+    let x = parseInt(prompt(""));
+    _temperature = new temperature(x);
+
+
+    alert("Độ F: " +_temperature.f() + "\n" + "Kenvin: " + _temperature.k());
+</script>
+</body>
+</html>

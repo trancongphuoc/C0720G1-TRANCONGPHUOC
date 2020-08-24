@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mangr</title>
+</head>
+<body>
+<script>
+    //a.Nhập một mảng a gồm n phần tử kiểu nguyên int
+    let array = [];
+    let n = parseInt(prompt("Nhập n: "));
+
+    for (let i = 0; i < n; i++) {
+        array[i] = parseInt(prompt("Nhập phần tử thứ " + i))
+    }
+
+
+    //b.Tính tổng số dương lẻ mảng a
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 !== 0) {
+            sum += array[i]
+        }
+    }
+    alert(sum);
+
+
+
+    //c.Tính tổng các số nguyên tố ở vị trí chắn.
+    function checkSnt(x) {
+        for (let i = 2; i < x; i++) {
+            if (x % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    let sumsnt = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (i % 2 === 0) {
+            if (checkSnt(array[i]) && array[i] !== 1) {
+                sumsnt += array[i];
+            }
+        }
+    }
+    alert(sumsnt);
+
+    //d.Nhập phần tử k, tìm xem k có xuất hiện trong mảng a không.
+    //Nếu có chỉ ra phần tử ở vị trí đầu tiên
+    let k = parseInt(prompt("Nhập số cần tìm: "));
+    for (let i = 0; i < array.length; i++) {
+        if (k === array[i]) {
+            alert("Số bạn cần tìm nằm ở vị trí " + i);
+            break;
+        }
+    }
+
+    //e.	Sắp sếp mảng a theo thứ tự tăng dần..
+
+    array.sort(function (a,b){return a - b});
+    alert(array);
+
+    //f.Chèn phần tử p vào mảng a sao cho mảng a vẫn đảm bảo tăng dần và xuất lại mảng a.
+    let p = parseInt(prompt("Nhập phần tử cần chèn: "));
+    let flag = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (p > array[i]) {
+            flag = i + 1;
+        }
+    }
+    array.splice(flag,0,p);
+    alert(array);
+</script>
+</body>
+</html>

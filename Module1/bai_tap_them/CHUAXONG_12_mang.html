@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mảng</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let n = parseInt(prompt("Chiều dài mảng: "));
+    let m = parseInt(prompt("Chiều rộng mảng: "));
+
+    for (let i = 0; i < n; i++) {
+        // array[i] = parseInt(prompt("Nhập phần tử thứ " + i));
+        for (let j = 0; j < m; j++) {
+            array[i][j] = parseInt(prompt("Nhập phần tử thứ " + i + "," + j ));
+        }
+    }
+    alert(array[0]);
+    let product = 1;
+    for (let i = 0; i < array[0].length; i++) {
+        if (array[0][i] % 3 ===0 ) {
+            product *= array[0][i]
+        }
+    }
+
+      alert(product);
+</script>
+</body>
+</html>

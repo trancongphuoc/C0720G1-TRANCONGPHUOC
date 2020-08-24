@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1366px" height="768px" style="border:1px solid #d34940;"></canvas>
+
+<script>
+    function rectangle(x,y,a,b) {
+        this.x = x;
+        this.y = y;
+        this.a = a;
+        this.b = b;
+    }
+    function getRandomHex() {
+        return Math.floor(Math.random() * 255)
+    }
+
+    function getRandomColor() {
+        var red = getRandomHex();
+        var green = getRandomHex();
+        var blue = getRandomHex();
+        return "rgb(" + red + "," + blue + "," + green + ")";
+    }
+
+
+    function createRectangle() {
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        var x = Math.random() * window.innerHeight;
+        var y = Math.random() * window.innerWidth;
+        var a = Math.floor(Math.random()* 400);
+        var b = Math.floor(Math.random()* 300);
+        //In diện tích hình chữ nhật ra màn hình
+        // var s = a * b;
+        // alert(s)
+        var _rectangle = new rectangle(x,y,a,b);
+        ctx.beginPath();
+        ctx.fillStyle = getRandomColor();
+        ctx.fillRect(_rectangle.x,_rectangle.y,_rectangle.a,_rectangle.b);
+        ctx.fill();
+    }
+    function createMultipleRectangle(x) {
+        for (let i = 0; i < x; i++) {
+            createRectangle();
+        }x
+    }
+    createMultipleRectangle(30)
+</script>
+</body>
+</html>

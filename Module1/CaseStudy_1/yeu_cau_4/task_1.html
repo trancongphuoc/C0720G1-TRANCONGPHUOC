@@ -11,17 +11,12 @@
     let array = [];
     menu();
 
-    // let n = parseInt(prompt(""));
     function menu() {
         let x = parseInt(prompt("1. Thêm" + "\n" + "2. Xóa" + " \n" + "3. Thoát"));
         switch (x) {
             case 1:
                 add();
                 break;
-            // case 2:
-            //     break;
-            // case 3:
-            //     break;
             default:
                 alert("Nhập lại");
                 menu()
@@ -31,10 +26,14 @@
 
     function add() {
         let n = parseInt(prompt("Nhập số lượng muốn thêm: "));
+        let temp = "";
         for (let i = 0; i < n; i++) {
             array[i] = prompt("Nhập thông tin:");
         }
-        alert(array);
+        for (let i = 0; i < n; i++) {
+            temp += array[i] + "\n"
+        }
+        alert(temp);
         menu();
     }
 
