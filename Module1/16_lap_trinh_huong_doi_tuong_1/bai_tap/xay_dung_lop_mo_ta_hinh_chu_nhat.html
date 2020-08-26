@@ -8,45 +8,50 @@
 <canvas id="myCanvas" width="1366px" height="768px" style="border:1px solid #d37287;"></canvas>
 
 <script>
-    function rectangle(x,y,a,b) {
-        this.x = x;
-        this.y = y;
-        this.a = a;
-        this.b = b;
+    class Rectangle {
+        constructor(x,y,a,b) {
+            this.x = x;
+            this.y = y;
+            this.a = a;
+            this.b = b;
+        }
     }
+
     function getRandomHex() {
         return Math.floor(Math.random() * 255)
     }
 
     function getRandomColor() {
-        var red = getRandomHex();
-        var green = getRandomHex();
-        var blue = getRandomHex();
+        let red = getRandomHex();
+        let green = getRandomHex();
+        let blue = getRandomHex();
         return "rgb(" + red + "," + blue + "," + green + ")";
     }
 
 
     function createRectangle() {
-        var ctx = document.getElementById("myCanvas").getContext("2d");
-        var x = Math.random() * window.innerHeight;
-        var y = Math.random() * window.innerWidth;
-        var a = Math.floor(Math.random()* 400);
-        var b = Math.floor(Math.random()* 300);
-        //In diện tích hình chữ nhật ra màn hình
-        // var s = a * b;
-        // alert(s)
-        var _rectangle = new rectangle(x,y,a,b);
+        let ctx = document.getElementById("myCanvas").getContext("2d");
+
+        let a = Math.floor(Math.random()* 400);
+        let b = Math.floor(Math.random()* 300);
+        // In diện tích hình chữ nhật ra màn hình
+        let s = a * b;
+        console.log(s);
+        // In chu vi hình chữ nhật ra màn hình
+        let c = (a+b)*2;
+        console.log(c);
+        let rectangle = new Rectangle(x,y,a,b);
         ctx.beginPath();
         ctx.fillStyle = getRandomColor();
-        ctx.fillRect(_rectangle.x,_rectangle.y,_rectangle.a,_rectangle.b);
+        ctx.fillRect(rectangle.x,rectangle.y,rectangle.a,rectangle.b);
         ctx.fill();
     }
     function createMultipleRectangle(x) {
         for (let i = 0; i < x; i++) {
             createRectangle();
-        }x
+        }
     }
-    createMultipleRectangle(50)
+    createMultipleRectangle(30)
 </script>
 </body>
 </html>

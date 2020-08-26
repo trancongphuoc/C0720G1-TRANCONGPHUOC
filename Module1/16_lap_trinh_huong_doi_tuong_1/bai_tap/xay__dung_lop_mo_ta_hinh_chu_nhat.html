@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1366px" height="768px" style="border:1px solid #d37287;"></canvas>
+
+
+
+<script>
+    class Rectangle {
+        constructor(a,b) {
+            this.a = a;
+            this.b = b;
+        }
+        chuvi() {
+            return "Chu vi: " + (this.a + this.b) * 2;
+        }
+        dientich() {
+            return "Diện tích: " + this.a * this.b
+        }
+        createRectangle() {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            let x = Math.random() * window.innerHeight;
+            let y = Math.random() * window.innerWidth;
+            ctx.beginPath();
+            ctx.fillStyle = "Red";
+            ctx.fill();
+            ctx.fillRect(x,y,this.a,this.b);
+        }
+    }
+    let a = Math.floor(Math.random()* 400);
+    let b = Math.floor(Math.random()* 300);
+    let rectangle = new Rectangle(a,b);
+    alert(rectangle.chuvi() + "\n" + rectangle.dientich());
+    rectangle.createRectangle();
+</script>
+</body>
+</html>
