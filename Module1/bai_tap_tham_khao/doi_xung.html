@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Sử dụng vòng for tuần túy
+    // function kiemTraTuDoiXung(chuoi) {
+    //     for (let i=0; i<chuoi.length/2;i++){
+    //         if (chuoi.charAt(i)!=chuoi.charAt(chuoi.length-1-i)){
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+    // 123321
+    // Sủ dụng đệ Quy
+    function kiemTraTuDoiXung(chuoi) {
+        let kiemTra = chuoi.charAt(0)===chuoi.charAt(chuoi.length-1);
+        if (kiemTra){
+            chuoi= chuoi.substring(1,chuoi.length-1);
+            alert(chuoi);
+        }else {
+            return false;
+        }
+        if (chuoi.length<=1){
+            return true;
+        }
+        return kiemTraTuDoiXung(chuoi);
+    }
+    let chuoi1= prompt(" Nhập chuỗi cần kiểm tra");
+    if(kiemTraTuDoiXung(chuoi1)){
+        alert( chuoi1+ " là chuỗi đối xứng")
+    }else {
+        alert(chuoi1+ " không phải là chuỗi đối xứng");
+    }
+</script>
+</body>
+</html>

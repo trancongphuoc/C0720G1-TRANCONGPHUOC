@@ -6,20 +6,27 @@
 </head>
 <body>
 <script>
-    //Bài 5: Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.
-    
-    
-    function min(a,b,c) {
-        if (a < b && a < c) {
-            return a;
-        } else if (b < c) {
-            return b;
+    let array1 = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let array2 = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+
+    function search(string) {
+        let check = true;
+        let temp = 0;
+        for (let i = 0; i < array1.length; i++) {
+            if (string === array1[i]) {
+                temp = i;
+            } else {
+                check = false
+            }
+        }
+        if (check === true) {
+            return array2[temp]
         } else {
-            return c;
+            return "Khong co chom sao ban can tim"
         }
     }
-
-    alert(min(5,11,3));
+    // let x = prompt("Nhập tên  chòm sao: ");
+    alert(search("Aldebaran"))
 </script>
 </body>
 </html>

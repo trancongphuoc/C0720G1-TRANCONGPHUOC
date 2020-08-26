@@ -33,7 +33,7 @@
         let n = parseInt(prompt("Nhập số lượng muốn thêm: "));
         let temp = "";
         for (let i = 0; i < n; i++) {
-            array[i+array.length] = prompt("Nhập thông tin:");
+            array[array.length] = prompt("Nhập thông tin:");
         }
         for (let i = 0; i < array.length; i++) {
             temp += array[i] + "\n"
@@ -45,13 +45,20 @@
 
     function del() {
         let name = prompt("Nhập tên cần xóa:");
+        let temp = "";
         for (let i = 0; i < array.length; i++) {
             if (name === array[i]) {
                 array.splice(i,1);
                 break;
+            } else {
+                alert("Nhập sai!!");
+                break;
             }
         }
-        alert(array);
+        for (let i = 0; i < array.length; i++) {
+            temp += array[i] + "\n"
+        }
+        alert(temp);
         menu();
     }
 </script>

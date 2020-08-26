@@ -6,22 +6,32 @@
 </head>
 <body>
 <script>
-    function temperature(c) {
-        this.c = c;
-        this.f = function () {
-            return this.c * 1.8 + 32;
-        };
-        this.k = function () {
-            return this.c + 273.15;
-        };
+    // function temperature(c) {
+    //     this.c = c;
+    //     this.f = function () {
+    //         return this.c * 1.8 + 32;
+    //     };
+    //     this.k = function () {
+    //         return this.c + 273.15;
+    //     };
+    // }
+    //
+    //
+    // let x = parseInt(prompt(""));
+    // _temperature = new temperature(x);
+    //
+    //
+    // alert("Độ F: " +_temperature.f() + "\n" + "Kenvin: " + _temperature.k());
+
+    class Temperature {
+        constructor(c) {
+            this.c = c;
+            this.f = this.c * 1.8 + 32;
+            this.k = this.c + 273.15;
+        }
     }
-
-
-    let x = parseInt(prompt(""));
-    _temperature = new temperature(x);
-
-
-    alert("Độ F: " +_temperature.f() + "\n" + "Kenvin: " + _temperature.k());
+    let temperature = new Temperature(25);
+    alert("Độ F: " + temperature.f + "\nĐộ K:" + temperature.k);
 </script>
 </body>
 </html>
