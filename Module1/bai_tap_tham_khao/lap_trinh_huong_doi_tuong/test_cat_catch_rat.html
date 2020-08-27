@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        class Rat {
+            constructor(name, weight, speed, status) {
+                this.name = name;
+                this.weight = weight;
+                this.speed = speed;
+                this.status = status;
+            }
+
+            growl() {
+                console.log("Chit, chit");
+            }
+        }
+
+        class Cat {
+            constructor(name, weight, speed) {
+                this.name = name;
+                this.weight = weight;
+                this.speed = speed;
+            }
+
+            growl() {
+                console.log("Meo, meo");
+            }
+
+            catch(rat) {
+                if (rat.status === "song") {
+                    if (this.speed > rat.speed) {
+                        console.log("Chuot cham qua, da bi meo an.");
+                        this.eat(rat);
+                    } else {
+                        console.log("Chuot nhanh qua, meo khong an duoc.");
+                    }
+                } else {
+                    console.log("Chuot chet roi!");
+                }
+            }
+
+            eat(rat) {
+                this.weight += rat.weight;
+                console.log("Meo an chuot, va khoi luong meo la: " + this.weight);
+            }
+        }
+
+        // status: song, chet
+        // let rat = new Rat("jerry", 5, 10, "song");
+        // let cat = new Cat("tom", 7, 11);
+        //
+        // rat.growl();
+        // cat.growl();
+        // cat.catch(rat);
+
+        let name = prompt("Input name: ");
+        let weight = parseInt(prompt("Input weight: "));
+        let speed = parseInt(prompt("Input speed: "));
+        let status = prompt("Input status (song/chet): ");
+
+        let rat = new Rat(name, weight, speed, status);
+        let cat = new Cat("tom", 7, 9);
+
+        rat.growl();
+        cat.growl();
+        cat.catch(rat);
+
+    </script>
+</body>
+</html>

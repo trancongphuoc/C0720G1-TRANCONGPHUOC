@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <script>
+        let canvas = document.getElementById("myCanvas");
+        // arc(tọa độ x, tọa độ y, bán kính, điểm bắt đầu vẽ, điểm kết thúc vẽ)
+        let context = canvas.getContext("2d");
+
+        // hinh tron
+        // context.arc(100, 100, 70, 0, 2 * Math.PI);
+        // context.stroke();
+        // context.fillStyle = "blue";
+        // context.fill();
+
+        // hinh chu nhat, hinh vuong
+        // fillRect(tọa độ x, tọa độ y, rộng, dài)
+        // C1
+        // context.fillStyle = "red";
+        // context.fillRect(100, 100, 70, 150);
+
+        // C2
+        context.rect(100, 100, 70, 150);
+        context.stroke();
+        context.fillStyle = "yellow";
+        context.fill();
+
+        // chu
+        // fillText(nội dung, tọa độ x, tọa độ y)
+        context.font = "50px Times New Roman";
+        context.fillText("C0720G1", 100, 100);
+
+    </script>
+</body>
+</html>

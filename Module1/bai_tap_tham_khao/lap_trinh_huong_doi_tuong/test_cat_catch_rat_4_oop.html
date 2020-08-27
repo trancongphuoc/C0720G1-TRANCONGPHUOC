@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor(name, weight, speed) {
+                this.name = name;
+                this.weight = weight;
+                this.speed = speed;
+            }
+
+            growl() {
+
+            }
+        }
+
+        class Rat extends Animal {
+            constructor(name, weight, speed, status) {
+                super(name, weight, speed);
+                this.status = status;
+            }
+
+            growl() {
+                console.log("Chit, chit");
+            }
+        }
+
+        class Cat extends Animal {
+            constructor(name, weight, speed) {
+                super(name, weight, speed);
+            }
+
+            growl() {
+                console.log("Meo, Meo");
+            }
+
+            catch(rat) {
+                if (this.speed > rat.speed) {
+                    this.eat(rat);
+                    console.log("Chuot cham qua, da bi meo an. Khoi luong meo: " + this.weight);
+                } else {
+                    console.log("Meo khong bat duoc chuot");
+                }
+            }
+
+            eat(rat) {
+                if (rat.status === "song" && this.speed > rat.speed) {
+                    this.weight += rat.weight;
+                } else {
+                    console.log("Chuot chet roi meo oi.")
+                }
+            }
+        }
+
+        //TH1: toc do meo < hon chuot
+        let rat1 = new Rat("Jerry 1", 5, 10, "song");
+        let cat1 = new Cat("Tom 1", 5, 9);
+        cat1.catch(rat1);
+
+        //TH2: toc do meo = hon chuot
+        let rat2 = new Rat("Jerry 2", 5, 10, "song");
+        let cat2 = new Cat("Tom 2", 6, 10);
+        cat2.catch(rat2);
+
+        //TH3: toc do meo > hon chuot
+        let rat3 = new Rat("Jerry 3", 5, 10, "chet");
+        let cat3 = new Cat("Tom 3", 6, 11);
+        cat3.catch(rat3);
+
+    </script>
+</body>
+</html>

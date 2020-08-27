@@ -8,8 +8,59 @@
 <script>
     class Mobile {
         constructor() {
+            this.pin = 100;
+            this.status = "On";
+            this.msSoanThao = [];
+            this.msDen = [];
+            this.msGui = [];
+
+        }
+        soanTinNhan(message) {
+            if (this.status === "On") {
+                this.msSoanThao.push(message);
+                this.pin--;
+            } else {
+                alert("Bạn cần bật điện thoại");
+            }
+
+        }
+        nhanTinNhan() {
+
+        }
+        guiTinNhan(mobile) {
+            if (this.status === "On") {
+                mobile.msDen = this.msSoanThao;
+                this.msGui = this.msSoanThao;
+                this.msSoanThao = [];
+                this.pin--;
+            } else {
+                alert("Bạn cần bật điện thoại")
+            }
+
+        }
+        showTinNhanDen() {
+            if (this.status === "On") {
+                this.pin--;
+                return this.msDen;
+            } else {
+                alert("Bạn cần bật điện thoại")
+            }
+        }
+        showTinNhanGui() {
+            if (this.status === "On") {
+                this.pin--;
+                return this.msGui;
+            }
         }
     }
+
+    let xiaomi = new Mobile();
+    let realme = new Mobile();
+    xiaomi.soanTinNhan("Hello");
+    xiaomi.guiTinNhan(realme);
+    alert(xiaomi.showTinNhanGui());
+    alert(realme.showTinNhanDen());
+    alert(xiaomi.pin)
 </script>
 </body>
 </html>
