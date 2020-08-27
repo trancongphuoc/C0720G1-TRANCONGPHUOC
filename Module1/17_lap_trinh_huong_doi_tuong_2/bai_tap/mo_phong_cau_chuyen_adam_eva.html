@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô phỏng câu chuyện Adam Eva</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor(weightap) {
+            this.weightap = weightap;
+        }
+
+        getWeightap() {
+            return this.weightap;
+        }
+
+        decreaseApple() {
+            if (this.weightap > 0) {
+                this.weightap--
+            }
+        }
+
+        isEmpty() {
+            if (this.weightap > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        getName() {
+            return this.name
+        }
+
+        getGender() {
+            return this.gender;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        talk(talk) {
+            alert(this.name + " nói: "+talk);
+        }
+
+        eat(apple) {
+            if (apple.getWeightap() > 0) {
+                apple.decreaseApple();
+                this.weight++;
+            } else {
+                alert("Đã hết táo");
+            }
+
+        }
+        checkApple(apple) {
+            if (apple.isEmpty()) {
+                return "Còn táo"
+            } else {
+                return "Đã hết táo"
+            }
+        }
+
+        checkWeight(apple) {
+            return "Khối lượng táo còn lại: " + apple.getWeightap();
+        }
+    }
+
+    let apple = new Apple(10);
+    let adam = new Human("Adam", "Nam", 50);
+    let eva = new Human("Eva", "Nữ", 40);
+    adam.talk("Eva. Em ăn táo đi.");
+    eva.eat(apple);
+    eva.eat(apple);
+    eva.eat(apple);
+    alert(eva.checkWeight(apple));
+    eva.talk("Em ăn rồi. Anh ăn đi.");
+    adam.eat(apple);
+    adam.eat(apple);
+    adam.eat(apple);
+    adam.eat(apple);
+    adam.eat(apple);
+    adam.eat(apple);
+    adam.eat(apple);
+    alert(adam.checkWeight(apple));
+    alert(adam.checkApple(apple));
+    alert("Tên: " + adam.getName() + "\nGiới tính: " + adam.getGender() + "\nKhối lượng: " + adam.getWeight());
+    alert("Tên: " + eva.getName() + "\nGiới tính: " + eva.getGender() + "\nKhối lượng: " + eva.getWeight())
+</script>
+</body>
+</html>

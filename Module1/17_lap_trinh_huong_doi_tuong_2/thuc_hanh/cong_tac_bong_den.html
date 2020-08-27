@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công tắc bóng đèn</title>
+</head>
+<body>
+<input type="button" onclick="congtac()" value="onOFF">
+<script>
+    class SwitchButton {
+        constructor() {
+            this.status = false;
+            this.lamp = null;
+        }
+
+        connectToLamp(lamp) {
+            this.lamp = lamp;
+        }
+
+        switchButton() {
+
+
+        }
+
+        switchOn() {
+            this.status = true;
+            this.lamp.turnOn();
+        }
+
+        switchOff() {
+            this.status = false;
+            this.lamp.turnOff();
+        }
+    }
+
+    class ElectricLamp {
+        constructor() {
+            this.status = false;
+        }
+
+        turnOn() {
+            this.status = "Đèn Sáng"
+        }
+
+        turnOff() {
+            this.status = "Hãy bật đèn"
+        }
+
+        electricLamp() {
+
+        }
+
+        getStatus() {
+            return this.status;
+        }
+    }
+
+
+    let lamp = new ElectricLamp();
+    let switchButton = new SwitchButton();
+    switchButton.connectToLamp(lamp);
+    // switchButton.switchOn();
+    // alert("Trạng thái công tắc: " + switchButton.status);
+    // alert("Trạng thái bóng đèn: " + lamp.getStatus());
+    // switchButton.switchOff();
+    // alert("Trạng thái công tắc: " + switchButton.status);
+    // alert("Trạng thái bóng đèn: " + lamp.getStatus());
+
+
+    function congtac() {
+        if (!switchButton.status) {
+            switchButton.switchOn();
+        } else {
+            switchButton.switchOff();
+        }
+        alert("Trạng thái bóng đèn: " + lamp.getStatus())
+    }
+</script>
+</body>
+</html>

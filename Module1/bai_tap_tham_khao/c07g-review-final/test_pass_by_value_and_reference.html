@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Tham trị: kiểu dữ liệu nguyên thủy: number, boolean | string
+    // Tham chiếu: object: array, object tự tạo
+
+    // TH1: array
+    // function changeValue(funcNum) {
+    //     funcNum[0] = 1;
+    // }
+    //
+    // let num = [24];
+    // changeValue(num);
+    // console.log("Result " + num);
+
+    // Phuc, Nam, Hưng: 1
+
+    // TH2: number
+    // function changeValue(funcNum) {
+    //     funcNum = 1;
+    // }
+    //
+    // let num = 24;
+    // changeValue(num);
+    // console.log("Result " + num);
+
+    // Phuc, Nam, Hưng: 24
+
+    // TH3: Object
+
+    class Temp {
+        constructor(a) {
+            this.a = a;
+        }
+    }
+
+    function changeValue(funcNum) {
+        funcNum.a = 1;
+    }
+
+    let num = new Temp(24);
+    changeValue(num);
+    console.log(num);
+
+</script>
+</body>
+</html>

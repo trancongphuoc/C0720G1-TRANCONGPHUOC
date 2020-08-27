@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô phỏng câu chuyện Adam Eva</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor(weightap) {
+            this.weightap = weightap;
+        }
+        getWeightap() {
+            return this.weightap;
+        }
+        decreaseApple() {
+            if(this.weightap > 0) {
+                this.weightap--
+            }
+        }
+        isEmpty() {
+            if (this.weight<=0){
+                return true
+            }else {
+                return false
+            }
+        }
+    }
+    class Human {
+        constructor(name,gender,weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+        getName(){
+            return this.name;
+        }
+        getWeight() {
+            return this.weight;
+        }
+        getGender(){
+            return this.gender;
+        }
+        talk(talk) {
+            alert( this.name+ " nói : "+talk);
+        }
+        eat(apple) {
+            apple.decreaseApple();
+            this.weight++;
+        }
+        checkWeight(apple){
+            return apple.getWeightap();
+        }
+    }
+    let apple = new Apple(10);
+    let human1 = new Human("ADam","Nam",50);
+    let human2 = new Human("Eva", "Nữ",40);
+    human1.talk("Chào Eva em an táo đi");
+    human2.eat(apple);
+    human2.talk(" E ăn 1 miengs rồi, Adam em an đi");
+    human1.talk("Vậy để anh ăn xem");
+    human1.eat(apple);
+    alert("Trọng lượng của quả táo: "+ human1.checkWeight(apple));
+    alert("Tên: " + human1.getName() + "\nGiới tính: " + human1.getGender() + "\nKhối lượng: " +human1.getWeight());
+    alert("Tên: " + human2.getName() + "\nGiới tính: " + human2.getGender() + "\nKhối lượng: " +human2.getWeight());
+</script>
+</body>
+</html>

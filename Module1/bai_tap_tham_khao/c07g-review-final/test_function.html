@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // var hege = ["Cecilie", "Lone"];
+        // var stale = ["Emil", "Tobias", "Linus"];
+        // var children = hege.concat(stale);
+        // console.log(hege);
+        // console.log(stale);
+        // document.getElementById("demo").innerHTML = children;
+
+        // let a = ["a", "c", "b"];
+        // a.sort();
+        // console.log(a);
+
+        // let a = ["TiVi", "Máy Lạnh", "Điện Thoại", "Điều Hòa", "Dương", "An", "Máy Giat"];
+        // a.sort();
+        // // An, Duong
+        // alert(a);
+
+        // console.log(Math.round(3.2));
+        // console.log(Math.floor(3.2)); // Sàn nhà
+        // console.log(Math.ceil(3.2)); // Trần nhà
+        //
+        // // 1. Hỏi những kinh nghiệm
+        // // 2. Làm bài tập
+        // // 3. Search google
+        //
+        // console.log(Math.pow(5, 2));
+
+        class Temp {
+            constructor(a) {
+                this.a = a;
+            }
+        }
+
+        let lengthUser = parseInt(prompt("Input student length: "));
+        let a = [];
+
+        for (let i = 0; i < lengthUser; i++) {
+            let number = parseInt(prompt("Input " + i + " in array: "));
+            let object = new Temp(number);
+            a.push(object);
+        }
+
+        console.log(a);
+    </script>
+</body>
+</html>

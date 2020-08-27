@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô phỏng sự hoạt động của đèn pin</title>
+</head>
+<body>
+<script>
+    class Battery {
+        constructor(enery) {
+            this.enery = enery;
+        }
+        getEnery() {
+            return this.enery;
+        }
+        setEnery(enery) {
+            enery = this.enery;
+        }
+        decreaseEnery() {
+            if (this.enery > 0) {
+                this.enery--;
+            }
+        }
+    }
+
+
+    class FlashLamp {
+        constructor(status) {
+            this.status = status;
+            this.battery = battery;
+        }
+        getBattery() {
+            return this.battery.getEnery();
+        }
+        setBattery(battery) {
+            this.battery = battery;
+        }
+        light() {
+            if (this.status === "On") {
+                alert("Light");
+                this.battery.decreaseEnery();
+            } else {
+                alert("Bạn cần bật đèn ")
+            }
+        }
+
+    }
+
+
+
+    let battery = new Battery(10);
+    let flashLamp = new FlashLamp("On");
+    flashLamp.light();
+    flashLamp.getBattery();
+    alert(battery.enery)
+
+
+</script>
+</body>
+</html>
