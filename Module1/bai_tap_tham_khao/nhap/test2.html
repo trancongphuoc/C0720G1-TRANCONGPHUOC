@@ -6,14 +6,16 @@
 </head>
 <body>
 <script>
-    function turnOn(machine) {
-        machine.isOn = true;
+    let count = 0;
+    let ar = [1,1,2,2,3,3,4,5];
+    for(let i = 0; i < ar.length; i++) {
+        for(let j = 0; i < ar.length; j++) {
+            if(ar[i] === ar[j]) {
+                count++
+            }
+        }
     }
-    let computer = {
-        isOn: false
-    };
-    turnOn(computer);
-    console.log(computer.isOn); // true;
+    alert(count)
 </script>
 </body>
 </html>

@@ -6,8 +6,47 @@
 </head>
 <body>
 <script>
-    let a = [1,2,3];
-    let b = [4,5,6];
+    // let n = 10;
+
+    let s = "";
+    for (let i = 0; i < 6; i++) {
+        for (let j = 6; j > 0; j--) {
+            if (i >= j) {
+                s += "*" + " "
+                document.write("*" + " ");
+            }else {
+                document.write(" &nbsp&nbsp ");
+                s+= " "
+            }
+
+
+        }
+        s += "*"+ "\n";
+        document.write(  "*"+ "<br>" );
+    }
+
+
+
+
+
+
+    for (let i = 0; i < 6; i++) {
+        for (let j = 6; j > 0; j--) {
+            if (i >= j) {
+                s += "#"
+            }else {
+                s+= " "
+            }
+        }if (i === 5) {
+            s += "#"
+        } else
+        s += "#"+ "\n";
+    }
+    console.log(s)
+
+
+
+
 
 
 
