@@ -6,20 +6,20 @@
 </head>
 <body>
 <script>
+    //MẢNG
     let listCustomer = [];
-
     let listEmployee = [];
 
 
+
+    //REGET
     let regEmail = /^(\w[.]?){3,}@[a-zA-Z]{3,5}\.[a-zA-Z]{2,3}$/;
-
     let regCmnd = /^\d{8}$/;
-
+    let regPhoneNumber = /^\d{10}$/;
+    let regNumber = /^\d*$/;
     let regBirthday = /^((0[1-9])|([1-2][0-9])|(3[0-1]))\/(([0][1-9])|1[0-2])\/(19[0-9]{2}|20[0-1][0-9]|2020)$/;
 
-    // let regBirthday = /\b(0?[1-9]|[12]\d|3[01])[\/\-.](0?[1-9]|[12]\d|3[01])[\/\-.](\d{2}|\d{4})\b/;
-    // let abcd = "10/10/2000";
-    // alert(regBirthday.test(abcd));
+
 
     // LỚP KHÁCH HÀNG
     class Customer {
@@ -35,7 +35,6 @@
             this.rentDays = rentDays;
             this.service = service;
             this.room = room;
-            // this.giaTien = giaTien;
         }
 
         getFullName() {
@@ -137,6 +136,7 @@
     }
 
 
+
     // THÊM KHÁCH HÀNG
     function addNewCustomer() {
 
@@ -149,7 +149,7 @@
                 break;
             }
         }
-        let birthDay = prompt("Ngày tháng năm sinh:");
+        let birthDay = prompt("Ngày tháng năm sinh(dd/mm/yy):");
         while (true) {
             if (!regBirthday.test(birthDay)) {
                 birthDay = prompt("Ngày tháng năm sinh:");
@@ -168,8 +168,29 @@
         let address = prompt("Địa chỉ:");
         let cusTomer = prompt("Diamond, Platinum, Gold, Sliver, Member:");
         let sale = parseInt(prompt("Giảm giá:"));
+        while (true) {
+            if (!regNumber.test(sale)) {
+                sale = prompt("Giảm giá:");
+            } else {
+                break;
+            }
+        }
         let soLuongdikem = parseInt(prompt("Số lượng đi kèm:"));
+        while (true) {
+            if (!regNumber.test(soLuongdikem)) {
+                soLuongdikem = prompt("Số lượng đi kèm:");
+            } else {
+                break;
+            }
+        }
         let rentDays = parseInt(prompt("Số ngày thuê:"));
+        while (true) {
+            if (!regNumber.test(rentDays)) {
+                rentDays = prompt("Số ngày thuê:");
+            } else {
+                break;
+            }
+        }
         let service = prompt("Loại dịch vụ (Villa: 500$/ 1 ngày, House: 300$/ 1 ngày, Room: 100$/ 1 ngày)");
         let room = prompt("Loại phòng thuê (Vip, Business, Normal)");
 
@@ -179,6 +200,7 @@
         alert("Done");
         customer()
     }
+
 
 
     // HIỂN THỊ DANH SÁCH KHÁCH HÀNG
@@ -206,6 +228,7 @@
         }
         customer();
     }
+
 
 
     // CHỈNH SỬA THÔNG TIN KHÁCH HÀNG
@@ -288,6 +311,7 @@
     }
 
 
+
     // XÓA KHÁCH HÀNG
     function deleteCustomer() {
         let temp = "";
@@ -305,6 +329,7 @@
     }
 
 
+
     // HIỂN THỊ HÓA ĐƠN KHÁCH HÀNG
     function displayTotalPayOfCustomer() {
         let temp = "";
@@ -317,15 +342,17 @@
     }
 
 
+
     // LỚP NHÂN VIÊN
     class Employee {
-        constructor(fullName, cmnd, birthday, email, address, position) {
+        constructor(fullName, cmnd, birthday, email, address, position, phoneNumber) {
             this.fullName = fullName;
             this.cmnd = cmnd;
             this.birthday = birthday;
             this.email = email;
             this.address = address;
             this.position = position;
+            this.phoneNumber = phoneNumber;
         }
 
         getFullNameEmployee() {
@@ -376,6 +403,14 @@
             this.position = position;
         }
 
+        getPhoneNumberEmployee() {
+            return this.phoneNumber;
+        }
+
+        setPhoneNumberEmployee(phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+
         showSalary() {
             if (this.position === "Manager") {
                 return 500 + "$"
@@ -383,10 +418,13 @@
                 return 300 + "$"
             } else if (this.position === "Marketing") {
                 return 200 + "$"
+            } else {
+                return "Vui lòng nhập đúng chức vụ."
             }
         }
 
     }
+
 
 
     // THÊM NHÂN VIÊN
@@ -417,8 +455,16 @@
             }
         }
         let address = prompt("Địa chỉ: ");
-        let position = prompt("Vị trí: ");
-        let newEmploy = new Employee(fullName, cmnd, birthDay, email, address, position);
+        let position = prompt("Chức vụ: ");
+        let phoneNumber = prompt("Số điện thoại: ");
+        while (true) {
+            if (!regPhoneNumber.test(phoneNumber)) {
+                phoneNumber = prompt("Số điện thoại: ");
+            } else {
+                break;
+            }
+        }
+        let newEmploy = new Employee(fullName, cmnd, birthDay, email, address, position, phoneNumber);
         listEmployee.push(newEmploy);
         alert("Done.");
         employee();
@@ -439,7 +485,8 @@
                 + "Ngày tháng năm sinh: " + listEmployee[input].getBirthdayEmployee() + "\n"
                 + "Email: " + listEmployee[input].getEmailEmployee() + "\n"
                 + "Địa chỉ: " + listEmployee[input].getAddressEmployee() + "\n"
-                + "Vị trí: " + listEmployee[input].getPositionEmployee())
+                + "Chức vụ: " + listEmployee[input].getPositionEmployee() + "\n"
+                + "Số điện thoại: " + listCustomer[input].getPhoneNumberEmployee())
         } else {
             alert("Failed")
         }
@@ -462,8 +509,9 @@
                 + "3. Ngày tháng năm sinh: " + listEmployee[input].getBirthdayEmployee() + "\n"
                 + "4. Email: " + listEmployee[input].getEmailEmployee() + "\n"
                 + "5. Địa chỉ: " + listEmployee[input].getAddressEmployee() + "\n"
-                + "6. Vị trí: " + listEmployee[input].getPositionEmployee() + "\n"
-                + "7. Quay Lại."));
+                + "6. Chức vụ: " + listEmployee[input].getPositionEmployee() + "\n"
+                + "7. Số điện thoại: " + listEmployee[input].getPhoneNumberEmployee() + "\n"
+                + "8. Quay Lại."));
             switch (choose) {
                 case 1:
                     listEmployee[input].setFullNameEmployee(prompt("Họ và tên: "));
@@ -481,9 +529,12 @@
                     listEmployee[input].setAddressEmployee(prompt("Địa chỉ: "));
                     break;
                 case 6:
-                    listEmployee[input].setPositionEmployee(prompt("Vị trí: "));
+                    listEmployee[input].setPositionEmployee(prompt("Chức vụ: "));
                     break;
                 case 7:
+                    listCustomer[input].setPhoneNumberEmployee(prompt("Số điện thoại: "));
+                    break;
+                case 8:
                     editInformationEmployee();
                     break;
                 default:
@@ -525,7 +576,7 @@
     function displaySalary() {
         let temp = "";
         for (let i = 0; i < listEmployee.length; i++) {
-            temp += i + ". Name: " +  listEmployee[i].getFullNameEmployee() + "\n";
+            temp += i + ". Name: " + listEmployee[i].getFullNameEmployee() + "\n";
         }
         let input = parseInt(prompt(temp));
         if (input >= 0 && input < listEmployee.length) {
@@ -535,11 +586,6 @@
         }
         employee();
     }
-
-
-
-    displayMainMenu();
-
 
 
 
@@ -554,7 +600,6 @@
             alert("Failed!!!")
         }
     }
-
 
 
 
@@ -592,7 +637,6 @@
 
 
 
-
     // MENU NHÂN VIÊN
     function employee() {
         let input2 = parseInt(prompt("1.Add New Employee." + "\n" +
@@ -624,6 +668,10 @@
                 alert("Failed")
         }
     }
+
+
+
+    displayMainMenu();
 
 
 </script>
