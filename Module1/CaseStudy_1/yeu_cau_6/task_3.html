@@ -141,7 +141,7 @@
     function addNewCustomer() {
 
         let fullName = prompt("Họ và tên:");
-        let cmnd = prompt("Số CMND:");
+        let cmnd = prompt("Số CMND(xxxxxxxx):");
         while (true) {
             if (!regCmnd.test(cmnd)) {
                 cmnd = prompt("Số CMND:");
@@ -255,44 +255,79 @@
 
             switch (chooseEdit) {
                 case 1:
-                    listCustomer[chooseDisplay].setFullName(prompt("1. Họ và tên: "));
+                    listCustomer[chooseDisplay].setFullName(prompt("Họ và tên: "));
                     break;
                 case 2:
-                    listCustomer[chooseDisplay].setCmnd(prompt("2. Số CMND: "));
+                    listCustomer[chooseDisplay].setCmnd(prompt("Số CMND: "));
+                    while (true) {
+                        if (!regCmnd.test(listCustomer[chooseDisplay].getCmnd())) {
+                            listCustomer[chooseDisplay].setCmnd(prompt("Số CMND: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 3:
-                    listCustomer[chooseDisplay].setBirthday(prompt("3. Ngày tháng năm sinh: "));
+                    listCustomer[chooseDisplay].setBirthday(prompt("Ngày tháng năm sinh: "));
+                    while (true) {
+                        if (!regBirthday.test(listCustomer[chooseDisplay].getBirthday())) {
+                            listCustomer[chooseDisplay].setBirthday(prompt("Ngày tháng năm sinh: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 4:
-                    listCustomer[chooseDisplay].setEmail(prompt("4. Email: "));
+                    listCustomer[chooseDisplay].setEmail(prompt("Email: "));
                     while (true) {
-                        if (!reg.test(listCustomer[chooseDisplay].getEmail())) {
-                            listCustomer[chooseDisplay].setEmail(prompt("4. Email: "));
+                        if (!regEmail.test(listCustomer[chooseDisplay].getEmail())) {
+                            listCustomer[chooseDisplay].setEmail(prompt("Email: "));
                         } else {
                             break;
                         }
                     }
                     break;
                 case 5:
-                    listCustomer[chooseDisplay].setAddress(prompt("5. Địa chỉ: "));
+                    listCustomer[chooseDisplay].setAddress(prompt("Địa chỉ: "));
                     break;
                 case 6:
-                    listCustomer[chooseDisplay].setCustomer(prompt("6. Customer: "));
+                    listCustomer[chooseDisplay].setCustomer(prompt("Customer: "));
                     break;
                 case 7:
-                    listCustomer[chooseDisplay].setSale(parseInt(prompt("7. Giảm giá: ")));
+                    listCustomer[chooseDisplay].setSale(parseInt(prompt("Giảm giá: ")));
+                    while (true) {
+                        if (!regNumber.test(listCustomer[chooseDisplay].getSale())) {
+                            listCustomer[chooseDisplay].setSale(prompt("Giảm giá: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 8:
-                    listCustomer[chooseDisplay].setSoLuongDiKem(parseInt(prompt("8. Số lượng đi kèm: ")));
+                    listCustomer[chooseDisplay].setSoLuongDiKem(parseInt(prompt("Số lượng đi kèm: ")));
+                    while (true) {
+                        if (!regNumber.test(listCustomer[chooseDisplay].getSoLuongDiKem())) {
+                            listCustomer[chooseDisplay].setSoLuongDiKem(prompt("Số lượng đi kèm: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 9:
-                    listCustomer[chooseDisplay].setRentDays(parseInt(prompt("9. Số ngày thuê: ")));
+                    listCustomer[chooseDisplay].setRentDays(parseInt(prompt("Số ngày thuê: ")));
+                    while (true) {
+                        if (!regNumber.test(listCustomer[chooseDisplay].getRentDays())) {
+                            listCustomer[chooseDisplay].setRentDays(prompt("Số ngày thuê: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 10:
-                    listCustomer[chooseDisplay].setService(prompt("10. Loại dịch vụ: "));
+                    listCustomer[chooseDisplay].setService(prompt("Loại dịch vụ: "));
                     break;
                 case 11:
-                    listCustomer[chooseDisplay].setRoom(prompt("11. Loại phong thuê: "));
+                    listCustomer[chooseDisplay].setRoom(prompt("Loại phong thuê: "));
                     break;
                 case 12:
                     editCustomer();
@@ -430,7 +465,7 @@
     // THÊM NHÂN VIÊN
     function addNewEmployee() {
         let fullName = prompt("Họ và tên: ");
-        let cmnd = prompt("Số CMND: ");
+        let cmnd = prompt("Số CMND(xxxxxxxx): ");
         while (true) {
             if (!regCmnd.test(cmnd)) {
                 cmnd = prompt("Số CMND:");
@@ -456,7 +491,7 @@
         }
         let address = prompt("Địa chỉ: ");
         let position = prompt("Chức vụ: ");
-        let phoneNumber = prompt("Số điện thoại: ");
+        let phoneNumber = prompt("Số điện thoại(xxxxxxxxxx): ");
         while (true) {
             if (!regPhoneNumber.test(phoneNumber)) {
                 phoneNumber = prompt("Số điện thoại: ");
@@ -518,12 +553,33 @@
                     break;
                 case 2:
                     listEmployee[input].setCmndEmployee(prompt("Số CMND: "));
+                    while (true) {
+                        if (!regCmnd.test(listEmployee[input].getCmndEmployee())) {
+                            listEmployee[input].setCmndEmployee(prompt("Số CMND: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 3:
                     listEmployee[input].setBirthdayEmployee(prompt("Ngày tháng năm sinh: "));
+                    while (true) {
+                        if (!regBirthday.test(listEmployee[input].getBirthdayEmployee())) {
+                            listEmployee[input].setBirthdayEmployee(prompt("Ngày tháng năm sinh: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 4:
                     listEmployee[input].setEmailEmployee(prompt("Email: "));
+                    while (true) {
+                        if (!regEmail.test(listEmployee[input].getEmailEmployee())) {
+                            listEmployee[input].setEmailEmployee(prompt("Email: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 5:
                     listEmployee[input].setAddressEmployee(prompt("Địa chỉ: "));
@@ -533,6 +589,13 @@
                     break;
                 case 7:
                     listCustomer[input].setPhoneNumberEmployee(prompt("Số điện thoại: "));
+                    while (true) {
+                        if (!regPhoneNumber.test(listEmployee[input].getPhoneNumberEmployee())) {
+                            listEmployee[input].setPhoneNumberEmployee(prompt("Số điện thoại: "));
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 8:
                     editInformationEmployee();
@@ -591,7 +654,7 @@
 
     // MENU CHÍNH
     function displayMainMenu() {
-        let input = parseInt(prompt("Bạn là...?" + "\n1.Khách hàng." + "\n2.Nhân viên."));
+        let input = parseInt(prompt("---Welcome---" + "\n1.Khách hàng." + "\n2.Nhân viên."));
         if (input === 1) {
             customer();
         } else if (input === 2) {
