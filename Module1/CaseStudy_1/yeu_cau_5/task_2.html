@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+</head>
+<body>
+<script>
+    displayMainMenu();
+    let arrListCustomers = [];
+
+
+    // Hàm Menu
+    function displayMainMenu() {
+        let x = parseInt(prompt("1.Add New Customer." + "\n" +
+            "2.Display Information Customer." + "\n" +
+            "3.Edit Information Customer." + "\n" +
+            "4.Delete Customer." + "\n" +
+            "5.Exit."));
+        switch (x) {
+            case 1:
+                addNewCustomer();
+                break;
+            case 2:
+                displayCustomer();
+                break;
+            case 3:
+                editCustomer();
+                break;
+            case 4:
+                deleteCustomer();
+                break;
+            case 5:
+                break;
+            default :
+                alert("Failed");
+                break;
+        }
+    }
+
+
+
+
+
+
+
+    // Hàm ADD
+    function addNewCustomer() {
+        let cusInfo = [];
+
+        let fullName = prompt("Họ và tên:");
+        let cmnd = prompt("Số CMND:");
+        let birthDay = prompt("Ngày tháng năm sinh:");
+        let email = prompt("Email:");
+        let address = prompt("Địa chỉ:");
+        let customer = prompt("Diamond, Platinum, Gold, Sliver, Member:");
+        let sale = prompt("Giảm giá:");
+        let soluongdikem = prompt("Số lượng đi kèm:");
+        let rentDays = prompt("Số ngày thuê:");
+        let service = prompt("Loại dịch vụ (Villa: 500$/ 1 ngày, House: 300$/ 1 ngày, Room: 100$/ 1 ngày)");
+        let room = prompt("Loại phòng thuê (Vip, Business, Normal)");
+
+        cusInfo.push(fullName);
+        cusInfo.push(cmnd);
+        cusInfo.push(birthDay);
+        cusInfo.push(email);
+        cusInfo.push(address);
+        cusInfo.push(customer);
+        cusInfo.push(sale);
+        cusInfo.push(soluongdikem);
+        cusInfo.push(rentDays);
+        cusInfo.push(service);
+        cusInfo.push(room);
+
+        arrListCustomers.push(cusInfo);
+        alert("Done");
+        displayMainMenu();
+
+    }
+
+
+    //Hàm hiển thị.
+    function displayCustomer() {
+        let temp = "";
+        for (let i = 0; i < arrListCustomers.length; i++) {
+            temp += i + ". Name: " + arrListCustomers[i][0] + "\n";
+        }
+        let choose = parseInt(prompt(temp));
+        alert("Họ và tên: " + arrListCustomers[choose][0] + "\n"
+            + "Số CMND: " + arrListCustomers[choose][1] + "\n"
+            + "Ngày tháng năm sinh: " + arrListCustomers[choose][2] + "\n"
+            + "Email: " + arrListCustomers[choose][3] + "\n"
+            + "Địa chỉ: " + arrListCustomers[choose][4] + "\n"
+            + "Customer: " + arrListCustomers[choose][5] + "\n"
+            + "Giảm giá: " + arrListCustomers[choose][6] + "\n"
+            + "Số lượng đi kèm: " + arrListCustomers[choose][7] + "\n"
+            + "Số ngày thuê: " + arrListCustomers[choose][8] + "\n"
+            + "Loại dịch vụ: " + arrListCustomers[choose][9] + "\n"
+            + "Loại phong thuê: " + arrListCustomers[choose][10] + "\n"
+        );
+        displayMainMenu();
+    }
+
+
+
+
+
+    //Hàm chỉnh sửa
+    function editCustomer() {
+        let temp = "";
+        for (let i = 0; i < arrListCustomers.length; i++) {
+            temp += i + ". Name: " + arrListCustomers[i][0] + "\n";
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        if (chooseDisplay >= 0 && chooseDisplay < arrListCustomers.length) {
+            let chooseEdit = parseInt(prompt("1. Họ và tên: " + arrListCustomers[chooseDisplay][0] + "\n"
+                + "2. Số CMND: " + arrListCustomers[chooseDisplay][1] + "\n"
+                + "3. Ngày tháng năm sinh: " + arrListCustomers[chooseDisplay][2] + "\n"
+                + "4. Email: " + arrListCustomers[chooseDisplay][3] + "\n"
+                + "5. Địa chỉ: " + arrListCustomers[chooseDisplay][4] + "\n"
+                + "6. Customer: " + arrListCustomers[chooseDisplay][5] + "\n"
+                + "7. Giảm giá: " + arrListCustomers[chooseDisplay][6] + "%" + "\n"
+                + "8. Số lượng đi kèm: " + arrListCustomers[chooseDisplay][7] + "\n"
+                + "9. Số ngày thuê: " + arrListCustomers[chooseDisplay][8] + "\n"
+                + "10. Loại dịch vụ: " + arrListCustomers[chooseDisplay][9] + "\n"
+                + "11. Loại phong thuê: " + arrListCustomers[chooseDisplay][10]));
+
+            switch (chooseEdit) {
+                case 1:
+                    arrListCustomers[chooseDisplay][0] = prompt("1. Họ và tên: ");
+                    break;
+                case 2:
+                    arrListCustomers[chooseDisplay][1] = prompt("2. Số CMND: ");
+                    break;
+                case 3:
+                    arrListCustomers[chooseDisplay][2] = prompt("3. Ngày tháng năm sinh: ");
+                    break;
+                case 4:
+                    arrListCustomers[chooseDisplay][3] = prompt("4. Email: ");
+                    break;
+                case 5:
+                    arrListCustomers[chooseDisplay][4] = prompt("5. Địa chỉ: ");
+                    break;
+                case 6:
+                    arrListCustomers[chooseDisplay][5] = prompt("6. Customer: ");
+                    break;
+                case 7:
+                    arrListCustomers[chooseDisplay][6] = prompt("7. Giảm giá: ");
+                    break;
+                case 8:
+                    arrListCustomers[chooseDisplay][7] = prompt("8. Số lượng đi kèm: ");
+                    break;
+                case 9:
+                    arrListCustomers[chooseDisplay][8] = prompt("9. Số ngày thuê: ");
+                    break;
+                case 10:
+                    arrListCustomers[chooseDisplay][9] = prompt("10. Loại dịch vụ: ");
+                    break;
+                case 11:
+                    arrListCustomers[chooseDisplay][10] = prompt("11. Loại phong thuê: ");
+                    break;
+            }
+            editCustomer();
+        } else {
+            displayMainMenu();
+        }
+    }
+
+
+
+
+    //Hàm xóa.
+    function deleteCustomer() {
+        let temp = "";
+        for (let i = 0; i < arrListCustomers.length; i++) {
+            temp += i + ". Name: " + arrListCustomers[i][0] + "\n";
+        }
+        let chooseDelete = parseInt(prompt(temp));
+        let check = parseInt(prompt("Bạn có muốn xóa ? " + "\n1.Yes" + "\n2.No"));
+        if (check === 1) {
+            arrListCustomers.splice(chooseDelete, 1);
+        } else {
+            alert("Cancle")
+        }
+        displayMainMenu();
+    }
+</script>
+</body>
+</html>
