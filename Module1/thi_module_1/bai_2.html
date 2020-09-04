@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+    //Câu 2	Viết hàm tryRemoveFromArray() nhận vào một mảng các số nguyên,
+    //và một số nguyên x. Hàm  trả về mảng ban đầu nếu không có số nguyên x trong mảng.
+    //Nếu tìm thấy số nguyên x trả về mảng sau khi xóa các số nguyên x đó.
+    function tryRemoveFromArray(arr, x) {
+        for (let i = 0; i < arr.length; i++) {
+            if (x === arr[i]) {
+                arr.splice(i, 1);
+                i--; // TH nếu 2 số x nằm kề nhau.
+            }
+        }
+        return arr;
+    }
+
+    let array = [1, 5, 3, 6, 9, 8, 2, 5, 5];
+    let test = tryRemoveFromArray(array, 10);
+    alert(test);
+</script>
+</body>
+</html>

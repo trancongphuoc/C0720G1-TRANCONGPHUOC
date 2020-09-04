@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script>
+    //Câu 3	Viết hàm isFibonacci() nhận vào một số nguyên ,
+    //trả về true nếu số đó là số nằm trong dãy Fibonacci và false nếu không nằm trong dãy Fibonacci.
+    function isFibonacci(x) {
+        let numberF0 = 0;
+        let numberF1 = 1;
+        let numberFn = 0;
+        let check = false;
+        while (numberFn <= x) {
+            numberFn = numberF0 + numberF1;
+            numberF0 = numberF1;
+            numberF1 = numberFn;
+            if (x === numberFn) {
+                check = true;
+            }
+        }
+        return check;
+    }
+
+    let test = isFibonacci(100);
+    alert(test);
+</script>
+</body>
+</html>
