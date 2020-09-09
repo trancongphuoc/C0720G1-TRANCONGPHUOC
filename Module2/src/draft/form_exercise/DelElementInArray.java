@@ -1,4 +1,4 @@
-package draft;
+package draft.form_exercise;
 
 import java.util.Scanner;
 
