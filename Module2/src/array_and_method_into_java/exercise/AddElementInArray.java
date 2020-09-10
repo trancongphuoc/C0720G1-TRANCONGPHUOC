@@ -10,16 +10,16 @@ public class AddElementInArray {
         int position = scanner.nextInt();
         System.out.println("Enter element need add:");
         int element = scanner.nextInt();
-        int flag = 0;
+
 
         for (int i = 0; i < array.length; i++) {
             if (i == position) {
-//                flag = array[i];
-                for (int j = 0; j < array.length - i - 1; j++) {
-                    array[i] = array[i-1];
+                for (int j = array.length - 1; j > position; j--) {
+                    array[j] = array[j - 1];
                 }
                 array[i] = element;
             }
+
         }
 
         for (int i : array) {
