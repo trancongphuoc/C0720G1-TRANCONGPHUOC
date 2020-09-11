@@ -25,9 +25,18 @@ public class CalculateSumDiagonalLine {
         }
 
         int sum = 0;
+        //Tổng đường chéo trái sang phải
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
                 if (j == i) {
+                    sum += array[i][j];
+                }
+            }
+        }
+        //Tổng đường chéo phải sang trái
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (j == array.length - i -1) {
                     sum += array[i][j];
                 }
             }

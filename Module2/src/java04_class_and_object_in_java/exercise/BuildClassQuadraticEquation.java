@@ -40,19 +40,19 @@ public class BuildClassQuadraticEquation {
         }
 
         public double getDiscriminant() {
-            return (b * b - 4 * a * c);
+            return (Math.pow(b,2) - 4 * a * c);
         }
 
         public double getRoot1() {
-            return (-b + getDiscriminant()) / 2 * a;
+            return (-b + Math.sqrt(getDiscriminant())) / (2 * a);
         }
 
         public double getRoot2() {
-            return (-b - getDiscriminant()) / 2 * a;
+            return (-b - Math.sqrt(getDiscriminant())) / (2 * a);
         }
 
         public String display() {
-            return "a = " + a + "; b = " + b + "; c = " + c;
+            return "a = " + getA() + "; b = " + getB() + "; c = " + getC();
         }
 
         public String displayResult() {

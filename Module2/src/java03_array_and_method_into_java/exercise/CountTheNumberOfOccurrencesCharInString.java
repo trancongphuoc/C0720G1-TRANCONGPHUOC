@@ -7,7 +7,8 @@ public class CountTheNumberOfOccurrencesCharInString {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter string: ");
         String string = scanner.nextLine();
-        char c = 'a';
+        System.out.println("Enter char: ");
+        char c = scanner.nextLine().charAt(0);
         int count = 0;
 
         for (int i = 0; i < string.length(); i++) {
