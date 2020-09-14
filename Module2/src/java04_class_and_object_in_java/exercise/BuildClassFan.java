@@ -18,9 +18,9 @@ public class BuildClassFan {
     }
 
     public static class Fan {
-        public static final int SLOW = 1;
-        public static final int MEDIUM = 2;
-        public static final int FAST = 3;
+        final int SLOW = 1;
+        final int MEDIUM = 2;
+        final int FAST = 3;
         int speed;
         boolean on;
         double radius = 5.0;
