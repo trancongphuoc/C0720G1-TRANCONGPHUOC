@@ -39,5 +39,6 @@ public class ClassRectangle {
             return "Rectangle{" + "width=" + width + ", height=" + height + "}";
         }
 
+
     }
 }

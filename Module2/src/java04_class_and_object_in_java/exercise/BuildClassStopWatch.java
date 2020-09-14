@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class BuildClassStopWatch {
     public static void main(String[] args) {
-        short arr[] = new short[100000];
+        short arr[] = new short[50000];
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
@@ -27,7 +27,6 @@ public class BuildClassStopWatch {
             System.out.print(i + " ");
         }
         System.out.println();
-
         stopWatch.stop();
         System.out.println("\n" + stopWatch.getElapsedTime());
 
