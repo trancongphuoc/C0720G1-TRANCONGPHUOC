@@ -7,11 +7,11 @@ public  class TestTriagle {
         Scanner scanner = new Scanner(System.in);
 
         //Mặc định
-        ClassTriagle.Triagle triagle1 = new ClassTriagle.Triagle(5,5,5);
+        Triagle triagle1 = new Triagle(5,5,5);
         System.out.println(triagle1);
         System.out.println();
         //Người dùng nhập
-        ClassTriagle.Triagle triagle = new ClassTriagle.Triagle();
+        Triagle triagle = new Triagle();
         System.out.println("Enter color: ");
         String color = scanner.nextLine();
         boolean filled = false;

@@ -5,7 +5,7 @@ public class ClassAnimalAndInterfaceEdible {
         abstract String makeSound();
     }
 
-    public static interface Edible {
+    public interface Edible {
         String howToEat();
     }
 
