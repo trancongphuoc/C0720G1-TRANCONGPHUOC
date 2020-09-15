@@ -1,7 +1,7 @@
 package java05_access_modifier_static_method_static_property.exercise;
 
-public class AccessModifier {
-    public static class Circle {
+
+    public class Circle {
         private double radius = 1.0;
         private String color = "red";
 
@@ -20,7 +20,7 @@ public class AccessModifier {
         private String getColor() {
             return color;
         }
-    }
+
 
     static class TestCircle {
         public static void main(String[] args) {

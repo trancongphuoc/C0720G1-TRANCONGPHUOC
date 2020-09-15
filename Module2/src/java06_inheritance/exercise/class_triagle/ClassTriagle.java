@@ -1,4 +1,4 @@
-package java06_inheritance.exercise;
+package java06_inheritance.exercise.class_triagle;
 
 import java06_inheritance.pricise.ClassGeometry;
 
@@ -75,34 +75,5 @@ public class ClassTriagle {
                     "\nArea = " + getArea();
         }
     }
-    public static class Test {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
 
-
-            Triagle triagle1 = new Triagle(5,5,5);
-            System.out.println(triagle1);
-
-
-            Triagle triagle = new Triagle();
-            System.out.println(triagle);
-            System.out.println("Enter color: ");
-            String color = scanner.nextLine();
-            boolean filled = false;
-            System.out.println("Enter side1: ");
-            double side1 = scanner.nextDouble();
-            System.out.println("Enter side2: ");
-            double side2 = scanner.nextDouble();
-            System.out.println("Enter side3: ");
-            double side3 = scanner.nextDouble();
-
-
-            triagle.setColor(color);
-            triagle.setFilled(filled);
-            triagle.setSide1(side1);
-            triagle.setSide2(side2);
-            triagle.setSide3(side3);
-            System.out.println(triagle);
-        }
-    }
 }
