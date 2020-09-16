@@ -1,6 +1,6 @@
 package java07_abtract_class_and_interface.exercise.interface_colorable;
 
-public class Square extends Rectangle {
+public class Square extends Rectangle implements Colorable{
 
     public Square() {
     }
@@ -36,5 +36,10 @@ public class Square extends Rectangle {
     @Override
     public String toString() {
         return "Square: \nGet Area " + getArea() + "\nGet Perimeter " + getPerimeter();
+    }
+
+    @Override
+    public String howToColor() {
+        return "Square: Color all four sides..";
     }
 }

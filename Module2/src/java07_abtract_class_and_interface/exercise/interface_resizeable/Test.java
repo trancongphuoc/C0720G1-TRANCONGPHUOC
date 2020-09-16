@@ -9,19 +9,20 @@ public class Test {
         shape[3] = new Circle(2.0);
         shape[4] = new Rectangle(5.0,7.0);
 
-        System.out.println("Before");
+        System.out.println("BEFORE");
         for (Shape i : shape) {
+            System.out.println();
             System.out.println(i);
         }
 
-        for (int i = 0; i < shape.length; i++) {
-            double percent = Math.random() * (100 - 1) + 1;
-            shape[i].resize(percent);
-        }
         System.out.println();
-        System.out.println("After");
+
+        System.out.println("AFTER");
         for (Shape i : shape) {
-            System.out.println(i);
+            double percent = Math.random() * (100 - 1) + 1;
+            i.resize(percent);
+            System.out.println();
+            System.out.println(i + "\nIncrease: " + percent + "%");
         }
     }
 }

@@ -30,8 +30,6 @@ public abstract class Shape implements Risizeable{
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
-    public abstract double getArea();
-    public abstract double getPerimeter();
 
     @Override
     public String toString() {

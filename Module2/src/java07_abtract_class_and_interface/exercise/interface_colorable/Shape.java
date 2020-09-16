@@ -1,9 +1,6 @@
 package java07_abtract_class_and_interface.exercise.interface_colorable;
 
-public abstract class Shape implements Colorable{
-    public String howToColor() {
-        return "Color all four sides..";
-    }
+public abstract class Shape {
 
     private String color = "green";
     private boolean filled = true;
@@ -32,9 +29,9 @@ public abstract class Shape implements Colorable{
         this.filled = filled;
     }
 
-    public abstract double getArea();
-
-    public abstract double getPerimeter();
+//    public abstract double getArea();
+//
+//    public abstract double getPerimeter();
 
     @Override
     public String toString() {
