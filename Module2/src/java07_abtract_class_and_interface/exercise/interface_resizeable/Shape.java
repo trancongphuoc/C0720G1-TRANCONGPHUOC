@@ -1,6 +1,6 @@
 package java07_abtract_class_and_interface.exercise.interface_resizeable;
 
-public class Shape implements Risizeable{
+public abstract class Shape implements Risizeable{
     public void resize(double percent) {
 
     }
@@ -30,6 +30,8 @@ public class Shape implements Risizeable{
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
+    public abstract double getArea();
+    public abstract double getPerimeter();
 
     @Override
     public String toString() {

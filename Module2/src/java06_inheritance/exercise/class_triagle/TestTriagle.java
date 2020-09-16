@@ -12,22 +12,22 @@ public  class TestTriagle {
         System.out.println();
         //Người dùng nhập
         Triagle triagle = new Triagle();
-        System.out.println("Enter color: ");
-        String color = scanner.nextLine();
-        boolean filled = false;
-        System.out.println("Enter side1: ");
-        double side1 = scanner.nextDouble();
-        System.out.println("Enter side2: ");
-        double side2 = scanner.nextDouble();
-        System.out.println("Enter side3: ");
-        double side3 = scanner.nextDouble();
 
+        System.out.print("Enter color: ");
+        triagle.setColor(scanner.nextLine());
 
-        triagle.setColor(color);
-        triagle.setFilled(filled);
-        triagle.setSide1(side1);
-        triagle.setSide2(side2);
-        triagle.setSide3(side3);
+        System.out.print("Enter Filled (true or false): ");
+        triagle.setFilled(scanner.nextBoolean());
+
+        System.out.print("Enter side1: ");
+        triagle.setSide1(scanner.nextDouble());
+
+        System.out.print("Enter side2: ");
+        triagle.setSide2(scanner.nextDouble());
+
+        System.out.print("Enter side3: ");
+        triagle.setSide3(scanner.nextDouble());
+
         System.out.println(triagle);
     }
 }

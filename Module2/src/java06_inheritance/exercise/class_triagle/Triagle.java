@@ -51,7 +51,13 @@ public class Triagle extends ClassGeometry.Shape {
     public void setSide3(double side3) {
         this.side3 = side3;
     }
-
+    public boolean condition() {
+        if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public double getArea() {
         double haflPerimeter = getPerimeter() / 2;
         return Math.sqrt(haflPerimeter * (haflPerimeter - side1) * (haflPerimeter - side2) * (haflPerimeter - side3));
@@ -63,16 +69,21 @@ public class Triagle extends ClassGeometry.Shape {
 
     @Override
     public String toString() {
-        return "A Shape with color of "
-                + getColor()
-                + " and "
-                + (isFilled() ? "filled" : "not filled") +
-                "\nTriagle{" +
-                "side1=" + side1 +
-                ", side2=" + side2 +
-                ", side3=" + side3 +
-                '}' + "\nPerimeter = " + getPerimeter() +
-                "\nArea = " + getArea();
+        if (condition()) {
+            return "A Shape with color of "
+                    + getColor()
+                    + " and "
+                    + (isFilled() ? "filled" : "not filled") +
+                    "\nTriagle{" +
+                    "side1=" + side1 +
+                    ", side2=" + side2 +
+                    ", side3=" + side3 +
+                    '}' + "\nPerimeter = " + getPerimeter() +
+                    "\nArea = " + getArea();
+        } else {
+            return "Not Triagle";
+        }
+
     }
 
 
