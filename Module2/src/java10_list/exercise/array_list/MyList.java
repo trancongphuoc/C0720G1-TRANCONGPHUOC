@@ -22,29 +22,28 @@ public class MyList<E> {
 
     // Thêm 1 phần tử vào cuối mảng.
     public void add(E e) {
-        if (size() == elements.length)
+        if (size == elements.length)
             elements = Arrays.copyOf(elements, elements.length + 1);
         elements[size++] = e;
     }
 
     // Thêm 1 phần tử vào vị trí chỉ định
     public void add(int index, E element) {
-        if (size() == elements.length)
+        if (size == elements.length)
             elements = Arrays.copyOf(elements, elements.length + 1);
 
-
-        if (index == size()) {
-            elements[size()] = element;
-        } else if (size() > 0 && index < size()) {
-            for (int i = 0; i < size(); i++) {
+        if (index == size) {
+            add(element);
+        } else if (index >= 0 && index < size()) {
+            for (int i = 0; i < size; i++) {
                 if (i == index) {
-                    elements[size()] = elements[size() - 1];
-                    for (int j = size() - 1; j > index; j--) {
+                    for (int j = size ; j > index; j--) {
                         elements[j] = elements[j - 1];
                     }
                     elements[index] = element;
                 }
             }
+            size++;
         } else {
             throw new IndexOutOfBoundsException("Failed");
         }
@@ -53,39 +52,34 @@ public class MyList<E> {
 
     // Xóa 1 phần tử tại vị trí chỉ định
     E remove(int index) {
-        if (index == size() - 1) {
-            elements[size() - 1] = null;
-        } else {
-            for (int i = 0; i < size(); i++) {
-                if (i == index) {
-                    for (int j = index; j < size(); j++) {
-                        elements[j] = elements[j + 1];
-                        if (size() - 2 == j) {
-                            break;
+        if (index >= 0 && index < size) {
+                for (int i = 0; i < size; i++) {
+                    if (i == index) {
+                        for (int j = index; j < size; j++) {
+                            elements[j] = elements[j + 1];
                         }
                     }
                 }
-            }
-            elements[size() - 1] = null;
+                size--;
+        } else {
+            throw new IndexOutOfBoundsException("Failed Remove");
         }
-        size = size();
         return (E) elements;
     }
 
     // Độ dài mảng.
     int size() {
-        size = 0;
-        for (int i = 0; i < elements.length; i++) {
-            if (elements[i] != null) {
-                size++;
-            }
-        }
         return size;
     }
 
     // Sao chép.
-//        public E clone() {
-//    }
+    public E clone() {
+        MyList<E> temp = new MyList<E>();
+        for (int i = 0; i < size; i++) {
+            temp.add(get(i));
+        }
+        return (E) temp;
+    }
 
 
     // Kiểm tra xem phần tử có nằm trong mảng
@@ -96,7 +90,7 @@ public class MyList<E> {
                 return true;
             }
         }
-        throw new IndexOutOfBoundsException("Failed");
+        throw new IndexOutOfBoundsException("Failed Contains");
     }
 
     // Kiểm tra vị trí của phần tử
@@ -113,7 +107,7 @@ public class MyList<E> {
 
     // Lấy phần tử
     E get(int index) {
-        if (index >= size() || index < 0) {
+        if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
         }
         return (E) elements[index];
@@ -121,7 +115,11 @@ public class MyList<E> {
 
     // Clear !!!!!!!!!!!!!!!!!!
     void clear() {
-        for (int i = 0; i < elements.length; i++) {
+        int length = size;
+        for (int i = 0; i < length; i++) {
+            if (elements[i] != null) {
+                size--;
+            }
             elements[i] = null;
         }
     }
