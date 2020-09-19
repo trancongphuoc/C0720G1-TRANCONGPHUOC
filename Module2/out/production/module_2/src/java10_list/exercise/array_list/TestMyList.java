@@ -6,24 +6,21 @@ public class TestMyList {
 
         strings.add(1);
         strings.add(2);
-//        strings.add(3);
-//        strings.add(4);
-//        strings.add(5);
-//        strings.add(0, 10);
-//        strings.add(6, 20);
-//        strings.add(3, 58);
-//        strings.add(6, 30);
+        strings.add(3);
+        strings.add(4);
+        strings.add(5);
+        strings.add(0, 10);
+        strings.add(6, 20);
+        strings.add(3, 58);
+        strings.add(6, 30);
         strings.remove(0);
-//        strings.remove(2);
-//        strings.remove(2);
-//        System.out.println(strings.contains(5));
-//        System.out.println("index: " + strings.indexOf(4));
-//        for (int i = 0; i < strings.size(); i++) {
-//            System.out.println(strings.get(i));
-//        }
-        System.out.println(strings.get(0));
-        System.out.println(strings.get(1));
-//        System.out.println(strings.get(2));
+        strings.remove(2);
+        strings.remove(2);
+        System.out.println(strings.contains(5));
+        System.out.println("index: " + strings.indexOf(4));
+        for (int i = 0; i < strings.size(); i++) {
+            System.out.println(strings.get(i));
+        }
 
         System.out.println(strings.getabcd());
 
