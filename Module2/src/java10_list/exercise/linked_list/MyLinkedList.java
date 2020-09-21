@@ -20,6 +20,7 @@ public class MyLinkedList<E> {
 
     public MyLinkedList(Object data) {
         head = new Node(data);
+        numNode++;
     }
 
     public MyLinkedList() {
@@ -27,17 +28,21 @@ public class MyLinkedList<E> {
     }
 
     void add(int index, E element) {
-        Node temp = head;
-        Node holder;
+        if (index < 0 || index > numNode) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            Node temp = head;
+            Node holder;
 
-        for (int i = 0; i < index - 1 && temp.next != null; i++) {
-            temp = temp.next;
+            for (int i = 0; i < index - 1 && temp.next != null; i++) {
+                temp = temp.next;
+            }
+
+            holder = temp.next;
+            temp.next = new Node(element);
+            temp.next.next = holder;
+            numNode++;
         }
-
-        holder = temp.next;
-        temp.next = new Node(element);
-        temp.next.next = holder;
-        numNode++;
     }
 
     void addFirst(E e) {
@@ -56,7 +61,7 @@ public class MyLinkedList<E> {
         numNode++;
     }
 
-    //!!!!!!!!!!!!!!!!!!!!
+    // Xóa 1 phần tử tại index. !!!
     E removeIndex(int index) {
         if (index < 0 || index > numNode) {
             throw new IndexOutOfBoundsException();
@@ -79,14 +84,15 @@ public class MyLinkedList<E> {
     }
 
 
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // Xóa 1 phần tử bất kì. !!!
     boolean remove(Object e) {
         if (head.data.equals(e)) {
             removeIndex(0);
             return true;
         } else {
             Node temp = head;
-            while (temp.next != null) {
+            int size = size();
+            for (int i = 0; i < size && temp.next != null; i++) {
                 if (temp.next.data.equals(e)) {
                     temp.next = temp.next.next;
                     numNode--;
@@ -96,13 +102,15 @@ public class MyLinkedList<E> {
             }
             return false;
         }
-
     }
 
+    // Kích thước list
     int size() {
-        return numNode + 1;
+        return numNode;
     }
 
+
+    // Sao chép !!!
     public E clone() {
         if (numNode == 0) {
             throw new NullPointerException();
@@ -118,8 +126,9 @@ public class MyLinkedList<E> {
             tempNode = tempNode.next;
         }
         return (E) temp;
-    };
+    }
 
+    // Kiểm tra phần tử trong mảng.
     boolean contains(E o) {
         Node temp = head;
         while (temp.data != null) {
@@ -132,6 +141,7 @@ public class MyLinkedList<E> {
 
     }
 
+    // Vị trí của phần tử trong mảng.
     int indexOf(E o) {
         int count = 0;
         Node temp = head;
@@ -145,12 +155,19 @@ public class MyLinkedList<E> {
         return -1;
     }
 
-//    boolean add(E e) {};
-
-    void ensureCapacity(int minCapacity) {
-
+//     !!!
+    boolean add(E e) {
+        Node temp = head;
+        for (int i = 0; i < numNode && temp.next != null; i++) {
+            temp = temp.next;
+        }
+        temp.next = new Node(e);
+        numNode++;
+        return true;
     }
 
+
+    // Lấy 1 phần tử tại index.
     E get(int index) {
         if (index < 0 || index > numNode) {
             throw new IndexOutOfBoundsException();
@@ -162,10 +179,12 @@ public class MyLinkedList<E> {
         return (E) temp.data;
     }
 
+    // Lấy ra phần tử đầu tiên.
     E getFirst() {
         return (E) head.data;
     }
 
+    // Lấy ra phần tử cuối cùng.
     E getLast() {
         Node temp = head;
 
@@ -175,11 +194,17 @@ public class MyLinkedList<E> {
         return (E) temp.data;
     }
 
+    // Xóa danh sách.
     void clear() {
-//        MyLinkedList();
+        Node temp = head;
+        for (int i = 0; i < numNode; i++) {
+            head = temp.next;
+            temp = temp.next;
+        }
+        numNode = 0;
     }
 
-
+    // In danh sách.
     public void printList() {
         Node temp = head;
         while (temp != null) {

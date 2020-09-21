@@ -22,11 +22,8 @@ public class TestMyList {
             System.out.println(strings.get(i));
         }
 
-        System.out.println(strings.getabcd());
-
         strings.clear();
         strings.ensureCapa(5);
-        System.out.println(strings.getabcd());
         for (int i = 0; i < strings.size(); i++) {
             System.out.println(strings.get(i));
         }

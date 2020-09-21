@@ -17,14 +17,19 @@ public class MyList<E> {
 
     // Đảm bảo kích thước
     void ensureCapa(int minCapacity) {
-        elements = Arrays.copyOf(elements, elements.length + minCapacity);
+        if (minCapacity > 0) {
+            elements = Arrays.copyOf(elements, elements.length + minCapacity);
+        } else {
+            throw new IndexOutOfBoundsException("Failed");
+        }
     }
 
     // Thêm 1 phần tử vào cuối mảng.
-    public void add(E e) {
+    public boolean add(E e) {
         if (size == elements.length)
             elements = Arrays.copyOf(elements, elements.length + 1);
         elements[size++] = e;
+        return true;
     }
 
     // Thêm 1 phần tử vào vị trí chỉ định
