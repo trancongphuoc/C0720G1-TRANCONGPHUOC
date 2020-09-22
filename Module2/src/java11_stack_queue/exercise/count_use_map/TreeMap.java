@@ -26,7 +26,5 @@ public class TreeMap {
         for (String key : count.keySet()) {
             System.out.println(key + " : " + count.get(key));
         }
-
-
     }
 }
