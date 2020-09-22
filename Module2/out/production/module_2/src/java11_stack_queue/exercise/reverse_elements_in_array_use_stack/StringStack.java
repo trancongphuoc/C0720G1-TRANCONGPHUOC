@@ -13,16 +13,16 @@ public class StringStack {
 //        mWord.push("Four");
 //        mWord.push("Five");
 
-        Stack<String> wStack = new Stack<String>();
+        Stack<Character> wStack = new Stack<Character>();
 
         for (int i = mWord.length() - 1; i >= 0 ; i--) {
-            wStack.push(String.valueOf(mWord.charAt(i)));
+            wStack.push(mWord.charAt(i));
         }
 
         System.out.println();
         System.out.println("Reverse");
         System.out.println();
-        for (java.lang.String i : wStack) {
+        for (Character i : wStack) {
             System.out.print(i);
         }
 
