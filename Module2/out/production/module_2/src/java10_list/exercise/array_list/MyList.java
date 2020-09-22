@@ -34,6 +34,7 @@ public class MyList<E> {
 
     // Thêm 1 phần tử vào vị trí chỉ định
     public void add(int index, E element) {
+        System.out.println(get(index));
         if (size == elements.length)
             elements = Arrays.copyOf(elements, elements.length + 1);
 
@@ -80,6 +81,7 @@ public class MyList<E> {
     // Sao chép.
     public E clone() {
         MyList<E> temp = new MyList<E>();
+
         for (int i = 0; i < size; i++) {
             temp.add(get(i));
         }
@@ -129,8 +131,6 @@ public class MyList<E> {
         }
     }
 
-    // Test
-    String getabcd() {
-        return "Số lượng phần tử: " + elements.length + "---Size(): " + size() + "---size: " + size;
-    }
+
+
 }

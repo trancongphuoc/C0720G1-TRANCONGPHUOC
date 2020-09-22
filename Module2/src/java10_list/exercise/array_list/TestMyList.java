@@ -13,6 +13,7 @@ public class TestMyList {
         strings.add(6, 20);
         strings.add(3, 58);
         strings.add(6, 30);
+        strings.add(2,5);
         strings.remove(0);
         strings.remove(2);
         strings.remove(2);
@@ -21,6 +22,8 @@ public class TestMyList {
         for (int i = 0; i < strings.size(); i++) {
             System.out.println(strings.get(i));
         }
+
+        strings.clone();
 
         strings.clear();
         strings.ensureCapa(5);
