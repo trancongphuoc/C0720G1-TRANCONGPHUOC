@@ -8,9 +8,9 @@ public class CheckPanlindrome {
     public static void main(String[] args) {
         String strings = "able was I ere I saw elba";
 
-        Stack<Character> stack = new Stack<Character>();
+        Stack<Character> stack = new Stack<>();
 
-        Queue<Character> queue = new LinkedList<Character>();
+        Queue<Character> queue = new LinkedList<>();
 
         for (int i = 0; i < strings.length(); i++) {
             stack.push(strings.charAt(i));

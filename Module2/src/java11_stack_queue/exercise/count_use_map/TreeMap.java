@@ -4,16 +4,14 @@ import java.util.Map;
 
 public class TreeMap {
     public static void main(String[] args) {
-        String strings = "mot hai ba bon nam sau";
+        String strings = "Mot Hai Ba Bon Nam Sau";
+        strings = strings.toLowerCase();
         Map<Character,Integer> count = new java.util.TreeMap<>();
-
         for (int i = 0; i < strings.length(); i++) {
             count.put(strings.charAt(i), 0);
         }
-
-        for (Character key : count.keySet()) {
-            System.out.println(key + " : " + count.get(key));
-        }
+        
+        System.out.println(count);
 
         for (Character key : count.keySet()) {
             for (int i = 0; i < strings.length(); i++) {
@@ -23,8 +21,6 @@ public class TreeMap {
             }
         }
 
-        for (Character key : count.keySet()) {
-            System.out.println(key + " : " + count.get(key));
-        }
+        System.out.println(count);
     }
 }
