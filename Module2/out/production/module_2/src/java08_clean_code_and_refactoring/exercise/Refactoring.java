@@ -1,6 +1,6 @@
 package java08_clean_code_and_refactoring.exercise;
 
-public class Refectoring {
+public class Refactoring {
 
     public static final String SUBTRACTION = "-";
 
