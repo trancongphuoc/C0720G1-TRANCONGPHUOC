@@ -10,13 +10,12 @@ public class TreeMap {
         for (int i = 0; i < strings.length(); i++) {
             count.put(strings.charAt(i), 0);
         }
-        
         System.out.println(count);
 
         for (Character key : count.keySet()) {
             for (int i = 0; i < strings.length(); i++) {
                 if (key.equals(strings.charAt(i))) {
-                    count.put(key, count.get(key) +1);
+                    count.replace(key, count.get(key) +1);
                 }
             }
         }

@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class TreeMap {
     public static void main(String[] args) {
-        String strings = "Mot hai ba bon nam sau";
+        String strings = "Mot Hai Ba Bon Nam Sau";
         strings = strings.toLowerCase();
         Map<Character,Integer> count = new java.util.TreeMap<>();
         for (int i = 0; i < strings.length(); i++) {
@@ -15,7 +15,7 @@ public class TreeMap {
         for (Character key : count.keySet()) {
             for (int i = 0; i < strings.length(); i++) {
                 if (key.equals(strings.charAt(i))) {
-                    count.put(key, count.get(key) +1);
+                    count.replace(key, count.get(key) +1);
                 }
             }
         }

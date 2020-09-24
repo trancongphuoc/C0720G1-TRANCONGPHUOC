@@ -2,7 +2,7 @@ package java12_collection_framework.exercise.practice_arraylist_linkedlist;
 
 public class Product {
     String nameProduct;
-    float price;
+    Float price;
     int id;
 
     public Product(int id,String nameProduct, float price) {
