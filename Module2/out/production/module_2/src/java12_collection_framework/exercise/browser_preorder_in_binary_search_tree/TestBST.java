@@ -1,8 +1,7 @@
-package java12_collection_framework.exercise.browser_postorder_in_binary_search_tree;
+package java12_collection_framework.exercise.browser_preorder_in_binary_search_tree;
 
 public class TestBST {
     public static void main(String[] args) {
-
         BST<Integer> tree = new BST<>();
         tree.insert(60);
         tree.insert(55);
@@ -13,9 +12,7 @@ public class TestBST {
         tree.insert(107);
         tree.insert(59);
         tree.insert(101);
-
         System.out.println("Inorder (sorted): ");
-        tree.postorder();
-
+        tree.preorder();
     }
 }

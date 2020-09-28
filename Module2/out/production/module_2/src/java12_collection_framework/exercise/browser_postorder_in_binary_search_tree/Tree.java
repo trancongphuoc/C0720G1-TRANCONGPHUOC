@@ -9,4 +9,6 @@ public interface Tree<E> {
     public int getSize();
 
     public void postorder();
+
+    public void preorder();
 }

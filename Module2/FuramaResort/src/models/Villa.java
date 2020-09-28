@@ -3,10 +3,10 @@ package models;
 public class Villa extends DichVu {
     private String tieuChuanPhong;
     private String moTa;
-    private int dienTichHoBoi;
+    private float dienTichHoBoi;
     private int soTang;
 
-    public Villa(String tenDichVu, int dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong,String moTa, int dienTichHoBoi, int soTang) {
+    public Villa(String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong,String moTa, float dienTichHoBoi, int soTang) {
         super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTa = moTa;
@@ -40,11 +40,11 @@ public class Villa extends DichVu {
         this.moTa = moTa;
     }
 
-    public int getDienTichHoBoi() {
+    public float getDienTichHoBoi() {
         return dienTichHoBoi;
     }
 
-    public void setDienTichHoBoi(int dienTichHoBoi) {
+    public void setDienTichHoBoi(float dienTichHoBoi) {
         this.dienTichHoBoi = dienTichHoBoi;
     }
 

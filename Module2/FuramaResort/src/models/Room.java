@@ -3,7 +3,7 @@ package models;
 public class Room extends DichVu{
     private String dichVuMienPhi;
 
-    public Room(String tenDichVu, int dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String dichVuMienPhi) {
+    public Room(String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String dichVuMienPhi) {
         super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
         this.dichVuMienPhi = dichVuMienPhi;
     }

@@ -5,7 +5,7 @@ public class House extends DichVu {
     private String moTa;
     private int soTang;
 
-    public House(String tenDichVu, int dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTa, int soTang) {
+    public House(String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTa, int soTang) {
         super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTa = moTa;

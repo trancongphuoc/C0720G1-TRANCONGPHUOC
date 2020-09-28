@@ -1,4 +1,4 @@
-package java12_collection_framework.exercise.browser_postorder_in_binary_search_tree;
+package java12_collection_framework.exercise.browser_preorder_in_binary_search_tree;
 
 public class BST<E extends Comparable<E>> extends AbstractTree<E> {
     protected TreeNode<E> root;
@@ -81,6 +81,7 @@ public class BST<E extends Comparable<E>> extends AbstractTree<E> {
         preorder(root);
     }
 
+
     protected void preorder(TreeNode<E> root) {
         if (root != null) {
             System.out.print(root.element + " ");
@@ -91,5 +92,19 @@ public class BST<E extends Comparable<E>> extends AbstractTree<E> {
         preorder(root.left);
         preorder(root.right);
     }
+
+
+
+//    public boolean delete(E e) {
+//        TreeNode<E> parent = null;
+//        TreeNode<E> current = root;
+//        if (e == null) {
+//            return true;
+//        } else {
+//            while (current != null) {
+//
+//            }
+//        }
+//    }
 
 }
