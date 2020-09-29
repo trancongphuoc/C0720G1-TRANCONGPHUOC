@@ -1,12 +1,10 @@
 package controllers;
 
 import commons.FileUntils;
-import models.DichVu;
 import models.House;
 import models.Room;
 import models.Villa;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -17,7 +15,6 @@ public class MainController {
     public static final String FILE_HOUSE = "src/data/house.csv";
     public static final String FILE_ROOM = "src/data/room.csv";
     public static final String COMMA = "\t,\t";
-    public static List<DichVu> lists = new ArrayList<>();
     public static String tenDichVu;
     public static String dienTichSuDung;
     public static String chiPhiThue;
@@ -112,6 +109,38 @@ public class MainController {
         return matcher.find();
     }
 
+    // Kiểm tra giới tính.
+    static boolean kiemTraGioiTinh(String gioiTinh) {
+        String regex = "^(nam|nu|Nam|Nu|bede|Bede)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(gioiTinh);
+        return matcher.find();
+    }
+
+    // Kiểm tra số chứng minh.
+    static boolean kiemTraCMND(String cMND) {
+        String regex = "^\\d{9}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(cMND);
+        return matcher.find();
+    }
+
+    // Kiểm tra số điện thoại
+    static boolean kiemTraSoDienThoai(String soDienThoai) {
+        String regex = "^\\d{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(soDienThoai);
+        return matcher.find();
+    }
+
+    // Kiểm tra email
+    static boolean kiemTraEmail(String email) {
+        String regex = "^\\w{6,}@[a-z]{2,7}.([a-z]{2,5})+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.find();
+    }
+
 
     //---------------------------------------------
 
@@ -137,17 +166,20 @@ public class MainController {
                 showService();
                 displayMainMenu();
                 break;
-//            case 3:
-//                break;
+            case 3:
+                addNewCustomer();
+                displayMainMenu();
+                break;
 //            case 4:
+            //showInformationOfCustomer();
+//            displayMainMenu();
 //                break;
 //            case 5:
 //                break;
 //            case 6:
 //                break;
             case 7:
-
-                break;
+                System.exit(0);
             default:
                 displayMainMenu();
                 break;
@@ -186,7 +218,7 @@ public class MainController {
                 displayMainMenu();
                 break;
             case 5:
-                break;
+                System.exit(0);
             default:
                 addNewService();
                 break;
@@ -237,9 +269,31 @@ public class MainController {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập mã dịch vụ: ");
         String maDichVu = scanner.nextLine();
-        while (!kiemTraIDVL(maDichVu)) {
-            System.out.print("Nhập lại: ");
-            maDichVu = scanner.nextLine();
+        boolean flag = false;
+        while (true) {
+            while (!kiemTraIDVL(maDichVu)) {
+                System.out.print("Nhập lại: ");
+                maDichVu = scanner.nextLine();
+                flag = false;
+            }
+            if (flag)
+                break;
+            while (true) {
+                List<String> listLine = FileUntils.readFile(FILE_VILLA);
+                for (String list : listLine) {
+                    if (maDichVu.equals(list.substring(0, 9))) {
+                        System.out.print("Mã đã được sử dụng --- Nhập lại: ");
+                        maDichVu = scanner.nextLine();
+                        flag = false;
+                    }
+                    if (!maDichVu.equals(list.substring(0, 9))) {
+                        flag = true;
+                    }
+                }
+                if (flag) {
+                    break;
+                }
+            }
         }
 
         addService();
@@ -263,7 +317,6 @@ public class MainController {
         }
 
         Villa villa = new Villa(maDichVu, tenDichVu, Float.parseFloat(dienTichSuDung), Integer.parseInt(chiPhiThue), Integer.parseInt(soLuongNguoi), kieuThue, tieuChuanPhong, moTa, Float.parseFloat(dienTichHoBoi), Integer.parseInt(soTang));
-        lists.add(villa);
         String line = null;
 
         line = villa.getMaDichVu() + COMMA + villa.getTenDichVu() + COMMA + villa.getDienTichSuDung() + " m^2" + COMMA + villa.getChiPhiThue() + " $" + COMMA + villa.getSoLuongNguoi() + " người" + COMMA + villa.getKieuThue() + COMMA + villa.getTieuChuanPhong() + COMMA + villa.getMoTa() + COMMA + villa.getDienTichHoBoi() + " m^2" + COMMA + villa.getSoTang() + " tầng";
@@ -275,10 +328,33 @@ public class MainController {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập mã dịch vụ: ");
         String maDichVu = scanner.nextLine();
-        while (!kiemTraIDHO(maDichVu)) {
-            System.out.print("Nhập lại: ");
-            maDichVu = scanner.nextLine();
+        boolean flag = false;
+        while (true) {
+            while (!kiemTraIDHO(maDichVu)) {
+                System.out.print("Nhập lại: ");
+                maDichVu = scanner.nextLine();
+                flag = false;
+            }
+            if (flag)
+                break;
+            while (true) {
+                List<String> listLine = FileUntils.readFile(FILE_HOUSE);
+                for (String list : listLine) {
+                    if (maDichVu.equals(list.substring(0, 9))) {
+                        System.out.print("Mã đã được sử dụng --- Nhập lại: ");
+                        maDichVu = scanner.nextLine();
+                        flag = false;
+                    }
+                    if (!maDichVu.equals(list.substring(0, 9))) {
+                        flag = true;
+                    }
+                }
+                if (flag) {
+                    break;
+                }
+            }
         }
+
         addService();
         System.out.print("Tiêu chuẩn phòng: ");
         String tieuChuanPhong = scanner.nextLine();
@@ -304,10 +380,33 @@ public class MainController {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập mã dịch vụ: ");
         String maDichVu = scanner.nextLine();
-        while (!kiemTraIDRO(maDichVu)) {
-            System.out.print("Nhập lại: ");
-            maDichVu = scanner.nextLine();
+        boolean flag = false;
+        while (true) {
+            while (!kiemTraIDRO(maDichVu)) {
+                System.out.print("Nhập lại: ");
+                maDichVu = scanner.nextLine();
+                flag = false;
+            }
+            if (flag)
+                break;
+            while (true) {
+                List<String> listLine = FileUntils.readFile(FILE_ROOM);
+                for (String list : listLine) {
+                    if (maDichVu.equals(list.substring(0, 9))) {
+                        System.out.print("Mã đã được sử dụng --- Nhập lại: ");
+                        maDichVu = scanner.nextLine();
+                        flag = false;
+                    }
+                    if (!maDichVu.equals(list.substring(0, 9))) {
+                        flag = true;
+                    }
+                }
+                if (flag) {
+                    break;
+                }
+            }
         }
+
         addService();
         System.out.print("Dịch vụ miễn phí: ");
         String dichVuMienPhi = scanner.nextLine();
@@ -357,7 +456,7 @@ public class MainController {
                 displayMainMenu();
                 break;
             case 8:
-                break;
+                System.exit(0);
             default:
                 showService();
                 break;
@@ -391,6 +490,50 @@ public class MainController {
 
     //---------------------------------------------------
 
+
+    public static void addNewCustomer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập họ và tên: ");
+        String hoVaTen = scanner.nextLine();
+        while (!kiemTraTen(hoVaTen)) {
+            System.out.print("Nhập lại tên(Khong dau): ");
+            hoVaTen = scanner.nextLine();
+        }
+
+        System.out.print("Ngày sinh: ");
+        String ngaySinh = scanner.nextLine();
+        while (!kiemTraNgaySinh(ngaySinh)) {
+            System.out.print("Nhập lại ngày sinh(dd/mm/YYYY): ");
+            ngaySinh = scanner.nextLine();
+        }
+
+        System.out.print("Giới tính: ");
+        String gioiTinh = scanner.nextLine();
+        while (!kiemTraGioiTinh(gioiTinh)) {
+            System.out.print("Nhập lại giới tính (Nam/Nu/Bede): ");
+            gioiTinh = scanner.nextLine();
+        }
+
+        System.out.print("Số chứng minh: ");
+        String cMND = scanner.nextLine();
+        while (!kiemTraCMND(cMND)) {
+            System.out.print("Nhập lại số chứng minh (XXXXXXXXX): ");
+            cMND = scanner.nextLine();
+        }
+
+        System.out.print("Số điện thoại: ");
+        String soDienThoai = scanner.nextLine();
+        while (!kiemTraSoDienThoai(soDienThoai)) {
+            System.out.print("Nhập lại số điện thoại (XXXXXXXXXX): ");
+            soDienThoai = scanner.nextLine();
+        }
+
+        System.out.println("Email: ");
+        String email = scanner.nextLine();
+
+
+    }
+    //---------------------------------------------------
 
     public static void main(String[] args) {
         displayMainMenu();

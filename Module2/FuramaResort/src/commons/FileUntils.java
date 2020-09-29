@@ -31,6 +31,7 @@ public class FileUntils {
                 listLine.add(line);
 
             }
+            bufferedReader.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

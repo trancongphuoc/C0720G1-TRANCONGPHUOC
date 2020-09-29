@@ -29,7 +29,6 @@ public class BubbleSortByStep {
                     int temp = list[i];
                     list[i] = list[i + 1];
                     list[i + 1] = temp;
-
                     needNextPass = true;
                 }
             }

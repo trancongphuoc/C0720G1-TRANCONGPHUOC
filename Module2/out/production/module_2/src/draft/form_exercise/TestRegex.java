@@ -51,5 +51,12 @@ public class TestRegex {
         Pattern pattern6 = Pattern.compile(regexxx);
         Matcher matcher6 = pattern6.matcher(a);
 //        System.out.println(matcher6.find());
+
+
+        String email = "teosake199911@abc.com.vn";
+        String regexemail = "^\\w{3,}(.?\\w+)*@[a-z]{2,7}(.[a-z]{2,5}){1,3}$";
+        Pattern patternEmail = Pattern.compile(regexemail);
+        Matcher matcherEmail = patternEmail.matcher(email);
+        System.out.println(matcherEmail.find());
     }
 }
