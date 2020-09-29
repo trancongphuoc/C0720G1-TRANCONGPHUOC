@@ -5,8 +5,8 @@ public class House extends DichVu {
     private String moTa;
     private int soTang;
 
-    public House(String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTa, int soTang) {
-        super(tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
+    public House(String maDichVu, String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTa, int soTang) {
+        super(maDichVu, tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTa = moTa;
         this.soTang = soTang;
@@ -48,7 +48,8 @@ public class House extends DichVu {
 
     @Override
     public String showInfo() {
-        return "Tên dịch vụ: " + getTenDichVu() +
+        return "Mã dịch vụ: " + getMaDichVu() +
+                "Tên dịch vụ: " + getTenDichVu() +
                 "\nMô tả: " + getMoTa() +
                 "\nTiêu chuẩn phòng: " + getTieuChuanPhong() +
                 "\nDiện tích sử dụng: " + getDienTichSuDung() +

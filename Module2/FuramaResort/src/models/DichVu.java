@@ -1,13 +1,15 @@
 package models;
 
 public abstract class DichVu {
+    private String maDichVu;
     private String tenDichVu;
     private float dienTichSuDung;
     private int chiPhiThue;
     private int soLuongNguoi;
     private String kieuThue;
 
-    public DichVu(String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue) {
+    public DichVu(String maDichVu,String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue) {
+        this.maDichVu = maDichVu;
         this.tenDichVu = tenDichVu;
         this.dienTichSuDung = dienTichSuDung;
         this.chiPhiThue = chiPhiThue;
@@ -16,6 +18,14 @@ public abstract class DichVu {
     }
 
     public DichVu() {
+    }
+
+    public String getMaDichVu() {
+        return maDichVu;
+    }
+
+    public void setMaDichVu(String maDichVu) {
+        this.maDichVu = maDichVu;
     }
 
     public String getTenDichVu() {
