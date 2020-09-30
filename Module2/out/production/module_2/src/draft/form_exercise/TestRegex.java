@@ -41,10 +41,10 @@ public class TestRegex {
 
 
         String ngaySinh = "01/01/2000";
-        String regexNgaySinh = "^([0][1-9]|[12][0-9]|[3][01])/([0][1-9]|[1][012])/([2][0][0]([1]|[2]|[0])|[1]\\d{3})$";
+        String regexNgaySinh = "^([0][1-9]|[12][0-9]|[3][01])/([0][1-9]|[1][012])/([2][0][0]([1]|[2]|[0])|[1][9]\\d{2})$";
         Pattern pattern5 = Pattern.compile(regexNgaySinh);
         Matcher matcher5 = pattern5.matcher(ngaySinh);
-//        System.out.println(matcher5.find());
+        System.out.println(matcher5.find());
 
         String a = "SVVL-1324";
         String regexxx = "(SVVL|SVHO|SVRO)-\\d{4}";
@@ -57,6 +57,6 @@ public class TestRegex {
         String regexemail = "^\\w{3,}(.?\\w+)*@[a-z]{2,7}(.[a-z]{2,5}){1,3}$";
         Pattern patternEmail = Pattern.compile(regexemail);
         Matcher matcherEmail = patternEmail.matcher(email);
-        System.out.println(matcherEmail.find());
+//        System.out.println(matcherEmail.find());
     }
 }

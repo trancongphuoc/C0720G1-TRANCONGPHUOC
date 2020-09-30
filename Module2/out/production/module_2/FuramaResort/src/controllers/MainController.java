@@ -1,9 +1,7 @@
 package controllers;
 
 import commons.FileUntils;
-import models.House;
-import models.Room;
-import models.Villa;
+import models.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +12,7 @@ public class MainController {
     public static final String FILE_VILLA = "src/data/villa.csv";
     public static final String FILE_HOUSE = "src/data/house.csv";
     public static final String FILE_ROOM = "src/data/room.csv";
+    public static final String FILE_CUSTOMER = "src/data/customer.csv";
     public static final String COMMA = "\t,\t";
     public static String tenDichVu;
     public static String dienTichSuDung;
@@ -87,7 +86,7 @@ public class MainController {
 
     // Kiểm tra ngày sinh.
     static boolean kiemTraNgaySinh(String ngaySinh) {
-        String regex = "^([0][1-9]|[12][0-9]|[3][01])/([0][1-9]|[1][012])/([2][0][0]([1]|[2]|[0])|[1]\\d{3})$";
+        String regex = "^([0][1-9]|[12][0-9]|[3][01])/([0][1-9]|[1][012])/([2][0][0]([1]|[2]|[0])|[1][9]\\d{2})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(ngaySinh);
         return matcher.find();
@@ -125,7 +124,7 @@ public class MainController {
         return matcher.find();
     }
 
-    // Kiểm tra số điện thoại
+    // Kiểm tra số điện thoại.
     static boolean kiemTraSoDienThoai(String soDienThoai) {
         String regex = "^\\d{10}$";
         Pattern pattern = Pattern.compile(regex);
@@ -133,11 +132,19 @@ public class MainController {
         return matcher.find();
     }
 
-    // Kiểm tra email
+    // Kiểm tra email.
     static boolean kiemTraEmail(String email) {
-        String regex = "^\\w{6,}@[a-z]{2,7}.([a-z]{2,5})+$";
+        String regex = "^\\w{3,}(.?\\w+)*@[a-z]{2,7}(.[a-z]{2,5}){1,3}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
+        return matcher.find();
+    }
+
+    // Kiểm tra loại khách hàng.
+    static boolean kiemTraLoaiKhachHang(String loaiKhachHang) {
+        String regex = "^(member|sliver|gold|platinium|diamond|Member|Sliver|Gold|Platinium|Diamond)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(loaiKhachHang);
         return matcher.find();
     }
 
@@ -147,6 +154,7 @@ public class MainController {
 
     // Menu Chính.
     public static void displayMainMenu() {
+        System.out.println("----------------------------------");
         System.out.println("1. Add New Services.");
         System.out.println("2. Show Services.");
         System.out.println("3. Add New Customer.");
@@ -154,6 +162,7 @@ public class MainController {
         System.out.println("5. Add New Booking.");
         System.out.println("6. Show Information of Employee.");
         System.out.println("7. Exit.");
+        System.out.println("----------------------------------");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter choose: ");
         int choose = scanner.nextInt();
@@ -170,10 +179,10 @@ public class MainController {
                 addNewCustomer();
                 displayMainMenu();
                 break;
-//            case 4:
-            //showInformationOfCustomer();
-//            displayMainMenu();
-//                break;
+            case 4:
+            showInformationCustomers();
+            displayMainMenu();
+                break;
 //            case 5:
 //                break;
 //            case 6:
@@ -309,17 +318,22 @@ public class MainController {
             dienTichHoBoi = scanner.nextLine();
         }
 
-        System.out.print("Số tầng");
+        System.out.print("Số tầng: ");
         String soTang = scanner.nextLine();
         while (!kiemTraSoTang(soTang)) {
             System.out.print("Nhập lại: ");
             soTang = scanner.nextLine();
         }
 
-        Villa villa = new Villa(maDichVu, tenDichVu, Float.parseFloat(dienTichSuDung), Integer.parseInt(chiPhiThue), Integer.parseInt(soLuongNguoi), kieuThue, tieuChuanPhong, moTa, Float.parseFloat(dienTichHoBoi), Integer.parseInt(soTang));
+        Villa villa = new Villa(maDichVu, tenDichVu, Float.parseFloat(dienTichSuDung), Integer.parseInt(chiPhiThue),
+                Integer.parseInt(soLuongNguoi), kieuThue, tieuChuanPhong, moTa, Float.parseFloat(dienTichHoBoi),
+                Integer.parseInt(soTang));
         String line = null;
 
-        line = villa.getMaDichVu() + COMMA + villa.getTenDichVu() + COMMA + villa.getDienTichSuDung() + " m^2" + COMMA + villa.getChiPhiThue() + " $" + COMMA + villa.getSoLuongNguoi() + " người" + COMMA + villa.getKieuThue() + COMMA + villa.getTieuChuanPhong() + COMMA + villa.getMoTa() + COMMA + villa.getDienTichHoBoi() + " m^2" + COMMA + villa.getSoTang() + " tầng";
+        line = villa.getMaDichVu() + COMMA + villa.getTenDichVu() + COMMA + villa.getDienTichSuDung() + " m^2"
+                + COMMA + villa.getChiPhiThue() + " $" + COMMA + villa.getSoLuongNguoi() + " người"
+                + COMMA + villa.getKieuThue() + COMMA + villa.getTieuChuanPhong() + COMMA + villa.getMoTa()
+                + COMMA + villa.getDienTichHoBoi() + " m^2" + COMMA + villa.getSoTang() + " tầng";
         FileUntils.writeFile(FILE_VILLA, line);
     }
 
@@ -368,10 +382,14 @@ public class MainController {
             soTang = scanner.nextLine();
         }
 
-        House house = new House(maDichVu, tenDichVu, Float.parseFloat(dienTichSuDung), Integer.parseInt(chiPhiThue), Integer.parseInt(soLuongNguoi), kieuThue, tieuChuanPhong, moTa, Integer.parseInt(soTang));
+        House house = new House(maDichVu, tenDichVu, Float.parseFloat(dienTichSuDung), Integer.parseInt(chiPhiThue),
+                Integer.parseInt(soLuongNguoi), kieuThue, tieuChuanPhong, moTa, Integer.parseInt(soTang));
         String line = null;
 
-        line = house.getMaDichVu() + COMMA + house.getTenDichVu() + COMMA + house.getDienTichSuDung() + " m^2" + COMMA + house.getChiPhiThue() + " $" + COMMA + house.getSoLuongNguoi() + " người" + COMMA + house.getKieuThue() + COMMA + house.getTieuChuanPhong() + COMMA + house.getMoTa() + COMMA + house.getSoTang() + " tầng";
+        line = house.getMaDichVu() + COMMA + house.getTenDichVu() + COMMA + house.getDienTichSuDung() + " m^2"
+                + COMMA + house.getChiPhiThue() + " $" + COMMA + house.getSoLuongNguoi() + " người"
+                + COMMA + house.getKieuThue() + COMMA + house.getTieuChuanPhong() + COMMA + house.getMoTa()
+                + COMMA + house.getSoTang() + " tầng";
         FileUntils.writeFile(FILE_HOUSE, line);
     }
 
@@ -410,10 +428,13 @@ public class MainController {
         addService();
         System.out.print("Dịch vụ miễn phí: ");
         String dichVuMienPhi = scanner.nextLine();
-        Room room = new Room(maDichVu, tenDichVu, Float.parseFloat(dienTichSuDung), Integer.parseInt(chiPhiThue), Integer.parseInt(soLuongNguoi), kieuThue, dichVuMienPhi);
+        Room room = new Room(maDichVu, tenDichVu, Float.parseFloat(dienTichSuDung), Integer.parseInt(chiPhiThue),
+                Integer.parseInt(soLuongNguoi), kieuThue, dichVuMienPhi);
         String line = null;
 
-        line = room.getMaDichVu() + COMMA + room.getTenDichVu() + COMMA + room.getDienTichSuDung() + " m^2" + COMMA + room.getChiPhiThue() + " $" + COMMA + room.getSoLuongNguoi() + " người" + COMMA + room.getKieuThue() + COMMA + room.getDichVuMienPhi();
+        line = room.getMaDichVu() + COMMA + room.getTenDichVu() + COMMA + room.getDienTichSuDung() + " m^2"
+                + COMMA + room.getChiPhiThue() + " $" + COMMA + room.getSoLuongNguoi() + " người"
+                + COMMA + room.getKieuThue() + COMMA + room.getDichVuMienPhi();
         FileUntils.writeFile(FILE_ROOM, line);
     }
 
@@ -528,16 +549,51 @@ public class MainController {
             soDienThoai = scanner.nextLine();
         }
 
-        System.out.println("Email: ");
+        System.out.print("Email: ");
         String email = scanner.nextLine();
+        while (!kiemTraEmail(email)) {
+            System.out.print("Nhập lại email(abc@abc.abc): ");
+            email = scanner.nextLine();
+        }
+
+        System.out.print("Loại khách hàng: ");
+        String loaiKhachHang = scanner.nextLine();
+        while (!kiemTraLoaiKhachHang(loaiKhachHang)) {
+            System.out.print("Nhập lại loại khách hàng(Sliver/Gold/Diamond): ");
+            loaiKhachHang = scanner.nextLine();
+        }
+
+        System.out.print("Địa chỉ: ");
+        String diaChi = scanner.nextLine();
+
+        //??????????????????????????????
+        DichVu dichVu = null;
+
+        KhachHang khachHang = new KhachHang(hoVaTen, ngaySinh, gioiTinh, cMND, soDienThoai,
+                email, loaiKhachHang, diaChi, dichVu);
+        String line = null;
+
+        line = khachHang.getHoVaTen() + COMMA + khachHang.getNgaySinh() + COMMA + khachHang.getGioiTinh() +
+                COMMA + khachHang.getcMND() + COMMA + khachHang.getSoDT() + COMMA + khachHang.getEmail() + COMMA +
+                khachHang.getLoaiKhachHang() + COMMA + khachHang.getDiaChi() + COMMA + khachHang.getDichVu();
+        FileUntils.writeFile(FILE_CUSTOMER, line);
 
 
     }
+
+    //---------------------------------------------------
+
+    public static void showInformationCustomers() {
+        List<String> listline = FileUntils.readFile(FILE_CUSTOMER);
+        for (String list : listline) {
+            System.out.println(list);
+        }
+    }
+
     //---------------------------------------------------
 
     public static void main(String[] args) {
         displayMainMenu();
     }
-
 
 }

@@ -8,11 +8,11 @@ public class KhachHang {
     private String soDT;
     private String email;
     private String loaiKhachHang;
-    private DichVu diaChi;
-    private DichVu thuocTinh;
+    private String diaChi;
+    private DichVu dichVu;
 
     public KhachHang(String hoVaTen, String ngaySinh, String gioiTinh, String cMND,
-                     String soDT, String email, String loaiKhachHang, DichVu diaChi, DichVu thuocTinh) {
+                     String soDT, String email, String loaiKhachHang, String diaChi, DichVu dichVu) {
         this.hoVaTen = hoVaTen;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
@@ -21,7 +21,7 @@ public class KhachHang {
         this.email = email;
         this.loaiKhachHang = loaiKhachHang;
         this.diaChi = diaChi;
-        this.thuocTinh = thuocTinh;
+        this.dichVu = dichVu;
     }
 
     public KhachHang() {
@@ -83,20 +83,20 @@ public class KhachHang {
         this.loaiKhachHang = loaiKhachHang;
     }
 
-    public DichVu getDiaChi() {
+    public String getDiaChi() {
         return diaChi;
     }
 
-    public void setDiaChi(DichVu diaChi) {
+    public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
 
-    public DichVu getThuocTinh() {
-        return thuocTinh;
+    public DichVu getDichVu() {
+        return dichVu;
     }
 
-    public void setThuocTinh(DichVu thuocTinh) {
-        this.thuocTinh = thuocTinh;
+    public void setDichVu(DichVu dichVu) {
+        this.dichVu = dichVu;
     }
 
     public String showInfo() {
@@ -108,6 +108,6 @@ public class KhachHang {
                 "Email: " + getEmail() +
                 "Loại khách hàng: " + getLoaiKhachHang() +
                 "Địa chỉ: " + getDiaChi() +
-                "Thuộc tính: " + getThuocTinh();
+                "Thuộc tính: " + getDichVu();
     }
 }

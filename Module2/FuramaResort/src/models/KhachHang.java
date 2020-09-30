@@ -12,7 +12,7 @@ public class KhachHang {
     private DichVu dichVu;
 
     public KhachHang(String hoVaTen, String ngaySinh, String gioiTinh, String cMND,
-                     String soDT, String email, String loaiKhachHang, String diaChi, DichVu thuocTinh) {
+                     String soDT, String email, String loaiKhachHang, String diaChi, DichVu dichVu) {
         this.hoVaTen = hoVaTen;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
@@ -21,7 +21,7 @@ public class KhachHang {
         this.email = email;
         this.loaiKhachHang = loaiKhachHang;
         this.diaChi = diaChi;
-        this.dichVu = thuocTinh;
+        this.dichVu = dichVu;
     }
 
     public KhachHang() {
