@@ -12,8 +12,8 @@ public class FileUntils {
 
             bufferedWriter.write(line);
             bufferedWriter.newLine();
-
             bufferedWriter.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,7 +25,7 @@ public class FileUntils {
         try {
             FileReader fileReader = new FileReader(pathFile);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = null;
+            String line;
 
             while ((line = bufferedReader.readLine()) != null) {
                 listLine.add(line);
@@ -33,8 +33,6 @@ public class FileUntils {
             }
             bufferedReader.close();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

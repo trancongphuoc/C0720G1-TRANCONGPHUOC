@@ -1,8 +1,11 @@
 package controllers;
 
 import commons.FileUntils;
+import libs.*;
 import models.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -19,6 +22,11 @@ public class MainController {
     public static String chiPhiThue;
     public static String soLuongNguoi;
     public static String kieuThue;
+    public static int indexCustomer = 1;
+    public static int indexVilla = 1;
+    public static int indexHouse = 1;
+    public static int indexRoom = 1;
+
 
     // Kiểm tra mã dịch vụ Villa.
     static boolean kiemTraIDVL(String id) {
@@ -45,10 +53,18 @@ public class MainController {
     }
 
     // Kiểm tra tên.
-    static boolean kiemTraTen(String ten) {
+    static void kiemTraTen(String ten) throws NameException {
         String regex = "^[A-Z][a-z]+(\\s[A-Z][a-z]+)*$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(ten);
+        if (!matcher.find()) throw new NameException("Nhập lại tên đúng định dạng.");
+    }
+
+    static boolean kiemTraTenDichVu(String ten) {
+        String regex = "^[A-Z][a-z]+(\\s[A-Z][a-z]+)*$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(ten);
+
         return matcher.find();
     }
 
@@ -85,11 +101,11 @@ public class MainController {
     }
 
     // Kiểm tra ngày sinh.
-    static boolean kiemTraNgaySinh(String ngaySinh) {
+    static void kiemTraNgaySinh(String ngaySinh) throws NgaySinhException {
         String regex = "^([0][1-9]|[12][0-9]|[3][01])/([0][1-9]|[1][012])/([2][0][0]([1]|[2]|[0])|[1][9]\\d{2})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(ngaySinh);
-        return matcher.find();
+        if (!matcher.find()) throw new NgaySinhException("Nhập lại ngày sinh đúng định dạng.");
     }
 
     // Kiểm tra số tầng.
@@ -109,43 +125,44 @@ public class MainController {
     }
 
     // Kiểm tra giới tính.
-    static boolean kiemTraGioiTinh(String gioiTinh) {
+    static void kiemTraGioiTinh(String gioiTinh) throws GenderException {
         String regex = "^(nam|nu|Nam|Nu|bede|Bede)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(gioiTinh);
-        return matcher.find();
+        if (!matcher.find()) throw new GenderException("Nhập lại giới tính đúng định dạng");
     }
 
     // Kiểm tra số chứng minh.
-    static boolean kiemTraCMND(String cMND) {
+    static void kiemTraCMND(String cMND) throws IDCardException {
         String regex = "^\\d{9}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(cMND);
-        return matcher.find();
+        if (!matcher.find()) throw new IDCardException("Nhập lại ID đúng định dạng (XXXXXXXXX)");
     }
 
     // Kiểm tra số điện thoại.
-    static boolean kiemTraSoDienThoai(String soDienThoai) {
+    static void kiemTraSoDienThoai(String soDienThoai) throws NumberPhoneException {
         String regex = "^\\d{10}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(soDienThoai);
-        return matcher.find();
+        if (!matcher.find()) throw new NumberPhoneException("Nhập lại số điện thoại đúng định dạng!!!");
     }
 
     // Kiểm tra email.
-    static boolean kiemTraEmail(String email) {
+    static void kiemTraEmail(String email) throws EmailException {
         String regex = "^\\w{3,}(.?\\w+)*@[a-z]{2,7}(.[a-z]{2,5}){1,3}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
-        return matcher.find();
+        if (!matcher.find()) throw new EmailException("Nhập lại email đúng định dạng");
+
     }
 
     // Kiểm tra loại khách hàng.
-    static boolean kiemTraLoaiKhachHang(String loaiKhachHang) {
+    static void kiemTraLoaiKhachHang(String loaiKhachHang) throws CustomerException {
         String regex = "^(member|sliver|gold|platinium|diamond|Member|Sliver|Gold|Platinium|Diamond)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(loaiKhachHang);
-        return matcher.find();
+        if (!matcher.find()) throw new CustomerException("Nhập đúng định dạng");
     }
 
 
@@ -180,11 +197,13 @@ public class MainController {
                 displayMainMenu();
                 break;
             case 4:
-            showInformationCustomers();
-            displayMainMenu();
+                showInformationCustomers();
+                displayMainMenu();
                 break;
-//            case 5:
-//                break;
+            case 5:
+                addNewBooking();
+                displayMainMenu();
+                break;
 //            case 6:
 //                break;
             case 7:
@@ -239,7 +258,7 @@ public class MainController {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Tên dịch vụ: ");
         tenDichVu = scanner.nextLine();
-        while (!kiemTraTen(tenDichVu)) {
+        while (!kiemTraTenDichVu(tenDichVu)) {
             System.out.print("Nhập đúng định dạng(Xyyy Xyyy): ");
             tenDichVu = scanner.nextLine();
         }
@@ -444,6 +463,7 @@ public class MainController {
 
     // Menu hiển thị danh sách dịch vụ
     public static void showService() {
+        System.out.println("---------------------------------------");
         System.out.println("1. Show all Villa.");
         System.out.println("2. Show all House.");
         System.out.println("3. Show all Room.");
@@ -452,6 +472,7 @@ public class MainController {
         System.out.println("6. Show All Name Name Not Duplicate.");
         System.out.println("7. Back to menu.");
         System.out.println("8. Exit.");
+        System.out.println("---------------------------------------");
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter choose: ");
@@ -488,24 +509,27 @@ public class MainController {
     public static void showAllVilla() {
         List<String> listLine = FileUntils.readFile(FILE_VILLA);
         for (String list : listLine) {
-            System.out.println(list);
+            System.out.println(indexVilla++ + ". " +list);
         }
+        System.out.println(indexVilla + ". Exit");
     }
 
     // Hiển thị danh sách dịch vụ House.
     public static void showAllHouse() {
         List<String> listLine = FileUntils.readFile(FILE_HOUSE);
         for (String list : listLine) {
-            System.out.println(list);
+            System.out.println(indexHouse++ + ". " +list);
         }
+        System.out.println(indexHouse + ". Exit");
     }
 
     // Hiển thị danh sách dịch vu Room.
     public static void showAllRoom() {
         List<String> listLine = FileUntils.readFile(FILE_ROOM);
         for (String list : listLine) {
-            System.out.println(list);
+            System.out.println(indexRoom++ + ". " +list);
         }
+        System.out.println(indexRoom + ". Exit");
     }
 
 
@@ -514,64 +538,123 @@ public class MainController {
 
     public static void addNewCustomer() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Nhập họ và tên: ");
-        String hoVaTen = scanner.nextLine();
-        while (!kiemTraTen(hoVaTen)) {
-            System.out.print("Nhập lại tên(Khong dau): ");
-            hoVaTen = scanner.nextLine();
-        }
+        String hoVaTen = "";
+        boolean flag;
 
-        System.out.print("Ngày sinh: ");
-        String ngaySinh = scanner.nextLine();
-        while (!kiemTraNgaySinh(ngaySinh)) {
-            System.out.print("Nhập lại ngày sinh(dd/mm/YYYY): ");
-            ngaySinh = scanner.nextLine();
-        }
+        do {
+            flag = true;
+            try {
+                System.out.print("Nhập họ và tên: ");
+                hoVaTen = scanner.nextLine();
+                kiemTraTen(hoVaTen);
+            } catch (NameException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
+        } while (!flag);
 
-        System.out.print("Giới tính: ");
-        String gioiTinh = scanner.nextLine();
-        while (!kiemTraGioiTinh(gioiTinh)) {
-            System.out.print("Nhập lại giới tính (Nam/Nu/Bede): ");
-            gioiTinh = scanner.nextLine();
-        }
 
-        System.out.print("Số chứng minh: ");
-        String cMND = scanner.nextLine();
-        while (!kiemTraCMND(cMND)) {
-            System.out.print("Nhập lại số chứng minh (XXXXXXXXX): ");
-            cMND = scanner.nextLine();
-        }
+        String ngaySinh = "";
+        do {
+            try {
+                flag = true;
+                System.out.print("Ngày sinh: ");
+                ngaySinh = scanner.nextLine();
+                kiemTraNgaySinh(ngaySinh);
+            } catch (NgaySinhException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
 
-        System.out.print("Số điện thoại: ");
-        String soDienThoai = scanner.nextLine();
-        while (!kiemTraSoDienThoai(soDienThoai)) {
-            System.out.print("Nhập lại số điện thoại (XXXXXXXXXX): ");
-            soDienThoai = scanner.nextLine();
-        }
+        } while (!flag);
 
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
-        while (!kiemTraEmail(email)) {
-            System.out.print("Nhập lại email(abc@abc.abc): ");
-            email = scanner.nextLine();
-        }
 
-        System.out.print("Loại khách hàng: ");
-        String loaiKhachHang = scanner.nextLine();
-        while (!kiemTraLoaiKhachHang(loaiKhachHang)) {
-            System.out.print("Nhập lại loại khách hàng(Sliver/Gold/Diamond): ");
-            loaiKhachHang = scanner.nextLine();
-        }
+        String gioiTinh = "";
+        do {
+            flag = true;
+            try {
+                System.out.print("Giới tính: ");
+                gioiTinh = scanner.nextLine();
+                kiemTraGioiTinh(gioiTinh);
+            } catch (GenderException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
+        } while (!flag);
+
+
+        String cMND = "";
+        do {
+            flag = true;
+            try {
+                System.out.print("Số chứng minh: ");
+                cMND = scanner.nextLine();
+                kiemTraCMND(cMND);
+            } catch (IDCardException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
+        } while (!flag);
+
+
+        String soDienThoai = "";
+        do {
+            flag = true;
+            try {
+                System.out.print("Số điện thoại: ");
+                soDienThoai = scanner.nextLine();
+                kiemTraSoDienThoai(soDienThoai);
+            } catch (NumberPhoneException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
+        } while (!flag);
+
+
+        String email = "";
+        do {
+            try {
+                flag = true;
+                System.out.print("Email: ");
+                email = scanner.nextLine();
+                kiemTraEmail(email);
+            } catch (EmailException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
+        } while (!flag);
+
+
+        String loaiKhachHang = "";
+        do {
+            flag = true;
+            try {
+                System.out.print("Loại khách hàng: ");
+                loaiKhachHang = scanner.nextLine();
+                kiemTraLoaiKhachHang(loaiKhachHang);
+            } catch (CustomerException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
+        } while (!flag);
+
 
         System.out.print("Địa chỉ: ");
         String diaChi = scanner.nextLine();
 
         //??????????????????????????????
-        DichVu dichVu = null;
+//        DichVu dichVu = null;
 
         KhachHang khachHang = new KhachHang(hoVaTen, ngaySinh, gioiTinh, cMND, soDienThoai,
-                email, loaiKhachHang, diaChi, dichVu);
-        String line = null;
+                email, loaiKhachHang, diaChi, null);
+        String line;
 
         line = khachHang.getHoVaTen() + COMMA + khachHang.getNgaySinh() + COMMA + khachHang.getGioiTinh() +
                 COMMA + khachHang.getcMND() + COMMA + khachHang.getSoDT() + COMMA + khachHang.getEmail() + COMMA +
@@ -583,14 +666,51 @@ public class MainController {
 
     //---------------------------------------------------
 
-    public static void showInformationCustomers() {
+    public static List<KhachHang> showInformationCustomers() {
         List<String> listline = FileUntils.readFile(FILE_CUSTOMER);
+        List<KhachHang> khachHangs = new ArrayList<>();
         for (String list : listline) {
-            System.out.println(list);
+            String[] split = list.split(",");
+            if (split.length != 1) {
+                KhachHang khachHang = new KhachHang(split[0], split[1], split[2], split[3], split[4], split[5], split[6], split[7], null);
+                khachHangs.add(khachHang);
+            }
         }
+        Collections.sort(khachHangs);
+
+        for (KhachHang khachHang : khachHangs) {
+            System.out.println(indexCustomer++ + " " + khachHang.showInfo());
+        }
+        return khachHangs;
     }
 
     //---------------------------------------------------
+
+    public static void addNewBooking() {
+        Scanner scanner = new Scanner(System.in);
+        List<KhachHang> khachHangs = showInformationCustomers();
+        System.out.println("-----------------------------");
+        System.out.println(indexCustomer++ +". Booking Villa");
+        System.out.println(indexCustomer++ +". Booking House");
+        System.out.println(indexCustomer++ +". Booking Room");
+
+        System.out.println("Enter choose");
+        int choose = scanner.nextInt();
+        switch (choose) {
+            case 1:
+                showAllVilla();
+                List<String> listLine = FileUntils.readFile(FILE_VILLA);
+                List<DichVu> listVilla = new ArrayList<>();
+                for (String line : listLine ){
+                    String[] split = line.split(",");
+                    DichVu villa = new Villa(split[0],split[1],Float.parseFloat(split[2]),Integer.parseInt(split[3]),Integer.parseInt(split[4]),
+                            split[5],split[6], split[7],Float.parseFloat(split[8]),Integer.parseInt(split[9]));
+                    listVilla.add(villa);
+                }
+        }
+    }
+
+    //----------------------------------------------------
 
     public static void main(String[] args) {
         displayMainMenu();

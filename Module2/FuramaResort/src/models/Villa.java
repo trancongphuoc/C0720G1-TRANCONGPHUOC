@@ -6,7 +6,8 @@ public class Villa extends DichVu {
     private float dienTichHoBoi;
     private int soTang;
 
-    public Villa(String maDichVu, String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTa, float dienTichHoBoi, int soTang) {
+    public Villa(String maDichVu, String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi,
+                 String kieuThue, String tieuChuanPhong, String moTa, float dienTichHoBoi, int soTang) {
         super(maDichVu, tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTa = moTa;
@@ -60,14 +61,14 @@ public class Villa extends DichVu {
     @Override
     public String showInfo() {
         return  "Mã dịch vụ: " + getMaDichVu() +
-                "Tên dịch vụ: " + getTenDichVu() +
+                "\nTên dịch vụ: " + getTenDichVu() +
                 "\nMô tả: " + getMoTa() +
                 "\nTiêu chuẩn phòng: " + getTieuChuanPhong() +
-                "\nDiện tích sử dụng: " + getDienTichSuDung() +
-                "\nChi phí thuê: " + getChiPhiThue() +
-                "\nSố lượng người tối đa: " + getSoLuongNguoi() +
+                "\nDiện tích sử dụng: " + getDienTichSuDung() + " m^2" +
+                "\nChi phí thuê: " + getChiPhiThue() + " $" +
+                "\nSố lượng người tối đa: " + getSoLuongNguoi() + " nguoi" +
                 "\nKiểu thuê: " + getKieuThue() +
-                "\nDiện tích hồ bơi: " + getDienTichHoBoi() +
-                "\nSố tầng:" + getSoTang();
+                "\nDiện tích hồ bơi: " + getDienTichHoBoi() + " m^2" +
+                "\nSố tầng:" + getSoTang() + " tang";
     }
 }

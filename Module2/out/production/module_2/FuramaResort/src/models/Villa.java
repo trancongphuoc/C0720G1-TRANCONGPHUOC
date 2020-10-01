@@ -6,7 +6,8 @@ public class Villa extends DichVu {
     private float dienTichHoBoi;
     private int soTang;
 
-    public Villa(String maDichVu, String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTa, float dienTichHoBoi, int soTang) {
+    public Villa(String maDichVu, String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi,
+                 String kieuThue, String tieuChuanPhong, String moTa, float dienTichHoBoi, int soTang) {
         super(maDichVu, tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTa = moTa;

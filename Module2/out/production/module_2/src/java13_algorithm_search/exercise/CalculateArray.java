@@ -11,7 +11,7 @@ public class CalculateArray {
         String string = scanner.nextLine();
         List<Character> strings = new ArrayList<>();
 
-        Character character = string.charAt(0);
+        char character = string.charAt(0);
         strings.add(string.charAt(0));
 
         for (int i = 1; i < string.length(); i++) {

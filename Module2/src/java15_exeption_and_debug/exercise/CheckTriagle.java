@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class CheckTriagle {
 
     public static void checkTriagle(double a, double b, double c) throws ExceptionTriangle {
-        if (a + b - c <= 0 || b + c - a <= 0 || c + a - b <= 0) {
+        if (a + b  < c || b + c  < a || c + a  < b || a < 0 || b < 0 || c < 0) {
             throw new ExceptionTriangle("Nhập lại cho đúng");
         } else {
             System.out.println("đây là tam giác");

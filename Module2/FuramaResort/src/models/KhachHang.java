@@ -1,6 +1,6 @@
 package models;
 
-public class KhachHang {
+public class KhachHang implements Comparable<KhachHang> {
     private String hoVaTen;
     private String ngaySinh;
     private String gioiTinh;
@@ -109,5 +109,14 @@ public class KhachHang {
                 "Loại khách hàng: " + getLoaiKhachHang() +
                 "Địa chỉ: " + getDiaChi() +
                 "Thuộc tính: " + getDichVu();
+    }
+
+    @Override
+    public int compareTo(KhachHang o) {
+        int result = this.hoVaTen.compareTo(o.getHoVaTen());
+        if (result == 0) {
+            result= this.ngaySinh.substring(7, 11).compareTo(o.getNgaySinh().substring(7, 11));
+        }
+        return result;
     }
 }
