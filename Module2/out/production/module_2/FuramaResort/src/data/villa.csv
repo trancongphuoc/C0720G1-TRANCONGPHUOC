@@ -1,4 +1,9 @@
-SVVL-1234	,   Nike	,	500 m^2	    ,	300 $	,	7 người	    ,	Tuần	,	5*	,	View Biển	,	50 m^2	    ,	4 tầng
-SVVL-5896	,   Kine	,	300 m^2	    ,	200 $	,	5 người	    ,	Tuần	,	4*	,	View Rừng	,	50 m^2	    ,	3 tầng
-SVVL-1487	,   Knie    ,	1000 m^2	,	700 $	,	15 người	,	Tuần	,	5*	,	View Núi	,	100 m^2	    ,	3 tầng
-SVVL-0000   ,   Teo     ,	50.0 m^2	,	50 $	,	10 người	,	gio	    ,	5*	,	aádsad	    ,	50.0 m^2	,	5 tầng
+SVVL-1234,Nike,500,300,7,Tuần,5*,View Biển,50,4
+SVVL-5896,Kine,300,200,5,Tuần,4*,View Rừng,50,3
+SVVL-1487,Knie,1000,700,15,Tuần,5*,View Núi,100,3
+SVVL-0000,Teo,50.0,50,10,gio,5*,aádsad,50.0,5
+SVVL-1592,Thien Long,500.0,2000,15,Tuan,5*,View dep,50.0,3
+SVVL-1234,Nike,500,300,7,Tuần,5*,View Biển,50,4
+SVVL-1745,Thien,300.0,1000,6,Tuan,%8,SDASDDSAD,50.0,3
+SVVL-5896,Kine,300,200,5,Tuần,4*,View Rừng,50,3
+SVVL-6798,Villas,500.0,1000,10,tuan,5*,Dep,50.0,5

@@ -27,12 +27,12 @@ public class Room extends DichVu {
 
     @Override
     public String showInfo() {
-        return "Mã dịch vụ: " + getMaDichVu() +
+        return "\nMã dịch vụ: " + getMaDichVu() +
                 "\nTên dịch vụ: " + getTenDichVu() +
                 "\nDiện tích sử dụng: " + getDienTichSuDung() +
                 "\nChi phí thuê: " + getChiPhiThue() +
                 "\nSố lượng người tối đa: " + getSoLuongNguoi() +
                 "\nKiểu thuê: " + getKieuThue() +
-                "\nDịch vụ miên phí đi kèm: " + getDichVuMienPhi();
+                "\nDịch vụ miên phí đi kèm: " + getDichVuMienPhi() + "\n";
     }
 }

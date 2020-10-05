@@ -101,21 +101,21 @@ public class KhachHang implements Comparable<KhachHang> {
 
     public String showInfo() {
         return "Họ và tên: " + getHoVaTen() +
-                "Ngày sinh: " + getNgaySinh() +
-                "Giới tính: " + getGioiTinh() +
-                "Số chứng minh: " + getcMND() +
-                "Số điện thoại: " + getSoDT() +
-                "Email: " + getEmail() +
-                "Loại khách hàng: " + getLoaiKhachHang() +
-                "Địa chỉ: " + getDiaChi() +
-                "Thuộc tính: " + getDichVu();
+                "\nNgày sinh: " + getNgaySinh() +
+                "\nGiới tính: " + getGioiTinh() +
+                "\nSố chứng minh: " + getcMND() +
+                "\nSố điện thoại: " + getSoDT() +
+                "\nEmail: " + getEmail() +
+                "\nLoại khách hàng: " + getLoaiKhachHang() +
+                "\nĐịa chỉ: " + getDiaChi() +
+                "\nThuộc tính: " + getDichVu() + "\n";
     }
 
     @Override
     public int compareTo(KhachHang o) {
         int result = this.hoVaTen.compareTo(o.getHoVaTen());
         if (result == 0) {
-            result= this.ngaySinh.substring(7, 11).compareTo(o.getNgaySinh().substring(7, 11));
+            result= this.ngaySinh.substring(6, 10).compareTo(o.getNgaySinh().substring(6, 10));
         }
         return result;
     }

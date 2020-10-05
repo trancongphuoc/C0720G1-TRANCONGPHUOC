@@ -60,7 +60,7 @@ public class Villa extends DichVu {
 
     @Override
     public String showInfo() {
-        return  "Mã dịch vụ: " + getMaDichVu() +
+        return  "\nMã dịch vụ: " + getMaDichVu() +
                 "\nTên dịch vụ: " + getTenDichVu() +
                 "\nMô tả: " + getMoTa() +
                 "\nTiêu chuẩn phòng: " + getTieuChuanPhong() +
@@ -69,6 +69,6 @@ public class Villa extends DichVu {
                 "\nSố lượng người tối đa: " + getSoLuongNguoi() + " nguoi" +
                 "\nKiểu thuê: " + getKieuThue() +
                 "\nDiện tích hồ bơi: " + getDienTichHoBoi() + " m^2" +
-                "\nSố tầng:" + getSoTang() + " tang";
+                "\nSố tầng: " + getSoTang() + " tang\n";
     }
 }

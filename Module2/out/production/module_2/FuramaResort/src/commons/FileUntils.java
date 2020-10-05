@@ -29,7 +29,6 @@ public class FileUntils {
 
             while ((line = bufferedReader.readLine()) != null) {
                 listLine.add(line);
-
             }
             bufferedReader.close();
 

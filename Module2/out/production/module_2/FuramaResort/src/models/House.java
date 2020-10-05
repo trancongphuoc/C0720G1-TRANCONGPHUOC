@@ -5,7 +5,8 @@ public class House extends DichVu {
     private String moTa;
     private int soTang;
 
-    public House(String maDichVu, String tenDichVu, float dienTichSuDung, int chiPhiThue, int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTa, int soTang) {
+    public House(String maDichVu, String tenDichVu, float dienTichSuDung, int chiPhiThue,
+                 int soLuongNguoi, String kieuThue, String tieuChuanPhong, String moTa, int soTang) {
         super(maDichVu, tenDichVu, dienTichSuDung, chiPhiThue, soLuongNguoi, kieuThue);
         this.tieuChuanPhong = tieuChuanPhong;
         this.moTa = moTa;
@@ -48,14 +49,14 @@ public class House extends DichVu {
 
     @Override
     public String showInfo() {
-        return "Mã dịch vụ: " + getMaDichVu() +
-                "Tên dịch vụ: " + getTenDichVu() +
+        return "\nMã dịch vụ: " + getMaDichVu() +
+                "\nTên dịch vụ: " + getTenDichVu() +
                 "\nMô tả: " + getMoTa() +
                 "\nTiêu chuẩn phòng: " + getTieuChuanPhong() +
-                "\nDiện tích sử dụng: " + getDienTichSuDung() +
-                "\nChi phí thuê: " + getChiPhiThue() +
-                "\nSố lượng người tối đa: " + getSoLuongNguoi() +
+                "\nDiện tích sử dụng: " + getDienTichSuDung() + " m^2" +
+                "\nChi phí thuê: " + getChiPhiThue() + " $" +
+                "\nSố lượng người tối đa: " + getSoLuongNguoi() + " nguoi" +
                 "\nKiểu thuê: " + getKieuThue() +
-                "\nSố tầng:" + getSoTang();
+                "\nSố tầng:" + getSoTang() + "tang\n";
     }
 }

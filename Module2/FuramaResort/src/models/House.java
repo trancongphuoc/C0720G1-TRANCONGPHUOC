@@ -49,7 +49,7 @@ public class House extends DichVu {
 
     @Override
     public String showInfo() {
-        return "Mã dịch vụ: " + getMaDichVu() +
+        return "\nMã dịch vụ: " + getMaDichVu() +
                 "\nTên dịch vụ: " + getTenDichVu() +
                 "\nMô tả: " + getMoTa() +
                 "\nTiêu chuẩn phòng: " + getTieuChuanPhong() +
@@ -57,6 +57,6 @@ public class House extends DichVu {
                 "\nChi phí thuê: " + getChiPhiThue() + " $" +
                 "\nSố lượng người tối đa: " + getSoLuongNguoi() + " nguoi" +
                 "\nKiểu thuê: " + getKieuThue() +
-                "\nSố tầng:" + getSoTang() + "tang";
+                "\nSố tầng:" + getSoTang() + "tang\n";
     }
 }
