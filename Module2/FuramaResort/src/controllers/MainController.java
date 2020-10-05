@@ -1,5 +1,6 @@
 package controllers;
 
+import com.sun.security.jgss.GSSUtil;
 import commons.FileUntils;
 import libs.*;
 import models.*;
@@ -9,28 +10,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainController {
-    public static final String FILE_VILLA = "src/data/villa.csv";
-    public static final String FILE_HOUSE = "src/data/house.csv";
-    public static final String FILE_ROOM = "src/data/room.csv";
-    public static final String FILE_CUSTOMER = "src/data/customer.csv";
-    public static final String FILE_BOOKING = "src/data/booking.csv";
-    public static final String FILE_EMPLOYEE = "src/data/employee.csv";
-    public static final String COMMA = ",";
-    public static String tenDichVu;
-    public static String dienTichSuDung;
-    public static String chiPhiThue;
-    public static String soLuongNguoi;
-    public static String kieuThue;
-    public static int indexCustomer = 1;
-    public static int indexVilla = 1;
-    public static int indexHouse = 1;
-    public static int indexRoom = 1;
-    public static List<KhachHang> khachHangs = new ArrayList<>();
-    public static List<Villa> villas = new ArrayList<>();
-    public static List<House> houses = new ArrayList<>();
-    public static List<Room> rooms = new ArrayList<>();
-    public static List<NhanVien> nhanViens = new ArrayList<>();
-    public static Map<String, NhanVien> nhanVienMap = new TreeMap<>();
+    private static final String FILE_VILLA = "src/data/villa.csv";
+    private static final String FILE_HOUSE = "src/data/house.csv";
+    private static final String FILE_ROOM = "src/data/room.csv";
+    private static final String FILE_CUSTOMER = "src/data/customer.csv";
+    private static final String FILE_BOOKING = "src/data/booking.csv";
+    private static final String FILE_EMPLOYEE = "src/data/employee.csv";
+    private static final String COMMA = ",";
+    private static Scanner scanner = new Scanner(System.in);
+    private static String tenDichVu;
+    private static String dienTichSuDung;
+    private static String chiPhiThue;
+    private static String soLuongNguoi;
+    private static String kieuThue;
+    private static List<KhachHang> khachHangs = new ArrayList<>();
+    private static List<Villa> villas = new ArrayList<>();
+    private static List<House> houses = new ArrayList<>();
+    private static List<Room> rooms = new ArrayList<>();
+    private static Map<String, NhanVien> nhanVienMap = new TreeMap<>();
+    private static Queue<KhachHang> khachHangQueue = new LinkedList<>();
+    private static Stack<NhanVien> nhanVienStack = new Stack<>();
 
 
     // Kiểm tra mã dịch vụ Villa.
@@ -74,7 +73,7 @@ public class MainController {
 
     // Kiểm tra diện tích hồ bơi.
     static boolean kiemTraDienTich(String dienTich) {
-        String regex = "^([3][0]+.\\d+)|([3][1-9]+.?\\d*)|([4-9]\\d+.?\\d*)|(\\d{3,}.?\\d*)$";
+        String regex = "^([3][0].\\d+)|([3][1-9].?\\d*)|([4-9]\\d.?\\d*)|(\\d{3,}.?\\d*)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(dienTich);
         return !matcher.find();
@@ -90,7 +89,7 @@ public class MainController {
 
     // Kiểm tra số lượng người thuê.
     static boolean kiemTraSoLuongNguoi(String soLuongNguoi) {
-        String regex = "^\\d|[1]\\d$";
+        String regex = "^[1-9]|[1]\\d$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(soLuongNguoi);
         return matcher.find();
@@ -174,48 +173,56 @@ public class MainController {
 
 
     // Menu Chính.
-    public static void displayMainMenu() {
+    public static void menuChinh() {
         System.out.println("----------------------------------");
-        System.out.println("1. Add New Services.");
-        System.out.println("2. Show Services.");
-        System.out.println("3. Add New Customer.");
-        System.out.println("4. Show Information of Customer.");
-        System.out.println("5. Add New Booking.");
-        System.out.println("6. Show Information of Employee.");
-        System.out.println("7. Exit.");
+        System.out.println("1. Thêm mới dịch vụ.");
+        System.out.println("2. Hiện thị danh sách dịch vụ.");
+        System.out.println("3. Thêm mới khách hàng.");
+        System.out.println("4. Hiển thị thông tin khách hàng.");
+        System.out.println("5. Đặt dịch vụ.");
+        System.out.println("6. Hiện thị thông tin nhân viên.");
+        System.out.println("7. Rạp chiếu phim.");
+        System.out.println("8. Tìm kiếm hồ sơ nhân viên");
+        System.out.println("9. Thoát.");
         System.out.println("----------------------------------");
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter choose: ");
-        int choose = scanner.nextInt();
+        System.out.print("Nhập lựa chọn của bạn: ");
+        String choose = scanner.nextLine();
         switch (choose) {
-            case 1:
-                addNewService();
-                displayMainMenu();
+            case "1":
+                themMoiDichVu();
+                menuChinh();
                 break;
-            case 2:
-                showService();
-                displayMainMenu();
+            case "2":
+                hienThiDanhSachDichVu();
+                menuChinh();
                 break;
-            case 3:
-                addNewCustomer();
-                displayMainMenu();
+            case "3":
+                themMoiKhachHang();
+                menuChinh();
                 break;
-            case 4:
-                showInformationCustomers();
-                displayMainMenu();
+            case "4":
+                hienThiThongTinKhachHang();
+                menuChinh();
                 break;
-            case 5:
-                addNewBooking();
-                displayMainMenu();
+            case "5":
+                datDichVu();
+                menuChinh();
                 break;
-            case 6:
-                showInformationOfEmployee();
-                displayMainMenu();
+            case "6":
+                hienThiThongTinNhanVien();
+                menuChinh();
                 break;
-            case 7:
+            case "7":
+                muaVeXemPhim4D();
+                menuChinh();
+            case "8":
+                timKiemHoSoNhanVien();
+                menuChinh();
+            case "9":
                 System.exit(0);
             default:
-                displayMainMenu();
+                System.err.println("Vui lòng nhập đúng lựa chọn.");
+                menuChinh();
                 break;
 
         }
@@ -226,42 +233,43 @@ public class MainController {
 
 
     // Menu Thêm dịch vụ.
-    public static void addNewService() {
-        System.out.println("1. Add New Villa");
-        System.out.println("2. Add New House");
-        System.out.println("3. Add New Room");
-        System.out.println("4. Back to menu");
-        System.out.println("5. Exit");
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter choose: ");
-        int choose = scanner.nextInt();
-        switch (choose) {
-            case 1:
-                addNewVilla();
-                addNewService();
+    public static void themMoiDichVu() {
+        System.out.println("----------------------------------");
+        System.out.println("1. Thêm mới villa.");
+        System.out.println("2. Thêm mới house.");
+        System.out.println("3. Thêm mới room.");
+        System.out.println("4. Trở lại menu chính.");
+        System.out.println("5. Thoát.");
+        System.out.println("----------------------------------");
+        System.out.print("Nhập lựa chọn của bạn: ");
+        String luaChon = scanner.nextLine();
+        switch (luaChon) {
+            case "1":
+                themDichVuVilla();
+                themMoiDichVu();
                 break;
-            case 2:
-                addNewHouse();
-                addNewService();
+            case "2":
+                themDichVuHouse();
+                themMoiDichVu();
                 break;
-            case 3:
-                addNewRoom();
-                addNewService();
+            case "3":
+                themDichVuRoom();
+                themMoiDichVu();
                 break;
-            case 4:
-                displayMainMenu();
+            case "4":
+                menuChinh();
                 break;
-            case 5:
+            case "5":
                 System.exit(0);
             default:
-                addNewService();
+                System.err.println("Vui lòng nhập đúng lựa chọn.");
+                themMoiDichVu();
                 break;
         }
     }
 
     //Thêm dịch vụ
-    public static void addService() {
-        Scanner scanner = new Scanner(System.in);
+    public static void themDichVu() {
         System.out.print("Tên dịch vụ: ");
         tenDichVu = scanner.nextLine();
         while (!kiemTraTenDichVu(tenDichVu)) {
@@ -299,8 +307,7 @@ public class MainController {
     }
 
     // Thêm dịch vụ Villa.
-    public static void addNewVilla() {
-        Scanner scanner = new Scanner(System.in);
+    public static void themDichVuVilla() {
         System.out.print("Nhập mã dịch vụ: ");
         String maDichVu = scanner.nextLine();
         boolean flag = false;
@@ -320,7 +327,7 @@ public class MainController {
             }
         }
 
-        addService();
+        themDichVu();
         System.out.print("Tiêu chuẩn phòng: ");
         String tieuChuanPhong = scanner.nextLine();
         System.out.print("Mô tả: ");
@@ -355,8 +362,7 @@ public class MainController {
     }
 
     // Thêm dịch vụ House.
-    public static void addNewHouse() {
-        Scanner scanner = new Scanner(System.in);
+    public static void themDichVuHouse() {
         System.out.print("Nhập mã dịch vụ: ");
         String maDichVu = scanner.nextLine();
         boolean flag = false;
@@ -376,7 +382,7 @@ public class MainController {
             }
         }
 
-        addService();
+        themDichVu();
         System.out.print("Tiêu chuẩn phòng: ");
         String tieuChuanPhong = scanner.nextLine();
         System.out.print("Mô tả: ");
@@ -403,8 +409,7 @@ public class MainController {
     }
 
     // Thêm dịch vụ Room.
-    public static void addNewRoom() {
-        Scanner scanner = new Scanner(System.in);
+    public static void themDichVuRoom() {
         System.out.print("Nhập mã dịch vụ: ");
         String maDichVu = scanner.nextLine();
         boolean flag = false;
@@ -424,7 +429,7 @@ public class MainController {
             }
         }
 
-        addService();
+        themDichVu();
         System.out.print("Dịch vụ miễn phí: ");
         String dichVuMienPhi = scanner.nextLine();
         Room room = new Room(maDichVu, tenDichVu, Float.parseFloat(dienTichSuDung), Integer.parseInt(chiPhiThue),
@@ -444,62 +449,61 @@ public class MainController {
 
 
     // Menu hiển thị danh sách dịch vụ
-    public static void showService() {
+    public static void hienThiDanhSachDichVu() {
         System.out.println("---------------------------------------");
-        System.out.println("1. Show all Villa.");
-        System.out.println("2. Show all House.");
-        System.out.println("3. Show all Room.");
-        System.out.println("4. Show All Name Villa Not Duplicate.");
-        System.out.println("5. Show All Name House Not Duplicate.");
-        System.out.println("6. Show All Name Name Not Duplicate.");
-        System.out.println("7. Back to menu.");
-        System.out.println("8. Exit.");
+        System.out.println("1. Hiển thị danh sách Villa.");
+        System.out.println("2. Hiện thị danh sách House.");
+        System.out.println("3. Hiện thị danh sách Room.");
+        System.out.println("4. Hiển thị danh sách Villa không trùng tên.");
+        System.out.println("5. Hiển thị danh sách House không trùng tên.");
+        System.out.println("6. Hiển thị danh sách Room không trùng tên.");
+        System.out.println("7. Trở lại.");
+        System.out.println("8. Thoát.");
         System.out.println("---------------------------------------");
+        System.out.print("Nhập lựa chọn của bạn: ");
+        String luaChon = scanner.nextLine();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter choose: ");
-        int choose = scanner.nextInt();
-
-        switch (choose) {
-            case 1:
-                showAllVilla();
-                showService();
+        switch (luaChon) {
+            case "1":
+                hienThiDanhSachVilla();
+                hienThiDanhSachDichVu();
                 break;
-            case 2:
-                showAllHouse();
-                showService();
+            case "2":
+                hienThiDanhSachHouse();
+                hienThiDanhSachDichVu();
                 break;
-            case 3:
-                showAllRoom();
-                showService();
+            case "3":
+                hienThiDanhSachRoom();
+                hienThiDanhSachDichVu();
                 break;
-            case 4:
-                showNameVillaNotDulicate();
-                showService();
+            case "4":
+                hienThiDanhSachVillaKhongTrungTen();
+                hienThiDanhSachDichVu();
                 break;
-            case 5:
-                showNameHouseNotDulicate();
-                showService();
+            case "5":
+                hienThiDanhSachHouseKhongTrungTen();
+                hienThiDanhSachDichVu();
                 break;
-            case 6:
-                showNameRoomNotDulicate();
-                showService();
+            case "6":
+                hienThiDanhSachRoomKhongTrungTen();
+                hienThiDanhSachDichVu();
                 break;
-            case 7:
-                displayMainMenu();
+            case "7":
+                menuChinh();
                 break;
-            case 8:
+            case "8":
                 System.exit(0);
             default:
-                showService();
+                System.err.println("Vui lòng nhập đúng lựa chọn.");
+                hienThiDanhSachDichVu();
                 break;
         }
     }
 
 
     // Hiện thị danh sách dịch vụ Villa.
-    public static void showAllVilla() {
-        indexVilla = 1;
+    public static void hienThiDanhSachVilla() {
+        int indexVilla = 1;
         for (Villa villa : villas) {
             System.out.println(indexVilla++ + ". " + villa.showInfo());
         }
@@ -507,8 +511,8 @@ public class MainController {
 
 
     // Hiển thị danh sách dịch vụ House.
-    public static void showAllHouse() {
-        indexHouse = 1;
+    public static void hienThiDanhSachHouse() {
+        int indexHouse = 1;
         for (House house : houses) {
             System.out.println(indexHouse++ + ". " + house.showInfo());
         }
@@ -516,15 +520,15 @@ public class MainController {
 
 
     // Hiển thị danh sách dịch vu Room.
-    public static void showAllRoom() {
-        indexRoom = 1;
+    public static void hienThiDanhSachRoom() {
+        int indexRoom = 1;
         for (Room room : rooms) {
             System.out.println(indexRoom++ + ". " + room.showInfo());
         }
     }
 
     // Hiển thị danh sách villa không trùng nhau.
-    public static void showNameVillaNotDulicate() {
+    public static void hienThiDanhSachVillaKhongTrungTen() {
         Set<String> villaSet = new TreeSet<>();
         for (Villa villa : villas) {
             villaSet.add(villa.getTenDichVu());
@@ -537,7 +541,7 @@ public class MainController {
     }
 
     // Hiển thị danh sách house không trùng nhau.
-    public static void showNameHouseNotDulicate() {
+    public static void hienThiDanhSachHouseKhongTrungTen() {
         Set<String> houseSet = new TreeSet<>();
         for (House house : houses) {
             houseSet.add(house.getTenDichVu());
@@ -550,7 +554,7 @@ public class MainController {
     }
 
     // Hiển thị danh sách room không trùng nhau.
-    public static void showNameRoomNotDulicate() {
+    public static void hienThiDanhSachRoomKhongTrungTen() {
         Set<String> roomSet = new TreeSet<>();
         for (Room room : rooms) {
             roomSet.add(room.getTenDichVu());
@@ -565,8 +569,7 @@ public class MainController {
 
 
     // Thêm khách hàng.
-    public static void addNewCustomer() {
-        Scanner scanner = new Scanner(System.in);
+    public static void themMoiKhachHang() {
         String hoVaTen = "";
         boolean flag;
         do {
@@ -685,16 +688,14 @@ public class MainController {
                 COMMA + khachHang.getcMND() + COMMA + khachHang.getSoDT() + COMMA + khachHang.getEmail() + COMMA +
                 khachHang.getLoaiKhachHang() + COMMA + khachHang.getDiaChi() + COMMA + khachHang.getDichVu();
         FileUntils.writeFile(FILE_CUSTOMER, line);
-
-
     }
 
 
     //---------------------------------------------------
 
     // Hiển thị thông tin khách hàng.
-    public static void showInformationCustomers() {
-        indexCustomer = 1;
+    public static void hienThiThongTinKhachHang() {
+        int indexCustomer = 1;
         Collections.sort(khachHangs);
         for (KhachHang khachHang : khachHangs) {
             System.out.println(indexCustomer++ + " " + khachHang.showInfo());
@@ -705,74 +706,80 @@ public class MainController {
     //---------------------------------------------------
 
     // Đặt dịch vụ.
-    public static void addNewBooking() {
-        Scanner scanner = new Scanner(System.in);
-        showInformationCustomers();
-        System.out.print("Chon khach hang: ");
-        int chooseKhachHang = scanner.nextInt();
-        System.out.println("-----------------------------");
-        System.out.println("1. Booking Villa");
-        System.out.println("2. Booking House");
-        System.out.println("3. Booking Room");
-        System.out.println("4. Back to menu");
-        System.out.println("5. Exit");
+    public static void datDichVu() {
+        try {
+            hienThiThongTinKhachHang();
+            System.out.print("Chọn khách hàng: ");
+            String chonKhachHang = scanner.nextLine();
+            System.out.println("-----------------------------");
+            System.out.println("1. Đặt dịch vụ Villa");
+            System.out.println("2. Đặt dịch vụ House");
+            System.out.println("3. Đặt dịch vụ Room");
+            System.out.println("4. Trở lại");
+            System.out.println("5. Thoát");
 
-        System.out.println("Enter choose");
-        int choose = scanner.nextInt();
-        switch (choose) {
-            case 1:
-                showAllVilla();
-                System.out.print("Chọn villa mà bạn muốn: ");
-                int chooseVilla = scanner.nextInt();
-                khachHangs.get(chooseKhachHang - 1).setDichVu(villas.get(chooseVilla - 1));
+            System.out.println("Nhập lựa chọn của bạn");
+            String luaChon = scanner.nextLine();
+            switch (luaChon) {
+                case "1":
+                    hienThiDanhSachVilla();
+                    System.out.print("Chọn villa mà bạn muốn đặt: ");
+                    String chooseVilla = scanner.nextLine();
+                    khachHangs.get(Integer.parseInt(chonKhachHang) - 1).setDichVu(villas.get(Integer.parseInt(chooseVilla) - 1));
 
-                writeInFile(chooseKhachHang);
-                break;
-            case 2:
-                showAllHouse();
-                System.out.print("Chon House ma ban muon: ");
-                int chooseHouse = scanner.nextInt();
-                khachHangs.get(chooseKhachHang - 1).setDichVu(houses.get(chooseHouse - 1));
+                    themThongTimVaoFile(Integer.parseInt(chonKhachHang));
+                    datDichVu();
+                    break;
+                case "2":
+                    hienThiDanhSachHouse();
+                    System.out.print("Chọn House mà bạn muốn đặt: ");
+                    String chooseHouse = scanner.nextLine();
+                    khachHangs.get(Integer.parseInt(chonKhachHang) - 1).setDichVu(houses.get(Integer.parseInt(chooseHouse) - 1));
 
-                writeInFile(chooseKhachHang);
-                break;
-            case 3:
-                showAllRoom();
-                System.out.print("Chon Villa ma ban muon: ");
-                int chooseRoom = scanner.nextInt();
-                khachHangs.get(chooseKhachHang - 1).setDichVu(rooms.get(chooseRoom - 1));
+                    themThongTimVaoFile(Integer.parseInt(chonKhachHang));
+                    datDichVu();
+                    break;
+                case "3":
+                    hienThiDanhSachRoom();
+                    System.out.print("Chọn Villa mà bạn muốn đặt: ");
+                    String chooseRoom = scanner.nextLine();
+                    khachHangs.get(Integer.parseInt(chonKhachHang) - 1).setDichVu(rooms.get(Integer.parseInt(chooseRoom) - 1));
 
-                writeInFile(chooseKhachHang);
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-            case 5:
-                System.exit(0);
-            default:
-                break;
+                    themThongTimVaoFile(Integer.parseInt(chonKhachHang));
+                    datDichVu();
+                    break;
+                case "4":
+                    menuChinh();
+                    break;
+                case "5":
+                    System.exit(0);
+                default:
+                    datDichVu();
+                    break;
+            }
+        }catch (IndexOutOfBoundsException e) {
+            System.err.println("Vui lòng nhập đúng lựa chọn");
         }
     }
 
-    private static void writeInFile(int chooseKhachHang) {
+    private static void themThongTimVaoFile(int chonKhachHang) {
         String line;
-        line = khachHangs.get(chooseKhachHang - 1).getHoVaTen() + COMMA + khachHangs.get(chooseKhachHang - 1).getNgaySinh() + COMMA + khachHangs.get(chooseKhachHang - 1).getGioiTinh() +
-                COMMA + khachHangs.get(chooseKhachHang - 1).getcMND() + COMMA + khachHangs.get(chooseKhachHang - 1).getSoDT() + COMMA + khachHangs.get(chooseKhachHang - 1).getEmail() + COMMA +
-                khachHangs.get(chooseKhachHang - 1).getLoaiKhachHang() + COMMA + khachHangs.get(chooseKhachHang - 1).getDiaChi() + COMMA + khachHangs.get(chooseKhachHang - 1).getDichVu().showInfo();
+        line = khachHangs.get(chonKhachHang - 1).getHoVaTen() + COMMA + khachHangs.get(chonKhachHang - 1).getNgaySinh() + COMMA + khachHangs.get(chonKhachHang - 1).getGioiTinh() +
+                COMMA + khachHangs.get(chonKhachHang - 1).getcMND() + COMMA + khachHangs.get(chonKhachHang - 1).getSoDT() + COMMA + khachHangs.get(chonKhachHang - 1).getEmail() + COMMA +
+                khachHangs.get(chonKhachHang - 1).getLoaiKhachHang() + COMMA + khachHangs.get(chonKhachHang - 1).getDiaChi() + COMMA + khachHangs.get(chonKhachHang - 1).getDichVu().showInfo();
         FileUntils.writeFile(FILE_BOOKING, line);
     }
 
     //----------------------------------------------------
 
-    public static void showInformationOfEmployee() {
-
+    public static void hienThiThongTinNhanVien() {
         for (String key : nhanVienMap.keySet()) {
             System.out.println(key + " " + nhanVienMap.get(key));
         }
-
+        menuChinh();
     }
 
-    private static void takeDataEmployee() {
+    private static void layThongTinNhanVienTuFile() {
         List<String> listLine = FileUntils.readFile(FILE_EMPLOYEE);
         for (String line : listLine) {
             String[] split = line.split(",");
@@ -780,28 +787,127 @@ public class MainController {
                 NhanVien nhanVien = new NhanVien(split[0], split[1], split[2], split[3], Long.parseLong(split[4]),
                         Long.parseLong(split[5]), split[6], split[7], split[8], Long.parseLong(split[9]));
                 nhanVienMap.put(split[0], nhanVien);
+                nhanVienStack.push(nhanVien);
             }
+        }
+    }
 
+    //----------------------------------------------------
+
+    public static void muaVeXemPhim4D() {
+        try {
+            System.out.println("--------------------------------");
+            System.out.println("1. Mua vé.");
+            System.out.println("2. Danh sách mua vé.");
+            System.out.println("3. Trở lại.");
+            System.out.println("4. Thoát.");
+            System.out.println("--------------------------------");
+            System.out.print("Nhập lựa chọn của bạn: ");
+            String luaChon = scanner.nextLine();
+            switch (luaChon) {
+                case "1":
+                    hienThiThongTinKhachHang();
+                    System.out.print("Nhập khách hàng muốn mua vé: ");
+                    String chonKhachHang = scanner.nextLine();
+                    khachHangQueue.add(khachHangs.get(Integer.parseInt(chonKhachHang) - 1));
+                    muaVeXemPhim4D();
+                    break;
+                case "2":
+                    int size = khachHangQueue.size();
+                    for (int i = 0; i < size; i++) {
+                        System.out.println(khachHangQueue.poll().getHoVaTen());
+                    }
+                    muaVeXemPhim4D();
+                    break;
+                case "3":
+                    menuChinh();
+                    break;
+                case "4":
+                    System.exit(0);
+                    break;
+                default:
+                    muaVeXemPhim4D();
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Vui lòng nhập đúng lựa chọn");
+        }
+    }
+
+    //---------------------------------------------------
+
+    public static void timKiemHoSoNhanVien() {
+        boolean flag;
+        int size = nhanVienStack.size();
+        System.out.println("-----------------------------------");
+        System.out.println("1. Tìm kiếm theo tên nhân viên.");
+        System.out.println("2. Tìm kiếm theo id nhân viên.");
+        System.out.println("3. Trở lại.");
+        System.out.println("4. Thoát.");
+        System.out.println("-----------------------------------");
+        System.out.print("Nhập lựa chọn của bạn: ");
+        String luaChon = scanner.nextLine();
+        switch (luaChon) {
+            case "1":
+                flag = false;
+                System.out.println("Nhập tên nhân viên muốn tìm");
+                String tenNhanVien = scanner.nextLine();
+                for (int i = 0; i < size; i++) {
+                    if (nhanVienStack.peek().getHoVaTen().equals(tenNhanVien)) {
+                        System.out.println(nhanVienStack.pop());
+                        flag = true;
+                        continue;
+                    }
+                    nhanVienStack.pop();
+                }
+                if (!flag) {
+                    System.err.println("Không có nhân viên bạn muốn tìm");
+                }
+                timKiemHoSoNhanVien();
+                break;
+            case "2":
+                flag = false;
+                System.out.println("Nhập tên nhân viên muốn tìm");
+                String iDEmployee = scanner.nextLine();
+                for (int i = 0; i < size; i++) {
+                    if (nhanVienStack.peek().getMaNhanVien().equals(iDEmployee)) {
+                        System.out.println(nhanVienStack.pop());
+                        flag = true;
+                        continue;
+                    }
+                    nhanVienStack.pop();
+                }
+                if (!flag) {
+                    System.err.println("Không có nhân viên bạn muốn tìm");
+                }
+                timKiemHoSoNhanVien();
+            case "3":
+                menuChinh();
+                break;
+            case "4":
+                System.exit(0);
+            default:
+                System.err.println("Vui lòng nhập đúng lựa chọn.");
+                timKiemHoSoNhanVien();
         }
     }
 
     //----------------------------------------------------
 
     public static void main(String[] args) {
-        readFileVilla();
-        readFileHouse();
-        readFileRoom();
-        readCustomer();
-        takeDataEmployee();
+        layThongTinVillasTuFile();
+        layThongTinHousesTuFile();
+        layThongTinRoomsTuFile();
+        layThongTinKhachHangTuFile();
+        layThongTinNhanVienTuFile();
 //        NhanVien nhanVien = new NhanVien("Nguyễn Thị Thu" , "25/09/1996", "Đà Nẵng", 994000059, 358665325, "sorake.1996@gmail.com", "Đại học", "Quản lí", 100000);
 //        String line;
 //        line = nhanVien.getHoVaTen() + COMMA + nhanVien.getNgaySinh() + COMMA +
 //                nhanVien.getDiaChi() + COMMA + nhanVien.getcMND() + COMMA + nhanVien.getSoDienThoai() + COMMA + nhanVien.getEmail() + COMMA + nhanVien.getTrinhDo() + COMMA + nhanVien.getViTri() + COMMA + nhanVien.getLuong();
 //        FileUntils.writeFile(FILE_EMPLOYEE,line);
-        displayMainMenu();
+        menuChinh();
     }
 
-    private static void readFileVilla() {
+    private static void layThongTinVillasTuFile() {
         List<String> listLine = FileUntils.readFile(FILE_VILLA);
         for (String line : listLine) {
             String[] split = line.split(",");
@@ -813,7 +919,7 @@ public class MainController {
         }
     }
 
-    private static void readFileHouse() {
+    private static void layThongTinHousesTuFile() {
         List<String> listLine = FileUntils.readFile(FILE_HOUSE);
         for (String line : listLine) {
             String[] split = line.split(",");
@@ -825,7 +931,7 @@ public class MainController {
         }
     }
 
-    private static void readFileRoom() {
+    private static void layThongTinRoomsTuFile() {
         List<String> listLine = FileUntils.readFile(FILE_ROOM);
         for (String line : listLine) {
             String[] split = line.split(",");
@@ -837,7 +943,7 @@ public class MainController {
         }
     }
 
-    private static void readCustomer() {
+    private static void layThongTinKhachHangTuFile() {
         List<String> listline = FileUntils.readFile(FILE_CUSTOMER);
         for (String list : listline) {
             String[] split = list.split(",");

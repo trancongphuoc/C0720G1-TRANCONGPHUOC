@@ -8,6 +8,7 @@ public class Test {
     public static final String FILE_DAT = "src/java17_binary_file/exercise/product_management/PRODUCT.DAT";
     static List<Product> products = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
+
     public static void addProduct() {
         System.out.print("Nhập mã sản phẩm: ");
         String maSanPham = scanner.nextLine();
@@ -21,17 +22,18 @@ public class Test {
         System.out.print("Mô tả sản phẩm: ");
         String moTa = scanner.nextLine();
 
-        Product product = new Product(maSanPham,tenSanPham,hangSanPham,Float.parseFloat(giaTien),moTa);
+        Product product = new Product(maSanPham, tenSanPham, hangSanPham, Float.parseFloat(giaTien), moTa);
 
-        IOFile.writeInFile(FILE_DAT, products,product);
+        IOFile.writeInFile(FILE_DAT, products, product);
     }
 
     public static void findProduct() {
+
         System.out.println("1. Tìm kiếm sản phẩm theo tên.");
         System.out.println("2. Tìm kiếm sản phẩm theo id.");
         System.out.println("3. Trở lại");
         System.out.println("4. Thoát");
-
+        System.out.println("-----------------------------------------------");
         System.out.print("Nhập lựa chọn của bạn: ");
         String choose = scanner.nextLine();
         switch (Integer.parseInt(choose)) {
@@ -74,10 +76,12 @@ public class Test {
     }
 
     public static void mainMenu() {
+        System.out.println("--------------------------------------------");
         System.out.println("1. Thêm mới sản phẩm");
         System.out.println("2. Hiển thị danh sách sản phẩm");
         System.out.println("3. Tìm kiếm sản phẩm");
         System.out.println("4. Thoát.");
+        System.out.println("---------------------------------");
 
         System.out.print("Nhập lựa chọn của bạn: ");
         String choose = scanner.nextLine();
@@ -98,11 +102,9 @@ public class Test {
     }
 
 
-
     public static void main(String[] args) {
         IOFile.takeData(FILE_DAT, products);
         mainMenu();
-
 
 
     }

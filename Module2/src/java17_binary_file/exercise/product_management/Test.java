@@ -28,11 +28,12 @@ public class Test {
     }
 
     public static void findProduct() {
+
         System.out.println("1. Tìm kiếm sản phẩm theo tên.");
         System.out.println("2. Tìm kiếm sản phẩm theo id.");
         System.out.println("3. Trở lại");
         System.out.println("4. Thoát");
-
+        System.out.println("-----------------------------------------------");
         System.out.print("Nhập lựa chọn của bạn: ");
         String choose = scanner.nextLine();
         switch (Integer.parseInt(choose)) {
@@ -75,10 +76,12 @@ public class Test {
     }
 
     public static void mainMenu() {
+        System.out.println("--------------------------------------------");
         System.out.println("1. Thêm mới sản phẩm");
         System.out.println("2. Hiển thị danh sách sản phẩm");
         System.out.println("3. Tìm kiếm sản phẩm");
         System.out.println("4. Thoát.");
+        System.out.println("---------------------------------");
 
         System.out.print("Nhập lựa chọn của bạn: ");
         String choose = scanner.nextLine();

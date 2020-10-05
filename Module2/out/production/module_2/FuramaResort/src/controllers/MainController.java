@@ -29,7 +29,7 @@ public class MainController {
     public static List<Villa> villas = new ArrayList<>();
     public static List<House> houses = new ArrayList<>();
     public static List<Room> rooms = new ArrayList<>();
-    public static List<NhanVien> nhanViens = new ArrayList<>();
+//    public static List<NhanVien> nhanViens = new ArrayList<>();
     public static Map<String, NhanVien> nhanVienMap = new TreeMap<>();
 
 
@@ -74,7 +74,7 @@ public class MainController {
 
     // Kiểm tra diện tích hồ bơi.
     static boolean kiemTraDienTich(String dienTich) {
-        String regex = "^([3][0]+.\\d+)|([3][1-9]+.?\\d*)|([4-9]\\d+.?\\d*)|(\\d{3,}.?\\d*)$";
+        String regex = "^([3][0].\\d+)|([3][1-9].?\\d*)|([4-9]\\d.?\\d*)|(\\d{3,}.?\\d*)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(dienTich);
         return !matcher.find();
@@ -90,7 +90,7 @@ public class MainController {
 
     // Kiểm tra số lượng người thuê.
     static boolean kiemTraSoLuongNguoi(String soLuongNguoi) {
-        String regex = "^\\d|[1]\\d$";
+        String regex = "^[1-9]|[1]\\d$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(soLuongNguoi);
         return matcher.find();
@@ -176,43 +176,43 @@ public class MainController {
     // Menu Chính.
     public static void displayMainMenu() {
         System.out.println("----------------------------------");
-        System.out.println("1. Add New Services.");
-        System.out.println("2. Show Services.");
-        System.out.println("3. Add New Customer.");
-        System.out.println("4. Show Information of Customer.");
-        System.out.println("5. Add New Booking.");
-        System.out.println("6. Show Information of Employee.");
-        System.out.println("7. Exit.");
+        System.out.println("1. Thêm mới dịch vụ.");
+        System.out.println("2. Hiện thị danh sách dịch vụ.");
+        System.out.println("3. Thêm mới khách hàng.");
+        System.out.println("4. Hiển thị thông tin khách hàng.");
+        System.out.println("5. Đặt dịch vụ.");
+        System.out.println("6. Hiện thị thông tin nhân viên.");
+        System.out.println("7. Thoát.");
         System.out.println("----------------------------------");
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter choose: ");
-        int choose = scanner.nextInt();
+        System.out.print("Nhập lựa chọn của bạn: ");
+        String choose = scanner.nextLine();
         switch (choose) {
-            case 1:
+            case "1":
                 addNewService();
                 displayMainMenu();
                 break;
-            case 2:
+            case "2":
                 showService();
                 displayMainMenu();
                 break;
-            case 3:
+            case "3":
                 addNewCustomer();
                 displayMainMenu();
                 break;
-            case 4:
+            case "4":
                 showInformationCustomers();
                 displayMainMenu();
                 break;
-            case 5:
+            case "5":
                 addNewBooking();
                 displayMainMenu();
                 break;
-            case 6:
+            case "6":
                 showInformationOfEmployee();
                 displayMainMenu();
                 break;
-            case 7:
+            case "7":
                 System.exit(0);
             default:
                 displayMainMenu();
@@ -227,31 +227,31 @@ public class MainController {
 
     // Menu Thêm dịch vụ.
     public static void addNewService() {
-        System.out.println("1. Add New Villa");
-        System.out.println("2. Add New House");
-        System.out.println("3. Add New Room");
-        System.out.println("4. Back to menu");
-        System.out.println("5. Exit");
+        System.out.println("1. Thêm mới villa.");
+        System.out.println("2. Thêm mới house.");
+        System.out.println("3. Thêm mới room.");
+        System.out.println("4. Trở lại menu chính.");
+        System.out.println("5. Thoát.");
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter choose: ");
-        int choose = scanner.nextInt();
+        System.out.print("Nhập lựa chọn của bạn: ");
+        String choose = scanner.nextLine();
         switch (choose) {
-            case 1:
+            case "1":
                 addNewVilla();
                 addNewService();
                 break;
-            case 2:
+            case "2":
                 addNewHouse();
                 addNewService();
                 break;
-            case 3:
+            case "3":
                 addNewRoom();
                 addNewService();
                 break;
-            case 4:
+            case "4":
                 displayMainMenu();
                 break;
-            case 5:
+            case "5":
                 System.exit(0);
             default:
                 addNewService();
@@ -446,49 +446,49 @@ public class MainController {
     // Menu hiển thị danh sách dịch vụ
     public static void showService() {
         System.out.println("---------------------------------------");
-        System.out.println("1. Show all Villa.");
-        System.out.println("2. Show all House.");
-        System.out.println("3. Show all Room.");
-        System.out.println("4. Show All Name Villa Not Duplicate.");
-        System.out.println("5. Show All Name House Not Duplicate.");
-        System.out.println("6. Show All Name Name Not Duplicate.");
-        System.out.println("7. Back to menu.");
-        System.out.println("8. Exit.");
+        System.out.println("1. Hiển thị danh sách Villa.");
+        System.out.println("2. Hiện thị danh sách House.");
+        System.out.println("3. Hiện thị danh sách Room.");
+        System.out.println("4. Hiển thị danh sách Villa không trùng tên.");
+        System.out.println("5. Hiển thị danh sách House không trùng tên.");
+        System.out.println("6. Hiển thị danh sách Room không trùng tên.");
+        System.out.println("7. Trở lại.");
+        System.out.println("8. Thoát.");
         System.out.println("---------------------------------------");
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter choose: ");
-        int choose = scanner.nextInt();
+        System.out.print("Nhập lựa chọn của bạn: ");
+        String choose = scanner.nextLine();
 
         switch (choose) {
-            case 1:
+            case "1":
                 showAllVilla();
                 showService();
                 break;
-            case 2:
+            case "2":
                 showAllHouse();
                 showService();
                 break;
-            case 3:
+            case "3":
                 showAllRoom();
                 showService();
                 break;
-            case 4:
+            case "4":
                 showNameVillaNotDulicate();
                 showService();
                 break;
-            case 5:
+            case "5":
                 showNameHouseNotDulicate();
                 showService();
                 break;
-            case 6:
+            case "6":
                 showNameRoomNotDulicate();
                 showService();
                 break;
-            case 7:
+            case "7":
                 displayMainMenu();
                 break;
-            case 8:
+            case "8":
                 System.exit(0);
             default:
                 showService();
@@ -708,48 +708,49 @@ public class MainController {
     public static void addNewBooking() {
         Scanner scanner = new Scanner(System.in);
         showInformationCustomers();
-        System.out.print("Chon khach hang: ");
+        System.out.print("Chọn khách hàng: ");
         int chooseKhachHang = scanner.nextInt();
         System.out.println("-----------------------------");
-        System.out.println("1. Booking Villa");
-        System.out.println("2. Booking House");
-        System.out.println("3. Booking Room");
-        System.out.println("4. Back to menu");
-        System.out.println("5. Exit");
+        System.out.println("1. Đặt dịch vụ Villa");
+        System.out.println("2. Đặt dịch vụ House");
+        System.out.println("3. Đặt dịch vụ Room");
+        System.out.println("4. Trở lại");
+        System.out.println("5. Thoát");
 
-        System.out.println("Enter choose");
-        int choose = scanner.nextInt();
+        System.out.println("Nhập lựa chọn của bạn");
+        String choose = scanner.nextLine();
         switch (choose) {
-            case 1:
+            case "1":
                 showAllVilla();
-                System.out.print("Chọn villa mà bạn muốn: ");
+                System.out.print("Chọn villa mà bạn muốn đặt: ");
                 int chooseVilla = scanner.nextInt();
                 khachHangs.get(chooseKhachHang - 1).setDichVu(villas.get(chooseVilla - 1));
 
                 writeInFile(chooseKhachHang);
                 break;
-            case 2:
+            case "2":
                 showAllHouse();
-                System.out.print("Chon House ma ban muon: ");
+                System.out.print("Chọn House mà bạn muốn đặt: ");
                 int chooseHouse = scanner.nextInt();
                 khachHangs.get(chooseKhachHang - 1).setDichVu(houses.get(chooseHouse - 1));
 
                 writeInFile(chooseKhachHang);
                 break;
-            case 3:
+            case "3":
                 showAllRoom();
-                System.out.print("Chon Villa ma ban muon: ");
+                System.out.print("Chọn Villa mà bạn muốn đặt: ");
                 int chooseRoom = scanner.nextInt();
                 khachHangs.get(chooseKhachHang - 1).setDichVu(rooms.get(chooseRoom - 1));
 
                 writeInFile(chooseKhachHang);
                 break;
-            case 4:
+            case "4":
                 displayMainMenu();
                 break;
-            case 5:
+            case "5":
                 System.exit(0);
             default:
+                addNewBooking();
                 break;
         }
     }
