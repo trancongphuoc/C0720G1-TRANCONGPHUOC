@@ -68,12 +68,6 @@ public abstract class DichVu {
         this.kieuThue = kieuThue;
     }
 
-    public void massage() {}
-    public  void karaoke() {}
-    public  void thucAn() {}
-    public  void nuocUong() {}
-    public  void thueXe() {}
-
     public abstract String showInfo();
 
 }

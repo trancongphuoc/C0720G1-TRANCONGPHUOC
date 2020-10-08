@@ -1,6 +1,5 @@
 package controllers;
 
-import com.sun.security.jgss.GSSUtil;
 import commons.FileUntils;
 import libs.*;
 import models.*;
@@ -31,9 +30,8 @@ public class MainController {
     private static Queue<KhachHang> khachHangQueue = new LinkedList<>();
     private static Stack<NhanVien> nhanVienStack = new Stack<>();
 
-
     // Kiểm tra mã dịch vụ Villa.
-    static boolean kiemTraIDVL(String id) {
+    private static boolean kiemTraIDVL(String id) {
         String regex = "SVVL-\\d{4}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(id);
@@ -41,7 +39,7 @@ public class MainController {
     }
 
     // Kiểm tra mã dịch vụ HOUSE.
-    static boolean kiemTraIDRO(String id) {
+    private static boolean kiemTraIDRO(String id) {
         String regex = "SVRO-\\d{4}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(id);
@@ -49,7 +47,7 @@ public class MainController {
     }
 
     // Kiểm tra mã dịch vụ ROOM.
-    static boolean kiemTraIDHO(String id) {
+    private static boolean kiemTraIDHO(String id) {
         String regex = "SVHO-\\d{4}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(id);
@@ -57,14 +55,15 @@ public class MainController {
     }
 
     // Kiểm tra tên.
-    static void kiemTraTen(String ten) throws NameException {
+    private static void kiemTraTen(String ten) throws NameException {
         String regex = "^[A-Z][a-z]+(\\s[A-Z][a-z]+)*$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(ten);
         if (!matcher.find()) throw new NameException("Nhập lại tên đúng định dạng.");
     }
 
-    static boolean kiemTraTenDichVu(String ten) {
+    // Kiểm tra tên dịch vụ
+    private static boolean kiemTraTenDichVu(String ten) {
         String regex = "^[A-Z][a-z]+(\\s[A-Z][a-z]+)*$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(ten);
@@ -72,15 +71,15 @@ public class MainController {
     }
 
     // Kiểm tra diện tích hồ bơi.
-    static boolean kiemTraDienTich(String dienTich) {
-        String regex = "^([3][0].\\d+)|([3][1-9].?\\d*)|([4-9]\\d.?\\d*)|(\\d{3,}.?\\d*)$";
+    private static boolean kiemTraDienTich(String dienTich) {
+        String regex = "^([3][0]\\.\\d+)|([3][1-9]\\.?\\d*)|([4-9]\\d\\.?\\d*)|(\\d{3,}\\.?\\d*)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(dienTich);
         return !matcher.find();
     }
 
     // Kiểm tra chi phí thuê.
-    static boolean kiemTraChiPhi(String chiPhi) {
+    private static boolean kiemTraChiPhi(String chiPhi) {
         String regex = "^[1-9]\\d*$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(chiPhi);
@@ -88,7 +87,7 @@ public class MainController {
     }
 
     // Kiểm tra số lượng người thuê.
-    static boolean kiemTraSoLuongNguoi(String soLuongNguoi) {
+    private static boolean kiemTraSoLuongNguoi(String soLuongNguoi) {
         String regex = "^[1-9]|[1]\\d$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(soLuongNguoi);
@@ -104,15 +103,15 @@ public class MainController {
 //    }
 
     // Kiểm tra ngày sinh.
-    static void kiemTraNgaySinh(String ngaySinh) throws NgaySinhException {
-        String regex = "^([0][1-9]|[12][0-9]|[3][01])/([0][1-9]|[1][012])/([2][0][0]([1]|[2]|[0])|[1][9]\\d{2})$";
+    private static void kiemTraNgaySinh(String ngaySinh) throws NgaySinhException {
+        String regex = "^([0][1-9]|[12][0-9]|[3][01])/([0][1-9]|[1][012])/([2][0][0]([012])|[1][9]\\d{2})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(ngaySinh);
         if (!matcher.find()) throw new NgaySinhException("Nhập lại ngày sinh đúng định dạng.");
     }
 
     // Kiểm tra số tầng.
-    static boolean kiemTraSoTang(String soTang) {
+    private static boolean kiemTraSoTang(String soTang) {
         String regex = "^[1-9]$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(soTang);
@@ -120,7 +119,7 @@ public class MainController {
     }
 
     // Kiểm tra kiểu thuê.
-    static boolean kiemTraKieuThue(String kieuThue) {
+    private static boolean kiemTraKieuThue(String kieuThue) {
         String regex = "^(gio|ngay|tuan|thang|nam|Gio|Ngay|Tuan|Thang|Nam|Giờ|Ngày|Tuần|Tháng|Năm|giờ|ngày|tuần|tháng|năm)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(kieuThue);
@@ -128,7 +127,7 @@ public class MainController {
     }
 
     // Kiểm tra giới tính.
-    static void kiemTraGioiTinh(String gioiTinh) throws GenderException {
+    private static void kiemTraGioiTinh(String gioiTinh) throws GenderException {
         String regex = "^(nam|nu|Nam|Nu|bede|Bede|nữ|Nữ)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(gioiTinh);
@@ -136,7 +135,7 @@ public class MainController {
     }
 
     // Kiểm tra số chứng minh.
-    static void kiemTraCMND(String cMND) throws IDCardException {
+    private static void kiemTraCMND(String cMND) throws IDCardException {
         String regex = "^\\d{9}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(cMND);
@@ -144,7 +143,7 @@ public class MainController {
     }
 
     // Kiểm tra số điện thoại.
-    static void kiemTraSoDienThoai(String soDienThoai) throws NumberPhoneException {
+    private static void kiemTraSoDienThoai(String soDienThoai) throws NumberPhoneException {
         String regex = "^\\d{10}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(soDienThoai);
@@ -152,8 +151,8 @@ public class MainController {
     }
 
     // Kiểm tra email.
-    static void kiemTraEmail(String email) throws EmailException {
-        String regex = "^\\w{3,}(.?\\w+)*@[a-z]{2,7}(.[a-z]{2,5}){1,3}$";
+    private static void kiemTraEmail(String email) throws EmailException {
+        String regex = "^\\w{3,}(\\.?\\w+)*@[a-z]{2,7}(.[a-z]{2,5}){1,3}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         if (!matcher.find()) throw new EmailException("Nhập lại email đúng định dạng");
@@ -161,7 +160,7 @@ public class MainController {
     }
 
     // Kiểm tra loại khách hàng.
-    static void kiemTraLoaiKhachHang(String loaiKhachHang) throws CustomerException {
+    private static void kiemTraLoaiKhachHang(String loaiKhachHang) throws CustomerException {
         String regex = "^(member|sliver|gold|platinium|diamond|Member|Sliver|Gold|Platinium|Diamond)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(loaiKhachHang);
@@ -728,7 +727,6 @@ public class MainController {
                     khachHangs.get(Integer.parseInt(chonKhachHang) - 1).setDichVu(villas.get(Integer.parseInt(chooseVilla) - 1));
 
                     themThongTimVaoFile(Integer.parseInt(chonKhachHang));
-                    datDichVu();
                     break;
                 case "2":
                     hienThiDanhSachHouse();
@@ -737,7 +735,6 @@ public class MainController {
                     khachHangs.get(Integer.parseInt(chonKhachHang) - 1).setDichVu(houses.get(Integer.parseInt(chooseHouse) - 1));
 
                     themThongTimVaoFile(Integer.parseInt(chonKhachHang));
-                    datDichVu();
                     break;
                 case "3":
                     hienThiDanhSachRoom();
@@ -746,7 +743,6 @@ public class MainController {
                     khachHangs.get(Integer.parseInt(chonKhachHang) - 1).setDichVu(rooms.get(Integer.parseInt(chooseRoom) - 1));
 
                     themThongTimVaoFile(Integer.parseInt(chonKhachHang));
-                    datDichVu();
                     break;
                 case "4":
                     menuChinh();
@@ -770,7 +766,7 @@ public class MainController {
         FileUntils.writeFile(FILE_BOOKING, line);
     }
 
-    //----------------------------------------------------
+    //---------------------------------------------------
 
     public static void hienThiThongTinNhanVien() {
         for (String key : nhanVienMap.keySet()) {
@@ -779,23 +775,11 @@ public class MainController {
         menuChinh();
     }
 
-    private static void layThongTinNhanVienTuFile() {
-        List<String> listLine = FileUntils.readFile(FILE_EMPLOYEE);
-        for (String line : listLine) {
-            String[] split = line.split(",");
-            if (split.length != 1) {
-                NhanVien nhanVien = new NhanVien(split[0], split[1], split[2], split[3], Long.parseLong(split[4]),
-                        Long.parseLong(split[5]), split[6], split[7], split[8], Long.parseLong(split[9]));
-                nhanVienMap.put(split[0], nhanVien);
-                nhanVienStack.push(nhanVien);
-            }
-        }
-    }
 
     //----------------------------------------------------
 
     public static void muaVeXemPhim4D() {
-        try {
+
             System.out.println("--------------------------------");
             System.out.println("1. Mua vé.");
             System.out.println("2. Danh sách mua vé.");
@@ -807,13 +791,20 @@ public class MainController {
             switch (luaChon) {
                 case "1":
                     hienThiThongTinKhachHang();
+                    try {
                     System.out.print("Nhập khách hàng muốn mua vé: ");
                     String chonKhachHang = scanner.nextLine();
                     khachHangQueue.add(khachHangs.get(Integer.parseInt(chonKhachHang) - 1));
+                    } catch (IndexOutOfBoundsException e) {
+                        System.err.println("Vui lòng nhập đúng lựa chọn");
+                    }
                     muaVeXemPhim4D();
                     break;
                 case "2":
                     int size = khachHangQueue.size();
+                    if (size == 0) {
+                        System.err.println("Chưa có ai mua vé.");
+                    }
                     for (int i = 0; i < size; i++) {
                         System.out.println(khachHangQueue.poll().getHoVaTen());
                     }
@@ -828,12 +819,10 @@ public class MainController {
                 default:
                     muaVeXemPhim4D();
             }
-        } catch (IndexOutOfBoundsException e) {
-            System.err.println("Vui lòng nhập đúng lựa chọn");
-        }
+
     }
 
-    //---------------------------------------------------
+    //----------------------------------------------------
 
     public static void timKiemHoSoNhanVien() {
         boolean flag;
@@ -950,6 +939,19 @@ public class MainController {
             if (split.length != 1) {
                 KhachHang khachHang = new KhachHang(split[0], split[1], split[2], split[3], split[4], split[5], split[6], split[7], null);
                 khachHangs.add(khachHang);
+            }
+        }
+    }
+
+    private static void layThongTinNhanVienTuFile() {
+        List<String> listLine = FileUntils.readFile(FILE_EMPLOYEE);
+        for (String line : listLine) {
+            String[] split = line.split(",");
+            if (split.length != 1) {
+                NhanVien nhanVien = new NhanVien(split[0], split[1], split[2], split[3], Long.parseLong(split[4]),
+                        Long.parseLong(split[5]), split[6], split[7], split[8], Long.parseLong(split[9]));
+                nhanVienMap.put(split[0], nhanVien);
+                nhanVienStack.push(nhanVien);
             }
         }
     }

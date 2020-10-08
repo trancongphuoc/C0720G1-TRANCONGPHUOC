@@ -29,7 +29,6 @@ public class IOFile {
 
             for (Object obj : product) {
                 products.add((Product) obj);
-
             }
             ois.close();
             inputStream.close();
