@@ -18,6 +18,7 @@ public class AddNewBooking {
 
     public static void bookingService() {
 //        MainMenu.readFileBooking();
+        MainMenu.readFileContract();
         getchoiceCustomer();
         System.out.println("----------------------------------------");
         System.out.println("1. Booking Villa. ");
@@ -71,7 +72,7 @@ public class AddNewBooking {
                 System.out.print("Enter choice the Customer: ");
                 choiceCustomer = scanner.nextLine();
                 RegularException.exceptionIndexCusTomer(choiceCustomer);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
@@ -90,14 +91,13 @@ public class AddNewBooking {
                 System.out.print("Enter choice Villa: ");
                 choiceVilla = scanner.nextLine();
                 RegularException.exceptionIndexVilla(choiceVilla);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
             }
         } while (!flag);
         MainMenu.customerList.get(Integer.parseInt(choiceCustomer) - 1).setService(MainMenu.villaList.get(Integer.parseInt(choiceVilla) - 1));
-//        MainMenu.villaList.remove(Integer.parseInt(choiceVilla) - 1);
     }
 
     public static void choiceHouse() {
@@ -110,14 +110,13 @@ public class AddNewBooking {
                 System.out.print("Enter choice House: ");
                 choiceHouse = scanner.nextLine();
                 RegularException.exceptionIndexHouse(choiceHouse);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
             }
         } while (!flag);
         MainMenu.customerList.get(Integer.parseInt(choiceCustomer) - 1).setService(MainMenu.houseList.get(Integer.parseInt(choiceHouse) - 1));
-//        MainMenu.houseList.remove(Integer.parseInt(choiceHouse) - 1);
     }
 
     public static void choiceRoom() {
@@ -130,14 +129,13 @@ public class AddNewBooking {
                 System.out.print("Enter choice Room: ");
                 choiceRoom = scanner.nextLine();
                 RegularException.exceptionIndexRoom(choiceRoom);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
             }
         } while (!flag);
         MainMenu.customerList.get(Integer.parseInt(choiceCustomer) - 1).setService(MainMenu.roomList.get(Integer.parseInt(choiceRoom) - 1));
-//        MainMenu.roomList.remove(Integer.parseInt(choiceRoom) - 1);
     }
 
 
@@ -189,6 +187,12 @@ public class AddNewBooking {
                 System.out.println();
                 flag = false;
             }
+            for (Contract contract : MainMenu.contractList) {
+                if (contract.getNumberContract().equals(numberContractVilla)) {
+                    System.err.println("Number contract have exists.");
+                    flag = false;
+                }
+            }
         } while (!flag);
 
         String startDay = enterStartDay();
@@ -224,6 +228,12 @@ public class AddNewBooking {
                 System.out.println();
                 flag = false;
             }
+            for (Contract contract : MainMenu.contractList) {
+                if (contract.getNumberContract().equals(numberContractHouse)) {
+                    System.err.println("Number contract have exists.");
+                    flag = false;
+                }
+            }
         } while (!flag);
 
         String startDay = enterStartDay();
@@ -254,6 +264,12 @@ public class AddNewBooking {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
+            }
+            for (Contract contract : MainMenu.contractList) {
+                if (contract.getNumberContract().equals(numberContractRoom)) {
+                    System.err.println("Number contract have exists.");
+                    flag = false;
+                }
             }
         } while (!flag);
 
@@ -302,6 +318,24 @@ public class AddNewBooking {
         return deposit;
     }
 
+    public static String enterStartDay() {
+        boolean flag;
+        String startDay = null;
+        do {
+            flag = true;
+            try {
+                System.out.print("Enter start day: ");
+                startDay = scanner.nextLine();
+                RegularException.regexDayContract(startDay);
+            } catch (TypeException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
+        } while (!flag);
+        return startDay;
+    }
+
     public static String enterEndDate() {
         boolean flag;
         String endDate = null;
@@ -320,23 +354,7 @@ public class AddNewBooking {
         return endDate;
     }
 
-    public static String enterStartDay() {
-        boolean flag;
-        String startDay = null;
-        do {
-            flag = true;
-            try {
-                System.out.print("Enter start day: ");
-                startDay = scanner.nextLine();
-                RegularException.regexDayContract(startDay);
-            } catch (TypeException e) {
-                System.err.println(e.getMessage());
-                System.out.println();
-                flag = false;
-            }
-        } while (!flag);
-        return startDay;
-    }
+
 
 
 }

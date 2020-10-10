@@ -8,29 +8,32 @@ import furama_resort.controllers._02_customer_menu.ShowInforCusTomer;
 
 import furama_resort.controllers._03_booking_menu.AddNewBooking;
 import furama_resort.controllers._03_booking_menu.ShowCustomerHaveBooking;
+import furama_resort.controllers._04_emplyee_menu.AddNewEmployee;
+import furama_resort.controllers._04_emplyee_menu.ShowInforEmployee;
+import furama_resort.controllers._05_cinema_menu.Cinema;
+import furama_resort.controllers._06_cabinets_menu.CabinetMenu;
 import furama_resort.models.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class MainMenu {
     public static Scanner scanner = new Scanner(System.in);
     public static final String COMA = ",";
-    public static final String PATH_FILE_VILLA = "src/java00_case_study_02/draft.data/villa.csv";
-    public static final String PATH_FILE_HOUSE = "src/java00_case_study_02/draft.data/house.csv";
-    public static final String PATH_FILE_ROOM = "src/java00_case_study_02/draft.data/room.csv";
-    public static final String PATH_CUSTOMER_FILE = "src/java00_case_study_02/draft.data/customer.csv";
-    public static final String PATH_FILE_BOOKING = "src/java00_case_study_02/draft.data/booking.csv";
-    public static final String PATH_EMPLOYEE_FILE = "src/java00_case_study_02/draft.data/employee.csv";
-    public static final String PATH_CONTRACT_FILE = "src/java00_case_study_02/draft.data/contract.csv";
-    public static List<Villa> villaList = new ArrayList<>();
-    public static List<House> houseList = new ArrayList<>();
-    public static List<Room> roomList = new ArrayList<>();
-    public static List<Customer> customerList = new ArrayList<>();
-    public static List<Customer> customerBooking = new ArrayList<>();
-    public static List<Employee> employeeList = new ArrayList<>();
-    public static List<Contract> contractList = new ArrayList<>();
+    public static final String PATH_FILE_VILLA = "src/furama_resort/data/villa.csv";
+    public static final String PATH_FILE_HOUSE = "src/furama_resort/data/house.csv";
+    public static final String PATH_FILE_ROOM = "src/furama_resort/data/room.csv";
+    public static final String PATH_CUSTOMER_FILE = "src/furama_resort/data/customer.csv";
+    public static final String PATH_FILE_BOOKING = "src/furama_resort/data/booking.csv";
+    public static final String PATH_EMPLOYEE_FILE = "src/furama_resort/data/employee.csv";
+    public static final String PATH_CONTRACT_FILE = "src/furama_resort/data/contract.csv";
+    public static List<Villa> villaList;
+    public static List<House> houseList;
+    public static List<Room> roomList;
+    public static List<Customer> customerList;
+    public static List<Customer> customerBooking;
+    public static Map<String, Employee> employeeMap;
+    public static List<Contract> contractList;
+
 
     public static void displayMainMenu() {
         String choice;
@@ -71,18 +74,18 @@ public class MainMenu {
                 case "6":
                     ShowCustomerHaveBooking.showCustomerHaveBooking();
                     break;
-//                case "7":
-//                    AddNewEmployee.addNewEmployee();
-//                    break;
-//                case "8":
-//                    ShowInforEmployee.showInforEmployee();
-//                    break;
-//                case "9":
-//                    Cinema.cinemaMenu();
-//                    break;
-//                case "10":
-//                    CabinetMenu.menu();
-//                    break;
+                case "7":
+                    AddNewEmployee.addNewEmployee();
+                    break;
+                case "8":
+                    ShowInforEmployee.showInforEmployee();
+                    break;
+                case "9":
+                    Cinema.cinemaMenu();
+                    break;
+                case "10":
+                    CabinetMenu.menu();
+                    break;
                 case "11":
                     System.exit(0);
                 default:
@@ -192,13 +195,13 @@ public class MainMenu {
     }
 
     public static void readFileEmployee() {
-        employeeList = new ArrayList<>();
+        employeeMap = new TreeMap<>();
         List<String> stringList = FileUntil.readFromFile(PATH_EMPLOYEE_FILE);
         for (String s : stringList) {
             String[] split = s.split(",");
             Employee employee = new Employee(split[0], split[1], split[2], split[3], split[4], split[5],
                     split[6], split[7], split[8], split[9], split[10], Double.parseDouble(split[11]));
-            employeeList.add(employee);
+            employeeMap.put(split[0],employee);
         }
     }
 }

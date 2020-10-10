@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class AddNewEmployee {
     public static void addNewEmployee() {
+        MainMenu.readFileEmployee();
         Scanner scanner = new Scanner(System.in);
         boolean flag;
 
@@ -17,13 +18,19 @@ public class AddNewEmployee {
         do {
             flag = true;
             try {
-                System.err.print("Enter ID Employee: ");
+                System.out.print("Enter ID Employee: ");
                 iDEmployee = scanner.nextLine();
                 RegularException.regexIdEmployee(iDEmployee);
             } catch (TypeException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
+            }
+            for (String key : MainMenu.employeeMap.keySet()) {
+                if (key.equals(iDEmployee)) {
+                    System.err.println("ID have exist!!!");
+                    flag = false;
+                }
             }
         } while (!flag);
 
@@ -118,7 +125,7 @@ public class AddNewEmployee {
         do {
             flag = true;
             try {
-                System.out.println("Enter level: ");
+                System.out.print("Enter level: ");
                 level = scanner.nextLine();
                 RegularException.regexLevel(level);
             } catch (TypeException e) {
@@ -160,7 +167,7 @@ public class AddNewEmployee {
         do {
             flag = true;
             try {
-                System.err.print("Enter salary: ");
+                System.out.print("Enter salary: ");
                 salary = scanner.nextLine();
                 RegularException.regexCost(salary);
             } catch (NumberException e) {

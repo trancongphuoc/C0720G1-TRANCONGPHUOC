@@ -68,7 +68,7 @@ public class Cinema {
         }
 
         while (!customerQueue.isEmpty()) {
-            System.out.println(customerQueue.poll());
+            System.out.println(customerQueue.poll().showInFor());
         }
     }
 

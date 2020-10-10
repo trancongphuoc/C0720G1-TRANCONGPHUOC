@@ -131,17 +131,17 @@ public class RegularException {
         if (!matcher.find()) throw new TypeException("Retype Service!!!.");
     }
 
-    public static void exceptionIndexCusTomer(String choiceCustomer) throws IndexOutOfBoundsException {
+    public static void exceptionIndexCusTomer(String choiceCustomer) throws IndexOutOfBoundsException, NumberFormatException {
         if (Integer.parseInt(choiceCustomer) < 1 || Integer.parseInt(choiceCustomer) > MainMenu.customerList.size())
             throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
     }
 
-    public static void exceptionIndexVilla(String choiceVilla) throws IndexOutOfBoundsException {
+    public static void exceptionIndexVilla(String choiceVilla) throws IndexOutOfBoundsException, NumberFormatException {
         if (Integer.parseInt(choiceVilla) < 1 || Integer.parseInt(choiceVilla) > MainMenu.villaList.size())
             throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
     }
 
-    public static void exceptionIndexHouse(String choiceHouse) throws IndexOutOfBoundsException {
+    public static void exceptionIndexHouse(String choiceHouse) throws IndexOutOfBoundsException,NumberFormatException {
         if (Integer.parseInt(choiceHouse) < 1 || Integer.parseInt(choiceHouse) > MainMenu.houseList.size())
             throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
     }

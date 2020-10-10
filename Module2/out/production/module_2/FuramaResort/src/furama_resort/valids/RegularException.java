@@ -131,45 +131,46 @@ public class RegularException {
         if (!matcher.find()) throw new TypeException("Retype Service!!!.");
     }
 
-    public static void exceptionIndexCusTomer(String choiceCustomer) throws IndexOutOfBoundsException {
+    public static void exceptionIndexCusTomer(String choiceCustomer) throws IndexOutOfBoundsException, NumberFormatException {
         if (Integer.parseInt(choiceCustomer) < 1 || Integer.parseInt(choiceCustomer) > MainMenu.customerList.size())
             throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
     }
 
-    public static void exceptionIndexVilla(String choiceVilla) throws IndexOutOfBoundsException {
+    public static void exceptionIndexVilla(String choiceVilla) throws IndexOutOfBoundsException, NumberFormatException {
         if (Integer.parseInt(choiceVilla) < 1 || Integer.parseInt(choiceVilla) > MainMenu.villaList.size())
             throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
+
     }
 
-    public static void exceptionIndexHouse(String choiceHouse) throws IndexOutOfBoundsException {
+    public static void exceptionIndexHouse(String choiceHouse) throws IndexOutOfBoundsException, NumberFormatException {
         if (Integer.parseInt(choiceHouse) < 1 || Integer.parseInt(choiceHouse) > MainMenu.houseList.size())
             throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
     }
 
-    public static void exceptionIndexRoom(String choiceRoom) throws IndexOutOfBoundsException {
+    public static void exceptionIndexRoom(String choiceRoom) throws IndexOutOfBoundsException, NumberFormatException {
         if (Integer.parseInt(choiceRoom) < 1 || Integer.parseInt(choiceRoom) > MainMenu.roomList.size())
             throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
     }
 
-    public static void regexContractVilla(String numberContractVilla) throws TypeException{
+    public static void regexContractVilla(String numberContractVilla) throws TypeException {
         pattern = Pattern.compile(REGEX_CONTRACT_VILLA);
         matcher = pattern.matcher(numberContractVilla);
         if (!matcher.find()) throw new TypeException("Retype (XXX/XX/XX-HDVL)!!!");
     }
 
-    public static void regexContractHouse(String numberContractHouse) throws TypeException{
+    public static void regexContractHouse(String numberContractHouse) throws TypeException {
         pattern = Pattern.compile(REGEX_CONTRACT_HOUSE);
         matcher = pattern.matcher(numberContractHouse);
         if (!matcher.find()) throw new TypeException("Retype (XXX/XX/XX-HDHO)!!!");
     }
 
-    public static void regexContractRoom(String numberContractRoom) throws TypeException{
+    public static void regexContractRoom(String numberContractRoom) throws TypeException {
         pattern = Pattern.compile(REGEX_CONTRACT_ROOM);
         matcher = pattern.matcher(numberContractRoom);
         if (!matcher.find()) throw new TypeException("Retype (XXX/XX/XX-HDRO)!!!");
     }
 
-    public static void regexDayContract(String day) throws TypeException{
+    public static void regexDayContract(String day) throws TypeException {
         pattern = Pattern.compile(REGEX_DAY_CONTRACT);
         matcher = pattern.matcher(day);
         if (!matcher.find()) throw new TypeException("Retype (dd/ww/yyyy)!!!");
@@ -198,7 +199,6 @@ public class RegularException {
         matcher = pattern.matcher(department);
         if (!matcher.find()) throw new TypeException("Retype!!!");
     }
-
 
 
 }

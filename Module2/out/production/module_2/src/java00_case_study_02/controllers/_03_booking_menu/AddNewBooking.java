@@ -70,7 +70,7 @@ public class AddNewBooking {
                 System.out.print("Enter choice the Customer: ");
                 choiceCustomer = scanner.nextLine();
                 RegularException.exceptionIndexCusTomer(choiceCustomer);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
@@ -89,7 +89,7 @@ public class AddNewBooking {
                 System.out.print("Enter choice Villa: ");
                 choiceVilla = scanner.nextLine();
                 RegularException.exceptionIndexVilla(choiceVilla);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
@@ -109,7 +109,7 @@ public class AddNewBooking {
                 System.out.print("Enter choice House: ");
                 choiceHouse = scanner.nextLine();
                 RegularException.exceptionIndexHouse(choiceHouse);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
@@ -129,7 +129,7 @@ public class AddNewBooking {
                 System.out.print("Enter choice Room: ");
                 choiceRoom = scanner.nextLine();
                 RegularException.exceptionIndexRoom(choiceRoom);
-            } catch (IndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
@@ -178,7 +178,7 @@ public class AddNewBooking {
         do {
             flag = true;
             try {
-                System.out.println("Enter number contract: ");
+                System.out.print("Enter number contract: ");
                 numberContractVilla = scanner.nextLine();
                 RegularException.regexContractVilla(numberContractVilla);
             } catch (TypeException e) {
@@ -207,7 +207,7 @@ public class AddNewBooking {
         do {
             flag = true;
             try {
-                System.out.println("Enter number contract: ");
+                System.out.print("Enter number contract: ");
                 numberContractHouse = scanner.nextLine();
                 RegularException.regexContractHouse(numberContractHouse);
             } catch (TypeException e) {
@@ -235,7 +235,7 @@ public class AddNewBooking {
         do {
             flag = true;
             try {
-                System.out.println("Enter number contract: ");
+                System.out.print("Enter number contract: ");
                 numberContractRoom = scanner.nextLine();
                 RegularException.regexContractRoom(numberContractRoom);
             } catch (TypeException e) {

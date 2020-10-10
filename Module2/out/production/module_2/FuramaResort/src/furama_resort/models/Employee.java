@@ -63,22 +63,23 @@ public class Employee extends Human {
 
     @Override
     public String toString() {
-        return getFullName() + MainMenu.COMA +
-               getDateOfBirth() + MainMenu.COMA +
-               getSex() + MainMenu.COMA +
-               getIdCard() + MainMenu.COMA +
-               getNumberPhone() + MainMenu.COMA +
-               getEmail() + MainMenu.COMA +
-               getAddress() + MainMenu.COMA +
-               getLevel() + MainMenu.COMA +
-               getPosition() + MainMenu.COMA +
-               getDepartment() + MainMenu.COMA +
-               getSalary();
+        return getIdEmployee() + MainMenu.COMA +
+                getFullName() + MainMenu.COMA +
+                getDateOfBirth() + MainMenu.COMA +
+                getSex() + MainMenu.COMA +
+                getIdCard() + MainMenu.COMA +
+                getNumberPhone() + MainMenu.COMA +
+                getEmail() + MainMenu.COMA +
+                getAddress() + MainMenu.COMA +
+                getLevel() + MainMenu.COMA +
+                getPosition() + MainMenu.COMA +
+                getDepartment() + MainMenu.COMA +
+                getSalary();
     }
 
     @Override
     public String showInFor() {
-        return  "\nID employee: " + getIdEmployee() +
+        return "\nID employee: " + getIdEmployee() +
                 "\nFull name: " + getFullName() +
                 "\nDate of birth: " + getDateOfBirth() +
                 "\nRent type: " + getSex() +
