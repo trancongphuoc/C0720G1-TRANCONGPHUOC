@@ -11,54 +11,58 @@ import java.util.TreeSet;
 
 public class ShowService {
     private static Scanner scanner = new Scanner(System.in);
+
     public static void ShowServicemainMenu() {
-        System.out.println("----------------------------------------");
-        System.out.println("1. Show all Villa.");
-        System.out.println("2. Show all House.");
-        System.out.println("3. Show all Room.");
-        System.out.println("4. Show all name Villa not duplicate.");
-        System.out.println("5. Show all name House not duplicate.");
-        System.out.println("6. Show all name Room not duplicate.");
-        System.out.println("7. Back.");
-        System.out.println("8. Exit.");
-        System.out.println("----------------------------------------");
+        String choice;
+        do {
+            System.out.println("----------------------------------------");
+            System.out.println("1. Show all Villa.");
+            System.out.println("2. Show all House.");
+            System.out.println("3. Show all Room.");
+            System.out.println("4. Show all name Villa not duplicate.");
+            System.out.println("5. Show all name House not duplicate.");
+            System.out.println("6. Show all name Room not duplicate.");
+            System.out.println("7. Back.");
+            System.out.println("8. Exit.");
+            System.out.println("----------------------------------------");
 
-        System.out.print("Enter choice your: ");
-        String choice = scanner.nextLine();
+            System.out.print("Enter choice your: ");
+            choice = scanner.nextLine();
 
-        switch (choice) {
-            case "1":
-                showAllVilla();
-                ShowServicemainMenu();
-                break;
-            case "2":
-                showAllHouse();
-                ShowServicemainMenu();
-                break;
-            case "3":
-                showAllRoom();
-                ShowServicemainMenu();
-                break;
-            case "4":
-                showVillaNotDuplicate();
-                ShowServicemainMenu();
-                break;
-            case "5":
-                showHouseNotDuplicate();
-                ShowServicemainMenu();
-                break;
-            case "6":
-                showRoomNotDuplicate();
-                ShowServicemainMenu();
-                break;
-            case "7":
-                MainMenu.displayMainMenu();
-                break;
-            case "8":
-                System.exit(0);
-            default:
-                ShowServicemainMenu();
-        }
+            switch (choice) {
+                case "1":
+                    showAllVilla();
+                    ShowServicemainMenu();
+                    break;
+                case "2":
+                    showAllHouse();
+                    ShowServicemainMenu();
+                    break;
+                case "3":
+                    showAllRoom();
+                    ShowServicemainMenu();
+                    break;
+                case "4":
+                    showVillaNotDuplicate();
+                    ShowServicemainMenu();
+                    break;
+                case "5":
+                    showHouseNotDuplicate();
+                    ShowServicemainMenu();
+                    break;
+                case "6":
+                    showRoomNotDuplicate();
+                    ShowServicemainMenu();
+                    break;
+                case "7":
+                    MainMenu.displayMainMenu();
+                    break;
+                case "8":
+                    System.exit(0);
+                default:
+                    ShowServicemainMenu();
+            }
+        } while (Integer.parseInt(choice) > 0 && Integer.parseInt(choice) < 9);
     }
 
     public static void showAllVilla() {

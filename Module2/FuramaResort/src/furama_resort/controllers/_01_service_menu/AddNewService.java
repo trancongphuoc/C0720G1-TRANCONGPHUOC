@@ -21,38 +21,41 @@ public class AddNewService {
     private static String rentType;
 
     public static void ServiceMainMenu() {
-        System.out.println("----------------------------------------");
-        System.out.println("1. Add new Villa.");
-        System.out.println("2. Add new House.");
-        System.out.println("3. Add new Room.");
-        System.out.println("4. Back.");
-        System.out.println("5. Exit.");
-        System.out.println("----------------------------------------");
+        String choice = null;
+        do {
+            System.out.println("----------------------------------------");
+            System.out.println("1. Add new Villa.");
+            System.out.println("2. Add new House.");
+            System.out.println("3. Add new Room.");
+            System.out.println("4. Back.");
+            System.out.println("5. Exit.");
+            System.out.println("----------------------------------------");
 
-        System.out.print("Enter choice your: ");
-        String choice = scanner.nextLine();
+            System.out.print("Enter choice your: ");
+            choice = scanner.nextLine();
 
-        switch (choice) {
-            case "1":
-                addNewVilla();
-                ServiceMainMenu();
-                break;
-            case "2":
-                addNewHouse();
-                ServiceMainMenu();
-                break;
-            case "3":
-                addNewRoom();
-                ServiceMainMenu();
-                break;
-            case "4":
-                MainMenu.displayMainMenu();
-                break;
-            case "5":
-                System.exit(0);
-            default:
-                ServiceMainMenu();
-        }
+            switch (choice) {
+                case "1":
+                    addNewVilla();
+                    ServiceMainMenu();
+                    break;
+                case "2":
+                    addNewHouse();
+                    ServiceMainMenu();
+                    break;
+                case "3":
+                    addNewRoom();
+                    ServiceMainMenu();
+                    break;
+                case "4":
+                    MainMenu.displayMainMenu();
+                    break;
+                case "5":
+                    System.exit(0);
+                default:
+                    ServiceMainMenu();
+            }
+        } while (Integer.parseInt(choice) > 0 && Integer.parseInt(choice) < 6);
     }
 
     public static void addNewService() {
@@ -144,7 +147,7 @@ public class AddNewService {
                 flag = false;
             }
             for (Villa villa : MainMenu.villaList) {
-                if (villa.getIdService().equals(iDVilla)){
+                if (villa.getIdService().equals(iDVilla)) {
                     System.err.print("ID have exists");
                     flag = false;
                 }
@@ -214,7 +217,7 @@ public class AddNewService {
                 flag = false;
             }
             for (House house : MainMenu.houseList) {
-                if (house.getIdService().equals(iDHouse)){
+                if (house.getIdService().equals(iDHouse)) {
                     System.err.print("ID have exists.");
                     flag = false;
                 }
@@ -250,7 +253,7 @@ public class AddNewService {
 //        MainMenu.readFileHouse();
 
         String line = house.addInFileCSV();
-        FileUntil.writeInFile(MainMenu.PATH_FILE_HOUSE,line);
+        FileUntil.writeInFile(MainMenu.PATH_FILE_HOUSE, line);
     }
 
     public static void addNewRoom() {
@@ -269,7 +272,7 @@ public class AddNewService {
                 flag = false;
             }
             for (Room room : MainMenu.roomList) {
-                if (room.getIdService().equals(iDRoom)){
+                if (room.getIdService().equals(iDRoom)) {
                     System.err.print("ID have exists.");
                     flag = false;
                 }

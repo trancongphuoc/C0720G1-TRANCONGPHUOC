@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class AddNewEmployee {
     public static void addNewEmployee() {
+        MainMenu.readFileEmployee();
         Scanner scanner = new Scanner(System.in);
         boolean flag;
 
@@ -24,6 +25,12 @@ public class AddNewEmployee {
                 System.err.println(e.getMessage());
                 System.out.println();
                 flag = false;
+            }
+            for (String key : MainMenu.employeeMap.keySet()) {
+                if (key.equals(iDEmployee)) {
+                    System.err.println("ID have exist!!!");
+                    flag = false;
+                }
             }
         } while (!flag);
 
