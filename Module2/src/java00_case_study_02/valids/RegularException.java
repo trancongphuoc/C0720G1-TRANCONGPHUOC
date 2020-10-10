@@ -1,6 +1,6 @@
 package java00_case_study_02.valids;
 
-import java00_case_study_02.controllers.MainMenu;
+import java00_case_study_02.controllers._00_main_menu.MainMenu;
 import java00_case_study_02.exceptions.*;
 
 import java.util.regex.Matcher;
@@ -30,6 +30,10 @@ public class RegularException {
     private static final String REGEX_CONTRACT_HOUSE = "^\\d{3}/\\d{2}/\\d{2}-(HDHO)$";
     private static final String REGEX_CONTRACT_ROOM = "^\\d{3}/\\d{2}/\\d{2}-(HDRO)$";
     private static final String REGEX_DAY_CONTRACT = "^([0][1-9]|[12][0-9]|[3][01])/([0][1-9]|[1][012])/([2][0][2]\\d)$";
+    private static final String REGEX_ID_EMPLOYEE = "^EP-\\d{4}$";
+    private static final String REGEX_LEVEL = "^(Junior|Senior|Supervisor|Leader|Manager|junior|senior|supervisor|leader|manager)$";
+    private static final String REGEX_POSITION = "^(receptionist|Receptionist|Serve|serve|expert|Expert|monitoring|Monitoring|Manage|manage|Manager|manager)$";
+    private static final String REGEX_DEPARTMENT = "^(Sale|sale|Marketing|marketing|administrative|Administrative|Serve|serve|manage|Manage)$";
 
     public static void regexIDVilla(String iDVilla) throws IDServiceException {
         pattern = Pattern.compile(REGEX_ID_VILLA);
@@ -170,4 +174,31 @@ public class RegularException {
         matcher = pattern.matcher(day);
         if (!matcher.find()) throw new TypeException("Retype (dd/ww/yyyy)!!!");
     }
+
+    public static void regexIdEmployee(String iDEmployee) throws TypeException {
+        pattern = Pattern.compile(REGEX_ID_EMPLOYEE);
+        matcher = pattern.matcher(iDEmployee);
+        if (!matcher.find()) throw new TypeException("Retype (EP-XXXX)!!!");
+    }
+
+    public static void regexPosition(String position) throws TypeException {
+        pattern = Pattern.compile(REGEX_POSITION);
+        matcher = pattern.matcher(position);
+        if (!matcher.find()) throw new TypeException("Retype!!!");
+    }
+
+    public static void regexLevel(String level) throws TypeException {
+        pattern = Pattern.compile(REGEX_LEVEL);
+        matcher = pattern.matcher(level);
+        if (!matcher.find()) throw new TypeException("Retype!!!");
+    }
+
+    public static void regexDepartment(String department) throws TypeException {
+        pattern = Pattern.compile(REGEX_DEPARTMENT);
+        matcher = pattern.matcher(department);
+        if (!matcher.find()) throw new TypeException("Retype!!!");
+    }
+
+
+
 }

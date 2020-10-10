@@ -1,19 +1,33 @@
 package java00_case_study_02.models;
 
 public class Room extends Service implements Comparable<Room>{
-    private String freeServiceGoWith;
+    private ServiceGoWithFree freeServiceGoWith;
 
-    public Room(String idService, String nameService, double area, double cost, int amountOfPeople, String rentType) {
+    public Room(String idService, String nameService, double area, double cost, int amountOfPeople, String rentType, ServiceGoWithFree freeServiceGoWith) {
         super(idService, nameService, area, cost, amountOfPeople, rentType);
-        this.freeServiceGoWith = "Eating and drinking";
+        this.freeServiceGoWith = freeServiceGoWith;
     }
 
-    public String getFreeServiceGoWith() {
+    public ServiceGoWithFree getFreeServiceGoWith() {
         return freeServiceGoWith;
     }
 
-    public void setFreeServiceGoWith(String freeServiceGoWith) {
+    public void setFreeServiceGoWith(ServiceGoWithFree freeServiceGoWith) {
         this.freeServiceGoWith = freeServiceGoWith;
+    }
+
+    @Override
+    public String toString() {
+        return "Service{" +
+                "ID Service='" + getIdService() + '\'' +
+                ", Name Service='" + getNameService() + '\'' +
+                ", Area=" + getArea() +
+                ", Cost=" + getCost() +
+                ", Amount of people=" + getAmountOfPeople() +
+                ", Rent type='" + getRentType() + '\'' +
+                "Service free go with='" + getFreeServiceGoWith() + '\'' +
+                '}';
+
     }
 
     @Override

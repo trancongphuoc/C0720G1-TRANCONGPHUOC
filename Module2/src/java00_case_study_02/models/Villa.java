@@ -49,6 +49,22 @@ public class Villa extends Service implements Comparable<Villa> {
     }
 
     @Override
+    public String toString() {
+        return "Service{" +
+                "ID Service='" + getIdService() + '\'' +
+                ", Name service='" + getNameService() + '\'' +
+                ", Area=" + getArea() +
+                ", Cost=" + getCost() +
+                ", Amount of people=" + getAmountOfPeople() +
+                ", Rent type='" + getRentType() + '\'' +
+                "Standard room='" + getStandardRoom() + '\'' +
+                ", Description='" + getDescription() + '\'' +
+                ", Pool area=" + getPoolArea() +
+                ", Number of floor=" + getNumberOfFloor() +
+                '}';
+    }
+
+    @Override
     public String showInFor() {
         return  "\nID Service: " + getIdService() +
                 "\nName Service: " + getNameService() +

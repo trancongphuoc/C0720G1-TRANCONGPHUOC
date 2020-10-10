@@ -48,6 +48,26 @@ public class Customer extends Human implements Comparable<Customer> {
     }
 
     @Override
+    public String toString() {
+
+        return "Customer{" +
+                "fullName='" + getFullName() + '\'' +
+                ", dateOfBirth='" + getDateOfBirth() + '\'' +
+                ", sex='" + getSex() + '\'' +
+                ", idCard='" + getIdCard() + '\'' +
+                ", numberPhone='" + getNumberPhone() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", address='" + getAddress() + '\'' +
+                "customerType='" + getCustomerType() + '\'' +
+                ", service=" + getService() +
+                ", serviceGoWith=" + getServiceGoWith() +
+                ", contract=" + getContract() +
+                '}';
+
+    }
+
+
+    @Override
     public String showInFor() {
         return "\nFull name: " + getFullName() +
                 "\nDate of birth: " + getDateOfBirth() +

@@ -4,6 +4,21 @@ import java.io.*;
 import java.util.List;
 
 public class FileUntil {
+    public static <E> void updateFile(String pathFile, List<E> list) {
+        OutputStream outputStream;
+        ObjectOutputStream oos;
+        try {
+            outputStream = new FileOutputStream(pathFile);
+            oos = new ObjectOutputStream(outputStream);
+            oos.writeObject(list);
+            oos.close();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static <E> void writeInFile(String pathFile, List<E> list, E obj) {
         OutputStream outputStream;
         ObjectOutputStream oos;

@@ -4,18 +4,18 @@ public class Employee extends Human {
     private String idEmployee;
     private String level;
     private String position;
-    private String workingParts;
+    private String department;
     private double salary;
 
     public Employee(String idEmployee, String fullName, String dateOfBirth,
                     String sex, String idCard, String numberPhone,
                     String email, String address, String level,
-                    String position,String workingParts, double salary) {
+                    String position, String department, double salary) {
         super(fullName, dateOfBirth, sex, idCard, numberPhone, email, address);
         this.idEmployee = idEmployee;
         this.level = level;
         this.position = position;
-        this.workingParts = workingParts;
+        this.department = department;
         this.salary = salary;
     }
 
@@ -43,12 +43,12 @@ public class Employee extends Human {
         this.position = position;
     }
 
-    public String getWorkingParts() {
-        return workingParts;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setWorkingParts(String workingParts) {
-        this.workingParts = workingParts;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public double getSalary() {
@@ -57,6 +57,23 @@ public class Employee extends Human {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "fullName='" + getFullName() + '\'' +
+                ", dateOfBirth='" + getDateOfBirth() + '\'' +
+                ", sex='" + getSex() + '\'' +
+                ", idCard='" + getIdCard() + '\'' +
+                ", numberPhone='" + getNumberPhone() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", address='" + getAddress() + '\'' +
+                "customerType='" + getLevel() + '\'' +
+                ", service=" + getPosition() +
+                ", serviceGoWith=" + getDepartment() +
+                ", contract=" + getSalary() +
+                '}';
     }
 
     @Override
@@ -71,7 +88,7 @@ public class Employee extends Human {
                 "\nAddress: " + getAddress() +
                 "\nLevel: " + getLevel() +
                 "\nPosition: " + getPosition() +
-                "\nWorking pasts: " + getWorkingParts() +
+                "\nDepartment: " + getDepartment() +
                 "\nSalary: " + getSalary() + " $\n";
     }
 }

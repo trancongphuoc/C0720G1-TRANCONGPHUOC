@@ -79,5 +79,6 @@ public abstract class Human implements Serializable {
     }
 
     public abstract String showInFor();
+
 }
 
