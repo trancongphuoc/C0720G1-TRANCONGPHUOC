@@ -52,7 +52,6 @@ public class AddNewBooking {
                 System.exit(0);
             default:
                 MainMenu.displayMainMenu();
-
         }
     }
 
