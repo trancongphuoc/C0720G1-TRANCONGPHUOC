@@ -13,13 +13,13 @@ import furama_resort.valids.RegularException;
 import java.util.Scanner;
 
 public class AddNewBooking {
+
     private static Scanner scanner = new Scanner(System.in);
     private static String choiceCustomer = null;
 
     public static void bookingService() {
-//        MainMenu.readFileBooking();
         MainMenu.readFileContract();
-        getchoiceCustomer();
+        getChoiceCustomer();
         System.out.println("----------------------------------------");
         System.out.println("1. Booking Villa. ");
         System.out.println("2. Booking House. ");
@@ -31,29 +31,22 @@ public class AddNewBooking {
         String choice = scanner.nextLine();
         switch (choice) {
             case "1":
-                choiceVilla();
+                getChoiceVilla();
                 writeServiceGoWith();
                 writeContractVilla();
                 FileUntil.writeInFile(MainMenu.PATH_FILE_BOOKING, MainMenu.customerList.get(Integer.parseInt(choiceCustomer) - 1).toString());
-
-//                FileUntil.updateFile(MainMenu.PATH_FILE_VILLA, MainMenu.villaList);
-//                FileUntil.updateFile(MainMenu.PATH_CUSTOMER_FILE, MainMenu.customerList);
                 break;
             case "2":
-                choiceHouse();
+                getChoiceHouse();
                 writeServiceGoWith();
                 writeContractHouse();
                 FileUntil.writeInFile(MainMenu.PATH_FILE_BOOKING,  MainMenu.customerList.get(Integer.parseInt(choiceCustomer) - 1).toString());
-//                FileUntil.updateFile(MainMenu.PATH_FILE_HOUSE, MainMenu.houseList);
-//                FileUntil.updateFile(MainMenu.PATH_CUSTOMER_FILE, MainMenu.customerList);
                 break;
             case "3":
-                choiceRoom();
+                getChoiceRoom();
                 writeServiceGoWith();
                 writeContractRoom();
                 FileUntil.writeInFile(MainMenu.PATH_FILE_BOOKING,  MainMenu.customerList.get(Integer.parseInt(choiceCustomer) - 1).toString());
-//                FileUntil.updateFile(MainMenu.PATH_FILE_ROOM, MainMenu.roomList);
-//                FileUntil.updateFile(MainMenu.PATH_CUSTOMER_FILE, MainMenu.customerList);
                 break;
             case "5":
                 System.exit(0);
@@ -63,7 +56,7 @@ public class AddNewBooking {
         }
     }
 
-    public static void getchoiceCustomer() {
+    public static void getChoiceCustomer() {
         ShowInforCusTomer.showInforCustomer();
         boolean flag;
         do {
@@ -81,7 +74,7 @@ public class AddNewBooking {
     }
 
 
-    public static void choiceVilla() {
+    public static void getChoiceVilla() {
         boolean flag;
         ShowService.showAllVilla();
         String choiceVilla = null;
@@ -100,7 +93,7 @@ public class AddNewBooking {
         MainMenu.customerList.get(Integer.parseInt(choiceCustomer) - 1).setService(MainMenu.villaList.get(Integer.parseInt(choiceVilla) - 1));
     }
 
-    public static void choiceHouse() {
+    public static void getChoiceHouse() {
         boolean flag;
         ShowService.showAllHouse();
         String choiceHouse = null;
@@ -119,7 +112,7 @@ public class AddNewBooking {
         MainMenu.customerList.get(Integer.parseInt(choiceCustomer) - 1).setService(MainMenu.houseList.get(Integer.parseInt(choiceHouse) - 1));
     }
 
-    public static void choiceRoom() {
+    public static void getChoiceRoom() {
         boolean flag;
         ShowService.showAllRoom();
         String choiceRoom = null;
@@ -144,11 +137,13 @@ public class AddNewBooking {
         System.out.println("Do you want used Service go with ?");
         System.out.println("1. Yes");
         System.out.println("2. No");
+        System.out.print("Enter choice your: ");
         String number = scanner.nextLine();
         while (Integer.parseInt(number) != 1 && Integer.parseInt(number) != 2) {
             System.out.println("Failed!!!--- Again");
             System.out.println("1. Yes");
             System.out.println("2. No");
+            System.out.print("Enter choice your: ");
             number = scanner.nextLine();
         }
         String serviceGoWith = null;

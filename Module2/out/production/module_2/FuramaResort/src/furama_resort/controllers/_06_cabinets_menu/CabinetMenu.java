@@ -7,33 +7,36 @@ import java.util.Scanner;
 
 public class CabinetMenu {
     public static void menu() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("1. Employee profile search by name.");
-        System.out.println("2. Employee profile search by id.");
-        System.out.println("3. Back.");
-        System.out.println("4. Exit.");
+        String choice;
+        do {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("1. Put profile in the cabinet.");
+            System.out.println("2. Employee profile search by name.");
+            System.out.println("3. Employee profile search by id.");
+            System.out.println("4. Back.");
+            System.out.println("5. Exit.");
 
-        System.out.print("Enter choice your: ");
-        String choice = scanner.nextLine();
-        switch (choice) {
-            case "1":
-                FilingCabinets.findProfileByName();
-                menu();
-                break;
-            case "2":
-                FilingCabinets.findProfileByID();
-                menu();
-                break;
-            case "3":
-                MainMenu.displayMainMenu();
-                menu();
-                break;
-            case "4":
-                System.exit(0);
-                break;
-            default:
-                menu();
+            System.out.print("Enter choice your: ");
+            choice = scanner.nextLine();
+            switch (choice) {
+                case "1":
+                    FilingCabinets.putProfileInTheCabinet();
+                    break;
+                case "2":
+                    FilingCabinets.findProfileByName();
+                    break;
+                case "3":
+                    FilingCabinets.findProfileByID();
+                    break;
+                case "4":
+                    MainMenu.displayMainMenu();
+                    break;
+                case "5":
+                    System.exit(0);
+                default:
+                    menu();
 
-        }
+            }
+        } while (Integer.parseInt(choice) > 0 && Integer.parseInt(choice) < 6);
     }
 }

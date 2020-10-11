@@ -17,7 +17,6 @@ import furama_resort.models.*;
 import java.util.*;
 
 public class MainMenu {
-    public static Scanner scanner = new Scanner(System.in);
     public static final String COMA = ",";
     public static final String PATH_FILE_VILLA = "src/furama_resort/data/villa.csv";
     public static final String PATH_FILE_HOUSE = "src/furama_resort/data/house.csv";
@@ -36,6 +35,7 @@ public class MainMenu {
 
 
     public static void displayMainMenu() {
+        Scanner scanner = new Scanner(System.in);
         String choice;
         do {
             System.out.println("----------------------------------------");
@@ -96,6 +96,8 @@ public class MainMenu {
 
     }
 
+
+
     public static void readFileVilla() {
         villaList = new ArrayList<>();
         List<String> stringList = FileUntil.readFromFile(MainMenu.PATH_FILE_VILLA);
@@ -108,7 +110,6 @@ public class MainMenu {
         }
     }
 
-    //
     public static void readFileHouse() {
         houseList = new ArrayList<>();
         List<String> stringList = FileUntil.readFromFile(MainMenu.PATH_FILE_HOUSE);
@@ -121,7 +122,6 @@ public class MainMenu {
         }
     }
 
-    //
     public static void readFileRoom() {
         roomList = new ArrayList<>();
         List<String> stringList = FileUntil.readFromFile(MainMenu.PATH_FILE_ROOM);
@@ -134,7 +134,6 @@ public class MainMenu {
         }
     }
 
-    //
     public static void readFileCustomer() {
         customerList = new ArrayList<>();
         List<String> stringList = FileUntil.readFromFile(MainMenu.PATH_CUSTOMER_FILE);
@@ -144,7 +143,6 @@ public class MainMenu {
             customerList.add(customer);
         }
     }
-
 
     public static void readFileContract() {
         contractList = new ArrayList<>();
@@ -156,7 +154,6 @@ public class MainMenu {
         }
     }
 
-    //????????????????????????????????????????????????????????????????????????????????
     public static void readFileBooking() {
         MainMenu.readFileContract();
         MainMenu.readFileVilla();

@@ -10,9 +10,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class ShowService {
-    private static Scanner scanner = new Scanner(System.in);
+
 
     public static void ShowServicemainMenu() {
+        Scanner scanner = new Scanner(System.in);
         String choice;
         do {
             System.out.println("----------------------------------------");
@@ -65,6 +66,7 @@ public class ShowService {
         } while (Integer.parseInt(choice) > 0 && Integer.parseInt(choice) < 9);
     }
 
+
     public static void showAllVilla() {
         MainMenu.readFileVilla();
         int index = 1;
@@ -101,7 +103,7 @@ public class ShowService {
     }
 
     public static void showVillaNotDuplicate() {
-//        MainMenu.readFileVilla();
+        MainMenu.readFileVilla();
         if (MainMenu.villaList.isEmpty()) {
             System.err.println("Villa File Empty!!!");
             System.out.println();
@@ -115,14 +117,13 @@ public class ShowService {
     }
 
     public static void showHouseNotDuplicate() {
-//        MainMenu.readFileHouse();
+        MainMenu.readFileHouse();
         if (MainMenu.houseList.isEmpty()) {
             System.err.println("House File Empty!!!");
             System.out.println();
         }
         int index = 1;
-        Set<House> housesSet = new TreeSet<>();
-        housesSet.addAll(MainMenu.houseList);
+        Set<House> housesSet = new TreeSet<>(MainMenu.houseList);
 
         for (House house : housesSet) {
             System.out.println(index++ + " " + house.showInFor());
@@ -130,14 +131,13 @@ public class ShowService {
     }
 
     public static void showRoomNotDuplicate() {
-//        MainMenu.readFileRoom();
+        MainMenu.readFileRoom();
         if (MainMenu.roomList.isEmpty()) {
             System.err.println("Room File Empty!!!");
             System.out.println();
         }
         int index = 1;
-        Set<Room> roomsSet = new TreeSet<>();
-        roomsSet.addAll(MainMenu.roomList);
+        Set<Room> roomsSet = new TreeSet<>(MainMenu.roomList);
 
         for (Room room : roomsSet) {
             System.out.println(index++ + " " + room.showInFor());

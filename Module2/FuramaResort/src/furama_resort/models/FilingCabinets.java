@@ -2,6 +2,7 @@ package furama_resort.models;
 
 import furama_resort.controllers._00_main_menu.MainMenu;
 import furama_resort.controllers._04_emplyee_menu.ShowInforEmployee;
+import furama_resort.valids.RegularException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,17 +22,29 @@ public class FilingCabinets {
     }
 
     public static void putProfileInTheCabinet() {
+        boolean flag;
+        String choice = null;
         Scanner scanner = new Scanner(System.in);
         ShowInforEmployee.showInforEmployee();
-        System.out.print("Enter choice: ");
-        String choice = scanner.nextLine();
-        employeeStack.push(employeeList.get(Integer.parseInt(choice ) -1));
+        do {
+            flag = true;
+            try {
+                System.out.print("Enter choice: ");
+                choice = scanner.nextLine();
+                RegularException.exceptionIndexEmployee(choice);
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
+                System.err.println(e.getMessage());
+                System.out.println();
+                flag = false;
+            }
+        } while (!flag);
+        employeeStack.push(employeeList.get(Integer.parseInt(choice) - 1));
     }
 
     public static void findProfileByName() {
         boolean flag = false;
         if (employeeStack.isEmpty()) {
-            System.out.println("Empty");
+            System.err.println("Empty");
             return;
         }
         Scanner scanner = new Scanner(System.in);
@@ -54,7 +67,7 @@ public class FilingCabinets {
     public static void findProfileByID() {
         boolean flag = false;
         if (employeeStack.isEmpty()) {
-            System.out.println("Empty");
+            System.err.println("Empty");
             return;
         }
         Scanner scanner = new Scanner(System.in);
