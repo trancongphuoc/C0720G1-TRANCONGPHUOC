@@ -2,6 +2,7 @@ package furama_resort.valids;
 
 import furama_resort.controllers._00_main_menu.MainMenu;
 import furama_resort.exceptions.*;
+import furama_resort.models.FilingCabinets;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -149,6 +150,11 @@ public class RegularException {
 
     public static void exceptionIndexRoom(String choiceRoom) throws IndexOutOfBoundsException, NumberFormatException {
         if (Integer.parseInt(choiceRoom) < 1 || Integer.parseInt(choiceRoom) > MainMenu.roomList.size())
+            throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
+    }
+
+    public static void exceptionIndexEmployee(String choiceEmployee) throws IndexOutOfBoundsException, NumberFormatException {
+        if (Integer.parseInt(choiceEmployee) < 1 || Integer.parseInt(choiceEmployee) > FilingCabinets.employeeList.size())
             throw new IndexOutOfBoundsException("IndexOutOfBoundsException");
     }
 

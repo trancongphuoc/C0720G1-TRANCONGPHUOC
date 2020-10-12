@@ -13,7 +13,6 @@ import java.util.Scanner;
 
 public class AddNewService {
     private static Scanner scanner = new Scanner(System.in);
-
     private static String nameService;
     private static String area;
     private static String cost;
@@ -21,7 +20,7 @@ public class AddNewService {
     private static String rentType;
 
     public static void ServiceMainMenu() {
-        String choice = null;
+        String choice;
         do {
             System.out.println("----------------------------------------");
             System.out.println("1. Add new Villa.");
@@ -132,6 +131,7 @@ public class AddNewService {
     }
 
     public static void addNewVilla() {
+        MainMenu.readFileVilla();
         boolean flag;
 
         String iDVilla = null;
@@ -202,6 +202,7 @@ public class AddNewService {
     }
 
     public static void addNewHouse() {
+        MainMenu.readFileHouse();
         boolean flag;
 
         String iDHouse = null;
@@ -257,6 +258,7 @@ public class AddNewService {
     }
 
     public static void addNewRoom() {
+        MainMenu.readFileRoom();
         boolean flag;
 
         String iDRoom = null;

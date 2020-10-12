@@ -13,33 +13,35 @@ public class Cinema {
     private static Queue<Customer> customerQueue = new LinkedList<>();
     private static Scanner scanner = new Scanner(System.in);
     public static void cinemaMenu() {
-        System.out.println("-----------------------------------");
-        System.out.println("1. Buy movie tickets.");
-        System.out.println("2. Print list of buy tickets.");
-        System.out.println("3. Back.");
-        System.out.println("4. Exit.");
-        System.out.println("-----------------------------------");
-        System.out.print("Enter choice your: ");
-        String choice = scanner.nextLine();
+        String choice;
+        do {
+            System.out.println("-----------------------------------");
+            System.out.println("1. Buy movie tickets.");
+            System.out.println("2. Print list of buy tickets.");
+            System.out.println("3. Back.");
+            System.out.println("4. Exit.");
+            System.out.println("-----------------------------------");
 
-        switch (choice) {
-            case "1":
-                buyTickets();
-                cinemaMenu();
-                break;
-            case "2":
-                printList();
-                cinemaMenu();
-                break;
-            case "3":
-                MainMenu.displayMainMenu();
-                break;
-            case "4":
-                System.exit(0);
-                break;
-            default:
-                cinemaMenu();
-        }
+            System.out.print("Enter choice your: ");
+            choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    buyTickets();
+                    break;
+                case "2":
+                    printList();
+                    break;
+                case "3":
+                    MainMenu.displayMainMenu();
+                    break;
+                case "4":
+                    System.exit(0);
+                    break;
+                default:
+                    cinemaMenu();
+            }
+        } while (Integer.parseInt(choice) > 0 && Integer.parseInt(choice) < 5);
     }
 
     public static void buyTickets() {
@@ -68,7 +70,7 @@ public class Cinema {
         }
 
         while (!customerQueue.isEmpty()) {
-            System.out.println(customerQueue.poll().showInFor());
+            System.out.println(customerQueue.poll().getFullName());
         }
     }
 

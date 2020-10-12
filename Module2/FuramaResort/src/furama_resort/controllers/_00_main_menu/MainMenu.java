@@ -97,7 +97,6 @@ public class MainMenu {
     }
 
 
-
     public static void readFileVilla() {
         villaList = new ArrayList<>();
         List<String> stringList = FileUntil.readFromFile(MainMenu.PATH_FILE_VILLA);
@@ -186,7 +185,8 @@ public class MainMenu {
                     contractbook = contract;
                 }
             }
-            Customer customerBooking = new Customer(split[0], split[1], split[2], split[3], split[4], split[5], split[6], split[7], book, new ServiceGoWith(split[9]), contractbook);
+            Customer customerBooking = new Customer(split[0], split[1], split[2], split[3], split[4],
+                    split[5], split[6], split[7], book, new ServiceGoWith(split[9]), contractbook);
             MainMenu.customerBooking.add(customerBooking);
         }
     }

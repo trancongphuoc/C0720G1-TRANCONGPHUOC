@@ -44,7 +44,6 @@ public class FileUntil {
             List<E> listobj = (List<E>) ois.readObject();
             for (E obj : listobj) {
                 list.add((E) obj);
-//                System.out.println(obj);
             }
             ois.close();
             inputStream.close();
