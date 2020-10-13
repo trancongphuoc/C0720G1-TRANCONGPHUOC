@@ -57,9 +57,24 @@ public class Word {
         System.out.print("Enter word need del: ");
         String position = scanner.nextLine();
 
-//        MainMenu.dictionaryList.remove(Integer.parseInt(position) -1);
         MainMenu.listLine.remove(Integer.parseInt(position) - 1);
 
         FileUntils.writeInFile(MainMenu.FILE_PATH, MainMenu.listLine);
     }
+
+
+//    public static void delWordInName() {
+//        Prints.printListWord();
+//        System.out.print("Enter name word need del: ");
+//        String position = scanner.nextLine();
+//        for (int i = 0; i < MainMenu.listLine.size(); i++) {
+//            if (MainMenu.dictionaryList.get(i).getWord().equals(position)) {
+//                MainMenu.listLine.remove(i);
+//                i--;
+//            }
+//        }
+//        FileUntils.writeInFile(MainMenu.FILE_PATH, MainMenu.listLine);
+//    }
+
+
 }

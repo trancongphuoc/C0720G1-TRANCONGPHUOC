@@ -3,17 +3,14 @@ package java00_case_study_james.menu;
 import java00_case_study_james.commons.FileUntils;
 import java00_case_study_james.models.Dictionary;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class MainMenu {
     public static final String FILE_PATH = "src/java00_case_study_james/data/dictionary.csv";
     public static final String COMA = ",";
 
     public static List<String> listLine = new ArrayList<>();
-    public static List<Dictionary> dictionaryList;
+    public static Map<String, Dictionary> dictionaryMap;
 
     public static void displayMainMenu() {
         String choice;
@@ -36,6 +33,7 @@ public class MainMenu {
                     break;
                 case "3":
                     Word.delWord();
+//                    Word.delWordInName();
                     break;
                 case "4":
                     Prints.printListWord();
@@ -48,14 +46,13 @@ public class MainMenu {
 
     public static void readFile() {
         listLine = FileUntils.readFile(FILE_PATH);
-        dictionaryList = new ArrayList<>();
-
+        dictionaryMap = new LinkedHashMap<>();
         for (String s : listLine) {
             String[] splitComa = s.split(",");
             String[] splitSemicolon = splitComa[5].split(";");
-            List<String> listSynonum = new ArrayList<>(Arrays.asList(splitSemicolon));
-            Dictionary dictionary = new Dictionary(splitComa[0], splitComa[1], splitComa[2], splitComa[3], splitComa[4], listSynonum);
-            dictionaryList.add(dictionary);
+            List<String> listSynonym = new ArrayList<>(Arrays.asList(splitSemicolon));
+            Dictionary dictionary = new Dictionary(splitComa[0], splitComa[1], splitComa[2], splitComa[3], splitComa[4], listSynonym);
+            dictionaryMap.put(splitComa[0],dictionary);
         }
     }
 }
