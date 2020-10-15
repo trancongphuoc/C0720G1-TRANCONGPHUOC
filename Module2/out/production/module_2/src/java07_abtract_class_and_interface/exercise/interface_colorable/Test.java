@@ -10,18 +10,23 @@ public class Test {
         shapes[4] = new Rectangle(5.0,7.0);
         shapes[5] = new Square(3.0);
 
-        System.out.println("Circle: " +((Circle)shapes[0]).getArea());
-        System.out.println("Rectangle: " +((Rectangle)shapes[1]).getArea());
-        System.out.println("Squre: " +((Square)shapes[2]).getArea());
-        System.out.println("Circle: " +((Circle)shapes[3]).getArea());
-        System.out.println("Rectangle: " +((Rectangle)shapes[4]).getArea());
-        System.out.println("Squre: " +((Square)shapes[5]).getArea());
 
-        for (Shape shape : shapes) {
-            if (shape instanceof Colorable) {
-                System.out.println(((Colorable) shape).howToColor());
-            }
-        }
+        Shape shapeo = new Circle(); // ngam dinh
+
+        ((Circle) shapeo).getClass(); // tuong minh
+
+//        System.out.println("Circle: " +((Circle)shapes[0]).getArea());
+//        System.out.println("Rectangle: " +((Rectangle)shapes[1]).getArea());
+//        System.out.println("Squre: " +((Square)shapes[2]).getArea());
+//        System.out.println("Circle: " +((Circle)shapes[3]).getArea());
+//        System.out.println("Rectangle: " +((Rectangle)shapes[4]).getArea());
+//        System.out.println("Squre: " +((Square)shapes[5]).getArea());
+//
+//        for (Shape shape : shapes) {
+//            if (shape instanceof Colorable) {
+//                System.out.println(((Colorable) shape).howToColor());
+//            }
+//        }
 
 
     }

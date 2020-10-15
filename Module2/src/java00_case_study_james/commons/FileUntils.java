@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileUntils {
-    public static void writeInFile(String pathFile, List<String> listLine) {
+    public static <E> void writeInFile(String pathFile, List<E> listObj) {
         FileWriter fileWriter;
         BufferedWriter bufferedWriter;
         try {
             fileWriter = new FileWriter(pathFile);
             bufferedWriter = new BufferedWriter(fileWriter);
-            for (String s: listLine) {
-                bufferedWriter.write(s);
+            for (E s: listObj) {
+                bufferedWriter.write(s.toString());
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();

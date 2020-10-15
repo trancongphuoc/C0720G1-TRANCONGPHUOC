@@ -8,9 +8,7 @@ import java.util.*;
 public class MainMenu {
     public static final String FILE_PATH = "src/java00_case_study_james/data/dictionary.csv";
     public static final String COMA = ",";
-
-    public static List<String> listLine = new ArrayList<>();
-    public static Map<String, Dictionary> dictionaryMap;
+    public static List<Dictionary> dictionaryList = new ArrayList<>();
 
     public static void displayMainMenu() {
         String choice;
@@ -29,7 +27,7 @@ public class MainMenu {
                     Word.addNewWord();
                     break;
                 case "2":
-                    Prints.printWord();
+//                    Prints.printWord();
                     break;
                 case "3":
                     Word.delWord();
@@ -45,14 +43,14 @@ public class MainMenu {
     }
 
     public static void readFile() {
-        listLine = FileUntils.readFile(FILE_PATH);
-        dictionaryMap = new LinkedHashMap<>();
+        List<String> listLine = FileUntils.readFile(FILE_PATH);
+        dictionaryList = new ArrayList<>();
         for (String s : listLine) {
             String[] splitComa = s.split(",");
             String[] splitSemicolon = splitComa[5].split(";");
             List<String> listSynonym = new ArrayList<>(Arrays.asList(splitSemicolon));
             Dictionary dictionary = new Dictionary(splitComa[0], splitComa[1], splitComa[2], splitComa[3], splitComa[4], listSynonym);
-            dictionaryMap.put(splitComa[0],dictionary);
+            dictionaryList.add(dictionary);
         }
     }
 }

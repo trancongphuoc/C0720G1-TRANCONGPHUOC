@@ -45,10 +45,11 @@ public class Word {
         } while (!flag);
         Dictionary dictionary = new Dictionary(newWord, adjective, noun, verb, pronunciation, listSynonym);
 
-        MainMenu.listLine = FileUntils.readFile(MainMenu.FILE_PATH);
-        MainMenu.listLine.add(dictionary.addInFileCSV());
-
-        FileUntils.writeInFile(MainMenu.FILE_PATH, MainMenu.listLine);
+//        MainMenu.listLine = FileUntils.readFile(MainMenu.FILE_PATH);
+//        MainMenu.listLine.add(dictionary.addInFileCSV());
+        MainMenu.readFile();
+        MainMenu.dictionaryList.add(dictionary);
+        FileUntils.writeInFile(MainMenu.FILE_PATH, MainMenu.dictionaryList);
     }
 
     public static void delWord() {
@@ -57,9 +58,9 @@ public class Word {
         System.out.print("Enter word need del: ");
         String position = scanner.nextLine();
 
-        MainMenu.listLine.remove(Integer.parseInt(position) - 1);
+        MainMenu.dictionaryList.remove(Integer.parseInt(position) - 1);
 
-        FileUntils.writeInFile(MainMenu.FILE_PATH, MainMenu.listLine);
+        FileUntils.writeInFile(MainMenu.FILE_PATH, MainMenu.dictionaryList);
     }
 
 

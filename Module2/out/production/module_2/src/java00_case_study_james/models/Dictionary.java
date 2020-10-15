@@ -71,8 +71,30 @@ public class Dictionary {
         this.synonym = synonym;
     }
 
+//    @Override
+//    public boolean equals(Object obj) {
+//        return obj == this.getWord();
+//    }
+
     @Override
     public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String s: synonym) {
+            stringBuilder.append(s).append(";");
+        }
+
+
+
+        return word + MainMenu.COMA +
+                adjective + MainMenu.COMA +
+                noun + MainMenu.COMA +
+                verb + MainMenu.COMA +
+                pronunciation + MainMenu.COMA +
+                stringBuilder;
+
+    }
+
+    public String showInfor() {
         return "Dictionary{" +
                 "word='" + word + '\'' +
                 ", adjective='" + adjective + '\'' +
@@ -81,19 +103,5 @@ public class Dictionary {
                 ", pronunciation='" + pronunciation + '\'' +
                 ", synonym=" + synonym +
                 '}';
-    }
-
-    public String addInFileCSV() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String s: synonym) {
-            stringBuilder.append(s).append(";");
-        }
-
-        return word + MainMenu.COMA +
-                adjective + MainMenu.COMA +
-                noun + MainMenu.COMA +
-                verb + MainMenu.COMA +
-                pronunciation + MainMenu.COMA +
-                stringBuilder;
     }
 }
